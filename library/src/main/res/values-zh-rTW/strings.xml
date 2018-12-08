@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--编辑对话框-->
+    <string name="libroot_dialogedit_ent">確 定</string>
+    <string name="libroot_dialogedit_esc">關 閉</string>
+
+    <!--安卓动态权限管理-->
+    <string name="permission_title">請到權限管理中開啟權限</string>
+    <string name="permission_esc">殘忍拒絕</string>
+    <string name="permission_ent">去設置</string>
+    <string name="permission_denied">應用授權已被您拒絕，繼續操作，部分功能將使用異常！</string>
+
+    <!--上拉刷新、下拉加载-->
+    <!--下拉刷新-->
+    <string name="REFRESH_HEADER_PULLDOWN">下拉可以刷新</string>
+    <string name="REFRESH_HEADER_REFRESHING">正在刷新...</string>
+    <string name="REFRESH_HEADER_LOADING">正在加載...</string>
+    <string name="REFRESH_HEADER_RELEASE">釋放立即刷新</string>
+    <string name="REFRESH_HEADER_FINISH">刷新完成</string>
+    <string name="REFRESH_HEADER_FAILED">刷新失敗</string>
+    <string name="REFRESH_HEADER_LASTTIME">上次更新 M-d HH:mm</string>
+    <string name="REFRESH_HEADER_SECOND_FLOOR">釋放顯示最新數據</string>
+    <!--上拉加载更多-->
+    <string name="REFRESH_FOOTER_PULLUP">上拉加載更多</string>
+    <string name="REFRESH_FOOTER_RELEASE">釋放立即加載</string>
+    <string name="REFRESH_FOOTER_LOADING">正在加載...</string>
+    <string name="REFRESH_FOOTER_REFRESHING">正在刷新...</string>
+    <string name="REFRESH_FOOTER_FINISH">加載完成</string>
+    <string name="REFRESH_FOOTER_FAILED">加載失敗</string>
+    <string name="REFRESH_FOOTER_ALLLOADED">沒有更多數據了</string>
+
+</resources>

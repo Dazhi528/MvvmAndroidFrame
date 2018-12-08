@@ -1,14 +1,19 @@
 package com.dazhi.sample;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import com.dazhi.libroot.base.activity.RootVmActivity;
+import com.dazhi.libroot.base.vm.RootViewModel;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends RootVmActivity<RootViewModel> {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    protected int getLayoutId() {
+        return R.layout.activity_main;
     }
+
+    @Override
+    protected void initConfig() {
+
+    }
+
 
 }

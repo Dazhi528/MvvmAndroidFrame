@@ -1,10 +1,15 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    
+    ext {
+        // support lib
+        supportLibraryVersion = '28.0.0'
+    }
     repositories {
         google()
         jcenter()
+        // Android Permissions Dispatcher
+        maven { url 'http://oss.jfrog.org/artifactory/oss-snapshot-local/' }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.2.1'
@@ -19,6 +24,7 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven { url 'https://jitpack.io' }
     }
 }
 

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="LibRootTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <!--注意android的拼写是个错误的-->
+    <!--<style name="LibRootTheme" parent="@andorid:style/Theme.AppCompat.Light.NoActionBar">-->
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <!--窗口进入/退出动画-->
+        <item name="android:windowAnimationStyle">@style/LibRootWindowAnimationStyle</item>
+    </style>
+
+    <style name="LibRootTheme.Fullscreen" parent="LibRootTheme">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <!--设置启动页启动图片
+        清单配置文件里，启动的那个activity设置本属性：
+        android:theme="@style/AppTheme.Fullscreen.Bg" -->
+    <!--<style name="LibRootTheme.Fullscreen.Bg" parent="LibRootTheme.Fullscreen">-->
+        <!--<item name="android:windowBackground">@color/libroot_toolbar_bg</item>-->
+    <!--</style>-->
+
+    <!--activity打开关闭动画-->
+    <style name="LibRootWindowAnimationStyle" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/anim_activitytrans_in</item>
+        <!--<item name="android:activityOpenExitAnimation">@anim/anim_activitytrans_ot</item>-->
+        <!--<item name="android:activityCloseEnterAnimation">@anim/anim_activitytrans_in</item>-->
+        <item name="android:activityCloseExitAnimation">@anim/anim_activitytrans_ot</item>
+    </style>
+
+    <!--主题动作条-->
+    <style name="LibRootTheme.AppBar" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <!--标题栏去阴影-->
+        <item name="elevation">0dp</item>
+    </style>
+
+    <style name="LibRootTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <!--对话框部分-->
+    <!--自定义对话框样式，解决对话框黑色背景边框问题-->
+    <style name="LibRootDialogBaseStyle" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item><!-- 窗口背景透明 -->
+        <item name="android:windowFrame">@null</item><!-- 无边框 -->
+        <item name="android:windowNoTitle">true</item><!-- 无标题 -->
+        <item name="android:windowIsFloating">true</item><!-- 是否浮现在activity之上 -->
+        <item name="android:windowIsTranslucent">false</item><!-- 半透明 -->
+        <item name="android:backgroundDimEnabled">true</item><!-- 模糊 -->
+    </style>
+
+    <!--对话框动画缩放-->
+    <style name="LibRootDialogAnimScale">
+        <item name="android:windowEnterAnimation">@anim/anim_dialog_scalein</item>
+        <item name="android:windowExitAnimation">@anim/anim_dialog_scaleot</item>
+    </style>
+</resources>
