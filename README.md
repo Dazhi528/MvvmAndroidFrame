@@ -6,6 +6,27 @@
 **说明**<br/>
 基于jetpack包下的 lifecycle+room+rxjava2+retrofit2搭建
 
+### 引用本库
+**Gradle** <br/>
+Step 1. Add the JitPack repository to your build file
+
+```
+allprojects {
+    repositories {
+        ...
+        maven { url 'https://jitpack.io' }
+    }
+}
+```
+
+Step 2. Add the dependency
+
+```
+dependencies {
+    implementation 'com.github.Dazhi528:MvvmAndroidLib:Tag'
+}
+```
+
 #### 安卓开发必备常用支持库已引入
 constraint、appcompat-v7、recyclerview-v7、design、cardview、
 multidex：集成至BaseRootApp类里，继承此类可解决最大方法数问题
