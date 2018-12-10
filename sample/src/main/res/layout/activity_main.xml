@@ -9,10 +9,23 @@
     <include layout="@layout/libroot_toolbar"/>
 
     <TextView
+        android:id="@+id/tvMainShowDbData"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="20dp"
+        android:text="Hello World!"/>
+
+    <Button
+        android:id="@+id/btMainInsertData"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:text="Hello World!"
-        android:gravity="center"/>
+        android:text="插入数据"/>
+
+    <Button
+        android:id="@+id/btMainDeleteData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="删除数据"/>
 
 </LinearLayout>

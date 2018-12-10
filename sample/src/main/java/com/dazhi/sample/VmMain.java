@@ -3,6 +3,7 @@ package com.dazhi.sample;
 import android.arch.lifecycle.MutableLiveData;
 
 import com.dazhi.libroot.base.vm.RootViewModel;
+import com.dazhi.libroot.util.UtThread;
 import com.dazhi.sample.db.BnPerson;
 import com.dazhi.sample.db.FactoryDaoPerson;
 
@@ -32,12 +33,33 @@ public class VmMain extends RootViewModel<MainActivity> {
      * 描述：
      *=======================================*/
     public void insertLsBnPerson(){
-        List<BnPerson> lsBnPerson=new ArrayList<>();
+        // 测试数据
+        final List<BnPerson> lsBnPerson=new ArrayList<>();
         for (int i=1,j=10; i<j; i++){
             lsBnPerson.add(new BnPerson("name0"+i));
         }
 
-        FactoryDaoPerson.self().getDaoPerson().dbInsertLsBnPerson(lsBnPerson);
+        // 数据库操作
+        UtThread.runSingleThread(new Runnable() {
+            @Override
+            public void run() {
+                // 插入测试数据
+                FactoryDaoPerson.self().getDaoPerson().dbInsertLsBnPerson(lsBnPerson);
+                // 更新测试数据
+                dbLsBnPerson.postValue(FactoryDaoPerson.self().getDaoPerson().dbGetAllBnPerson());
+            }
+        });
+    }
+
+    public void deleteLsBnPerson(final List<BnPerson> lsBnPerson){
+        UtThread.runSingleThread(new Runnable() {
+            @Override
+            public void run() {
+                FactoryDaoPerson.self().getDaoPerson().dbDeleteLsBnPerson(lsBnPerson);
+                // 更新测试数据
+                dbLsBnPerson.postValue(FactoryDaoPerson.self().getDaoPerson().dbGetAllBnPerson());
+            }
+        });
     }
 
 

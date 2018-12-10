@@ -24,5 +24,8 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
-    implementation 'com.github.Dazhi528:MvvmAndroidLib:1.0.0-alpha1'
+
+    annotationProcessor "android.arch.persistence.room:compiler:1.1.1"
+    implementation 'com.github.Dazhi528:MvvmAndroidLib:1.0.0-beta1'
+    implementation 'com.alibaba:fastjson:1.2.54'
 }

@@ -4,6 +4,8 @@ import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 
+import java.io.Serializable;
+
 /**
  * 功能：表 tab_person 实体类
  * 描述：
@@ -15,11 +17,14 @@ import android.arch.persistence.room.PrimaryKey;
 @Entity(tableName = "tab_person")
 public class BnPerson {
     @PrimaryKey(autoGenerate = true)
-    private Long id=0L; //数据库主键(数据库增加字段)
+    private long id=0L; //数据库主键(数据库增加字段)
 
     @ColumnInfo(name = "name")
     private String strName="";
 
+    public BnPerson(){
+
+    }
     public BnPerson(String strName) {
         this.strName = strName;
     }
