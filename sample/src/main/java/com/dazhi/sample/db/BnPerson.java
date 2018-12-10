@@ -20,7 +20,9 @@ public class BnPerson {
     @ColumnInfo(name = "name")
     private String strName="";
 
-
+    public BnPerson(String strName) {
+        this.strName = strName;
+    }
 
     public Long getId() {
         return id;

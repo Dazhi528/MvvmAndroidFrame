@@ -3,6 +3,7 @@ package com.dazhi.sample.db;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.OnConflictStrategy;
+import android.arch.persistence.room.Query;
 
 import java.util.List;
 
@@ -16,9 +17,12 @@ import java.util.List;
  */
 @Dao
 public interface DaoPerson {
+    // 查询所有数据
+    @Query("")
+    List<BnPerson> dbGetAllBnPerson();
 
     // 批量插入
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertLsBnPerson(List<BnPerson> lsBnPerson);
+    void dbInsertLsBnPerson(List<BnPerson> lsBnPerson);
 
 }
