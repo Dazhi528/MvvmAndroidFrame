@@ -35,17 +35,18 @@ dependencies {
     annotationProcessor "android.arch.persistence.room:compiler:1.1.1"
 
     //rx
-    implementation 'com.jakewharton.rxbinding2:rxbinding:2.1.1'
-    implementation 'io.reactivex.rxjava2:rxjava:2.2.0'
-    implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
+    implementation 'com.jakewharton.rxbinding2:rxbinding:2.2.0'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.5'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
 
     //http
     //implementation 'com.google.code.gson:gson:2.8.2'
     //implementation 'com.squareup.okhttp3:logging-interceptor:3.9.0'
     //implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
     //implementation 'com.squareup.okhttp3:okhttp:3.9.1'
-    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
-    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
+    implementation 'com.alibaba:fastjson:1.2.54'
+    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.5.0'
 
     //Android Permissions Dispatcher
     implementation('com.github.hotchemi:permissionsdispatcher:3.2.0') {
