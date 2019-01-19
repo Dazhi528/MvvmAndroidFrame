@@ -62,9 +62,10 @@ public abstract class RootVmActivity<T extends InteRootVm> extends AppCompatActi
     protected abstract void initConfig();
     /*初始化视图等*/
     protected void initViewAndDataAndEvent(){
-        if (vm != null) {
-            vm.attachVmView(this);
+        if (vm == null) {
+            throw new UnsupportedOperationException("vm is null, vmActivity instantiation failure");
         }
+        vm.attachVmView(this);
     }
 
     @Override

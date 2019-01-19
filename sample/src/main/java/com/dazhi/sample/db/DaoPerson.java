@@ -19,15 +19,15 @@ import java.util.List;
 public interface DaoPerson {
     // 查询所有数据
     @Query("SELECT * FROM tab_person")
-    List<BnPerson> dbGetAllBnPerson();
+    List<DbPerson> dbGetAllBnPerson();
 
     // 批量插入
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void dbInsertLsBnPerson(List<BnPerson> lsBnPerson);
+    void dbInsertLsBnPerson(List<DbPerson> lsBnPerson);
 
     // 批量删除
     @Delete
-    void dbDeleteLsBnPerson(List<BnPerson> lsBnPerson);
+    void dbDeleteLsBnPerson(List<DbPerson> lsBnPerson);
 
 
 }

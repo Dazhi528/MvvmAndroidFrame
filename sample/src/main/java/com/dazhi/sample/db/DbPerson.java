@@ -2,6 +2,7 @@ package com.dazhi.sample.db;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 
 import java.io.Serializable;
@@ -15,19 +16,22 @@ import java.io.Serializable;
  * 修改日期：2018/12/8 15:45
  */
 @Entity(tableName = "tab_person")
-public class BnPerson {
+public class DbPerson {
     @PrimaryKey(autoGenerate = true)
     private long id=0L; //数据库主键(数据库增加字段)
 
     @ColumnInfo(name = "name")
     private String strName="";
 
-    public BnPerson(){
+    // 构造函数
+    public DbPerson(){
 
     }
-    public BnPerson(String strName) {
+    @Ignore
+    public DbPerson(String strName) {
         this.strName = strName;
     }
+
 
     public Long getId() {
         return id;

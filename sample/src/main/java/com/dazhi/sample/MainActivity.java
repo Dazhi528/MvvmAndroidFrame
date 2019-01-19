@@ -6,16 +6,12 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.support.annotation.Nullable;
 import android.widget.Button;
 import android.widget.TextView;
-
 import com.alibaba.fastjson.JSON;
 import com.dazhi.libroot.base.activity.RootVmActivity;
-import com.dazhi.sample.db.BnPerson;
+import com.dazhi.sample.db.DbPerson;
 import com.jakewharton.rxbinding2.view.RxView;
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-
 import io.reactivex.functions.Consumer;
 
 public class MainActivity extends RootVmActivity<VmMain> {
@@ -53,7 +49,7 @@ public class MainActivity extends RootVmActivity<VmMain> {
             @Override
             public void accept(Object o) {
                 String str=tvMainShowDbData.getText().toString();
-                List<BnPerson> lsBn=JSON.parseArray(str, BnPerson.class);
+                List<DbPerson> lsBn=JSON.parseArray(str, DbPerson.class);
                 lsBn.remove(0);
 //                List<BnPerson> lsBn= new ArrayList<>();
 //                BnPerson bn=new BnPerson();
@@ -64,9 +60,9 @@ public class MainActivity extends RootVmActivity<VmMain> {
         });
 
         // 数据变动监听
-        vm.getDbLsBnPerson().observe(this, new Observer<List<BnPerson>>() {
+        vm.getDbLsBnPerson().observe(this, new Observer<List<DbPerson>>() {
             @Override
-            public void onChanged(@Nullable List<BnPerson> lsBnPeople) {
+            public void onChanged(@Nullable List<DbPerson> lsBnPeople) {
                 String strTemp=JSON.toJSONString(lsBnPeople);
                 tvMainShowDbData.setText(strTemp);
             }

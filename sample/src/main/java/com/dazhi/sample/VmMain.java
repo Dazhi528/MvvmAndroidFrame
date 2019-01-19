@@ -4,7 +4,7 @@ import android.arch.lifecycle.MutableLiveData;
 
 import com.dazhi.libroot.base.vm.RootViewModel;
 import com.dazhi.libroot.util.UtThread;
-import com.dazhi.sample.db.BnPerson;
+import com.dazhi.sample.db.DbPerson;
 import com.dazhi.sample.db.FactoryDaoPerson;
 
 import java.util.ArrayList;
@@ -20,9 +20,9 @@ import java.util.List;
  */
 public class VmMain extends RootViewModel<MainActivity> {
     // 用于观察数据库所有消息变动
-    private MutableLiveData<List<BnPerson>> dbLsBnPerson=new MutableLiveData<>();
+    private MutableLiveData<List<DbPerson>> dbLsBnPerson=new MutableLiveData<>();
 
-    public MutableLiveData<List<BnPerson>> getDbLsBnPerson() {
+    public MutableLiveData<List<DbPerson>> getDbLsBnPerson() {
         return dbLsBnPerson;
     }
 
@@ -34,9 +34,9 @@ public class VmMain extends RootViewModel<MainActivity> {
      *=======================================*/
     public void insertLsBnPerson(){
         // 测试数据
-        final List<BnPerson> lsBnPerson=new ArrayList<>();
+        final List<DbPerson> lsBnPerson=new ArrayList<>();
         for (int i=1,j=10; i<j; i++){
-            lsBnPerson.add(new BnPerson("name0"+i));
+            lsBnPerson.add(new DbPerson("name0"+i));
         }
 
         // 数据库操作
@@ -51,7 +51,7 @@ public class VmMain extends RootViewModel<MainActivity> {
         });
     }
 
-    public void deleteLsBnPerson(final List<BnPerson> lsBnPerson){
+    public void deleteLsBnPerson(final List<DbPerson> lsBnPerson){
         UtThread.runSingleThread(new Runnable() {
             @Override
             public void run() {

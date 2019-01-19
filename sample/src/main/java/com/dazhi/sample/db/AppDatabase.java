@@ -13,7 +13,7 @@ import android.content.Context;
  * 创建日期：2018/12/8 15:29
  * 修改日期：2018/12/8 15:29
  */
-@Database(entities = {BnPerson.class}, version = 1, exportSchema = false)
+@Database(entities = {DbPerson.class}, version = 1, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
     public abstract DaoPerson getDaoPerson();
 
