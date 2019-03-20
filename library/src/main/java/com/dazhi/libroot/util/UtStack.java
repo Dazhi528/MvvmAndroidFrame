@@ -1,6 +1,7 @@
 package com.dazhi.libroot.util;
 
 import android.app.Activity;
+
 import java.util.LinkedList;
 
 /**
@@ -80,6 +81,11 @@ public class UtStack {
      */
     public void exitApp() {
         try {
+            // 关闭工具的线程池
+            UtThread.shutdownNow();
+            // 关闭数据库
+            //DbHelper.self().closeDbForce();
+            // 关闭所有Activity
             finishAllActivity();
             //杀死该应用进程
             android.os.Process.killProcess(android.os.Process.myPid());

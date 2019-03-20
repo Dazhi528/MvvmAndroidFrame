@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:id="@+id/flLibScanContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible" />
+
+    <!--====================悬浮按钮====================-->
+    <Button
+        android:id="@+id/btLibScanEsc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableTop="@mipmap/ico_root_scanhand"
+        android:drawablePadding="@dimen/libroot_scan_btdrawablepadding"
+        android:text="@string/libroot_scan_close"
+        android:layout_marginBottom="@dimen/libroot_scan_btmargin"
+        android:layout_marginLeft="@dimen/libroot_scan_btmargin"
+        android:layout_marginStart="@dimen/libroot_scan_btmargin"
+        android:textColor="@color/libroot_scan_bttext"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:background="@drawable/selct_rootscan_btbg"/>
+    <Button
+        android:id="@+id/btLibScanLight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableTop="@mipmap/ico_root_scanlight"
+        android:drawablePadding="@dimen/libroot_scan_btdrawablepadding"
+        android:text="@string/libroot_scan_lighton"
+        android:layout_marginBottom="@dimen/libroot_scan_btmargin"
+        android:layout_marginRight="@dimen/libroot_scan_btmargin"
+        android:layout_marginEnd="@dimen/libroot_scan_btmargin"
+        android:textColor="@color/libroot_scan_bttext"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/selct_rootscan_btbg"/>
+</RelativeLayout>

@@ -1,10 +1,11 @@
-package com.dazhi.libroot.base;
+package com.dazhi.libroot.root;
 
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.support.multidex.MultiDexApplication;
-import com.dazhi.libroot.util.UtRoot;
 
+import com.dazhi.libroot.util.UtRoot;
+import com.uuzuche.lib_zxing.activity.ZXingLibrary;
 
 /**
  * 功能：分包超类App
@@ -21,6 +22,7 @@ public abstract class RootApp extends MultiDexApplication {
         super.onCreate();
         //
         UtRoot.initApp(this);
+        ZXingLibrary.initDisplayOpinion(this);
     }
 
     @Override

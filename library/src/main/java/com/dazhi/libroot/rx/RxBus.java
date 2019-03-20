@@ -1,11 +1,16 @@
 package com.dazhi.libroot.rx;
 
+import org.reactivestreams.Publisher;
+
 import io.reactivex.Flowable;
+import io.reactivex.FlowableTransformer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.processors.FlowableProcessor;
 import io.reactivex.processors.PublishProcessor;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * 功能：自定义的rx总线
@@ -25,7 +30,7 @@ public class RxBus {
     private static final class classHolder {
         static final RxBus INSTANCE = new RxBus();
     }
-    public static final RxBus self() {
+    public static RxBus self() {
         return classHolder.INSTANCE;
     }
 
@@ -75,12 +80,34 @@ public class RxBus {
         return flowableProcessor.ofType(eventType);
     }
     public <T> Disposable getDisposable(Class<T> eventType, Consumer<T> consumer) {
-        return flowableProcessor.ofType(eventType).compose(UtRx.rxScheduler()).subscribe(consumer);
+        return flowableProcessor.ofType(eventType).compose(rxScheduler()).subscribe(consumer);
     }
 
     public void unregisterAll() {
         //会将所有由flowableProcessor生成的Observable都置completed状态,后续的所有消息都收不到了
         flowableProcessor.onComplete();
+    }
+
+    /**
+     * 作者：WangZezhi  (17-11-21  上午9:32)
+     * 功能：  统一线程处理
+     * 详情：
+     *   transformer变压器/转换器
+     */
+    /**
+     * 作者：WangZezhi  (17-11-21  上午9:32)
+     * 功能：  统一线程处理
+     * 详情：
+     *   transformer变压器/转换器
+     */
+    public static <T> FlowableTransformer<T, T> rxScheduler() {
+        return new FlowableTransformer<T, T>() {
+            @Override
+            public Publisher<T> apply(Flowable<T> flowable) {
+                return flowable.subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread());
+            }
+        };
     }
 
 

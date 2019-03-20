@@ -66,7 +66,7 @@ public class DecorationIntervalGridLinear extends RecyclerView.ItemDecoration {
         // int allItemCount = parent.getAdapter().getItemCount(); //All Item Count
         int intOrientation=gridLayoutManager.getOrientation(); //布局方向
         //默认 垂直方向
-        if(intOrientation==GridLayoutManager.VERTICAL){
+        if(intOrientation== GridLayoutManager.VERTICAL){
             int childPosition = parent.getChildAdapterPosition(view);
             int column = childPosition % spanCount;
             if (booEdge) {
@@ -88,7 +88,7 @@ public class DecorationIntervalGridLinear extends RecyclerView.ItemDecoration {
             return;
         }
         //水平方向
-        if(intOrientation==GridLayoutManager.HORIZONTAL){
+        if(intOrientation== GridLayoutManager.HORIZONTAL){
             //子项在整个布局内的位置
             int childPosition = parent.getChildAdapterPosition(view);
             //子项在单列中的位置
@@ -117,7 +117,7 @@ public class DecorationIntervalGridLinear extends RecyclerView.ItemDecoration {
     private void handleLinearLayoutManager(Rect outRect, View view, RecyclerView parent, LinearLayoutManager linearLayoutManager){
         int intOrientation=linearLayoutManager.getOrientation(); //布局方向
         //默认 垂直方向
-        if(intOrientation==LinearLayoutManager.VERTICAL){
+        if(intOrientation== LinearLayoutManager.VERTICAL){
             if(booEdge){
                 //边缘是放入间隔
                 if (parent.getChildLayoutPosition(view) == 0) {
@@ -139,7 +139,7 @@ public class DecorationIntervalGridLinear extends RecyclerView.ItemDecoration {
             return;
         }
         //水平方向
-        if(intOrientation==LinearLayoutManager.HORIZONTAL){
+        if(intOrientation== LinearLayoutManager.HORIZONTAL){
             if(booEdge){
                 //边缘是放入间隔
                 if (parent.getChildLayoutPosition(view) == 0) {

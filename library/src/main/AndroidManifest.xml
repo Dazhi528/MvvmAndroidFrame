@@ -29,7 +29,10 @@
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
     <application>
-
+        <activity android:name=".ui.activity.RootScanActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/LibRootTheme.Fullscreen"/>
     </application>
 
 </manifest>

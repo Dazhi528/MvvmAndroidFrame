@@ -6,8 +6,10 @@ import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.dazhi.libroot.R;
-import com.dazhi.libroot.base.dialog.RootDialog;
+import com.dazhi.libroot.root.RootDialog;
+
 
 /**
  * 功能：进度对话框
@@ -31,13 +33,13 @@ public class DialogLoad extends RootDialog {
         //UtRoot.setWHDialog(this, 0.33f, 0);
         //
         TextView tvMsg = findViewById(R.id.tvDlogloadMsg);
-        if(tvMsg!=null){
+        if (tvMsg != null) {
             tvMsg.setText(strMsg);
         }
         //
         ImageView ivLoading = findViewById(R.id.ivDlogloading);
-        if(ivLoading!=null){
-            rotateAnimation = new RotateAnimation(0, 360, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF,0.5f);
+        if (ivLoading != null) {
+            rotateAnimation = new RotateAnimation(0, 360, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
             rotateAnimation.setInterpolator(new LinearInterpolator());
             rotateAnimation.setDuration(1000);
             rotateAnimation.setRepeatCount(-1);
@@ -48,7 +50,7 @@ public class DialogLoad extends RootDialog {
     @Override
     public void dismiss() {
         super.dismiss();
-        if(rotateAnimation!=null){
+        if (rotateAnimation != null) {
             rotateAnimation.cancel();
         }
     }

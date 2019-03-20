@@ -1,4 +1,4 @@
-package com.dazhi.libroot.base.fragment;
+package com.dazhi.libroot.root;
 
 import android.app.Activity;
 import android.content.Context;
@@ -13,58 +13,33 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.dazhi.libroot.R;
-import com.dazhi.libroot.base.inte.InteRootView;
+import com.dazhi.libroot.inte.InteRootView;
 import com.dazhi.libroot.ui.dialog.DialogLoad;
 import com.dazhi.libroot.util.UtRoot;
 
-import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.disposables.Disposable;
-
 /**
- * 功能：fragment基类
+ * 功能：
  * 描述：
  * 作者：WangZezhi
  * 邮箱：wangzezhi528@163.com
- * 创建日期：2018/3/23 17:13
- * 修改日期：2018/3/23 17:13
+ * 创建日期：2019/2/27 14:19
+ * 修改日期：2019/2/27 14:19
  */
-//@RuntimePermissions //标记需要运行时判断的类(用于动态生成代理类)
-public abstract class RootSimpFragment extends Fragment implements InteRootView {
+public abstract class RootFragment extends Fragment implements InteRootView {
     protected Activity activity;
     protected View view;
-    //每一个p都去创建本地的CompositeDisposable，从而是否资源时，不相互影响
-    private CompositeDisposable compositeDisposable;
-    //进度对话框
-    private DialogLoad dialogLoading;
-    //警告对话框
-    private AlertDialog dialogMsgBox;
+    //
+    private DialogLoad dialogLoading; //进度对话框
+    private AlertDialog dialogMsgBox; //警告对话框
+
 
     /*==============抽象方法============*/
     /*获得布局id*/
     protected abstract int getLayoutId();
-    /*初始化标题及danger2依赖注入等*/
+    /*初始化配置*/
     protected void initConfig(){ }
     /*初始化视图等*/
     protected abstract void initViewAndDataAndEvent();
-
-    /**=======================================
-     * 作者：WangZezhi  (2018/7/2  11:45)
-     * 功能：本方法用于统一管理Rx事件
-     * 描述：
-     *=======================================*/
-    protected void rxAdd(Disposable subscription) {
-        if (compositeDisposable == null) {
-            compositeDisposable = new CompositeDisposable();
-        }
-        compositeDisposable.add(subscription);
-    }
-
-    private void rxClear() {
-        if (compositeDisposable == null) {
-            return;
-        }
-        compositeDisposable.clear();
-    }
 
 
     @Override
@@ -90,11 +65,6 @@ public abstract class RootSimpFragment extends Fragment implements InteRootView 
         initViewAndDataAndEvent();
     }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        rxClear();
-    }
 
     /**=======================================
      * 作者：WangZezhi  (2018/2/26  14:51)
@@ -118,7 +88,6 @@ public abstract class RootSimpFragment extends Fragment implements InteRootView 
         dialogLoading=null;
     }
 
-
     @Override
     public void msgBoxShow(String msg) {
         if (dialogMsgBox != null && dialogMsgBox.isShowing()) {
@@ -130,13 +99,14 @@ public abstract class RootSimpFragment extends Fragment implements InteRootView 
         dialogMsgBox = new AlertDialog.Builder(activity)
                 //.setTitle(getString(R.string.libroot_dialogedit_title))
                 .setMessage(msg)
-                .setPositiveButton(getString(R.string.libroot_dialogedit_ent), null)
+                .setPositiveButton(R.string.libroot_dialog_ent, null)
                 .setCancelable(false)
                 .create();
         dialogMsgBox.show();
     }
+
     @Override
-    public void msgBoxShow(String msg, DialogInterface.OnClickListener onClickListener) {
+    public void msgBoxShow(String msg, String strEnt, DialogInterface.OnClickListener onClickListener) {
         if (dialogMsgBox != null) {
             dialogMsgBox.dismiss();
         }
@@ -146,7 +116,7 @@ public abstract class RootSimpFragment extends Fragment implements InteRootView 
         dialogMsgBox = new AlertDialog.Builder(activity)
                 //.setTitle(getString(R.string.libroot_dialogedit_title))
                 .setMessage(msg)
-                .setPositiveButton(R.string.libroot_dialogedit_ent, onClickListener)
+                .setPositiveButton(strEnt, onClickListener)
                 .setCancelable(false)
                 .create();
         dialogMsgBox.show();
@@ -179,5 +149,3 @@ public abstract class RootSimpFragment extends Fragment implements InteRootView 
 
 
 }
-
-

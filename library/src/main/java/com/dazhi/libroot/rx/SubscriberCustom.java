@@ -3,7 +3,7 @@ package com.dazhi.libroot.rx;
 import android.text.TextUtils;
 
 import com.dazhi.libroot.R;
-import com.dazhi.libroot.base.inte.InteRootView;
+import com.dazhi.libroot.inte.InteRootView;
 import com.dazhi.libroot.util.UtLog;
 import com.dazhi.libroot.util.UtRoot;
 
@@ -49,8 +49,10 @@ public abstract class SubscriberCustom<T> extends ResourceSubscriber<T> {
             inteRootView.loadingShut();
         }
         if (t == null || TextUtils.isEmpty(t.getMessage())) {
-            UtRoot.toastShort("null");
-            UtLog.e("null");
+            String strNull= UtRoot.getString(R.string.web_rsps_null);
+            strNull=TextUtils.isEmpty(strNull)?"":strNull;
+            UtRoot.toastShort(strNull);
+            UtLog.e(strNull);
             return;
         }
         String strError=t.getMessage();

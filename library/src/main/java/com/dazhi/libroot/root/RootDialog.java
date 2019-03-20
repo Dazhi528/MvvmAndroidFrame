@@ -1,4 +1,4 @@
-package com.dazhi.libroot.base.dialog;
+package com.dazhi.libroot.root;
 
 import android.content.Context;
 import android.support.v7.app.AppCompatDialog;
@@ -6,7 +6,7 @@ import android.view.Window;
 import com.dazhi.libroot.R;
 
 /**
- * 功能：抽象父对话框
+ * 功能：
  * 描述：
  * 作者：WangZezhi
  * 邮箱：wangzezhi528@163.com

@@ -1,7 +1,17 @@
 package com.dazhi.libroot.util;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.DrawableRes;
+import android.support.v4.content.ContextCompat;
+
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.Closeable;
 import java.io.File;
 import java.io.FileFilter;
 import java.io.FileInputStream;
@@ -1261,6 +1271,113 @@ public final class UtFile {
                 e.printStackTrace();
             }
         }
+    }
+
+
+
+
+    /**=======================================
+     * 作者：WangZezhi  (2018/11/2  09:18)
+     * 功能：自己写的非通用文件，待删除
+     * 描述：
+     *=======================================*/
+    public static byte[] filePathToByteArr(String strFilePath) {
+        File file = getFileByPath(strFilePath);
+        if(file==null){
+            return null;
+        }
+        return fileToByteArr(file);
+    }
+
+    public static byte[] fileToByteArr(File file) {
+        if (!isFileExists(file)){
+            return null;
+        }
+        FileInputStream fis = null;
+        ByteArrayOutputStream os = null;
+        try {
+            fis = new FileInputStream(file);
+            os = new ByteArrayOutputStream();
+            int INT_BUFFER_SIZE = 8192;
+            byte[] b = new byte[INT_BUFFER_SIZE];
+            int len;
+            while ((len = fis.read(b, 0, INT_BUFFER_SIZE)) != -1) {
+                os.write(b, 0, len);
+            }
+            return os.toByteArray();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return new byte[]{};
+        } finally {
+            closeIO(fis, os);
+        }
+    }
+
+    public static void closeIO(final Closeable... closeables) {
+        if (closeables == null) {
+            return;
+        }
+        for (Closeable closeable : closeables) {
+            if (closeable == null) {
+                return;
+            }
+            try {
+                closeable.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    /**
+     * 删除文件
+     * @param srcFilePath 文件路径
+     * @return {@code true}: 删除成功<br>{@code false}: 删除失败
+     */
+    public static boolean fileDelete(final String srcFilePath) {
+        return fileDelete(getFileByPath(srcFilePath));
+    }
+
+    /**
+     * 删除文件
+     * @param file 文件
+     * @return {@code true}: 删除成功<br>{@code false}: 删除失败
+     */
+    public static boolean fileDelete(final File file) {
+        return file != null && (!file.exists() || file.isFile() && file.delete());
+    }
+
+    public static Bitmap getBitmap(String strFilePath) {
+        if (isSpace(strFilePath)) {
+            return null;
+        }
+        return BitmapFactory.decodeFile(strFilePath);
+    }
+
+    public static Bitmap getBitmap(@DrawableRes final int resId) {
+        Drawable drawable = ContextCompat.getDrawable(UtRoot.getAppContext(), resId);
+        Canvas canvas = new Canvas();
+        Bitmap bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(),
+                drawable.getIntrinsicHeight(),
+                Bitmap.Config.ARGB_8888);
+        canvas.setBitmap(bitmap);
+        drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
+        drawable.draw(canvas);
+        return bitmap;
+    }
+
+    public static Bitmap byteArrToBitmap(final byte[] byteArr) {
+        return (byteArr == null || byteArr.length == 0)
+                ? null
+                : BitmapFactory.decodeByteArray(byteArr, 0, byteArr.length);
+    }
+
+    public static Drawable bitmapToDrawable(final Bitmap bitmap) {
+        return bitmap == null ? null : new BitmapDrawable(UtRoot.getAppContext().getResources(), bitmap);
+    }
+
+    public static Drawable byteArrToDrawable(final byte[] byteArr) {
+        return bitmapToDrawable(byteArrToBitmap(byteArr));
     }
 
 

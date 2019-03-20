@@ -1,7 +1,6 @@
 package com.dazhi.libroot.util;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
@@ -39,12 +38,13 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class UtRoot {
+    private static Context context;
+
     private UtRoot() {
         throw new UnsupportedOperationException("you can't instantiate me");
     }
 
-    @SuppressLint("StaticFieldLeak")
-    private static Context context;
+
     public static void initApp(Context context) {
         UtRoot.context = context;
     }
@@ -184,7 +184,7 @@ public class UtRoot {
             return packageInfo.versionName;
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
-            return "unknown";
+            return "Unknown";
         }
     }
     /**=======================================
@@ -289,7 +289,7 @@ public class UtRoot {
      * 功能：保留两位小数
      * 描述：
      *=======================================*/
-    public static String toPointAfterTwoStr(double dValue){
+    public static String getCostStr(double dValue){
         return new BigDecimal(dValue).setScale(2, BigDecimal.ROUND_HALF_EVEN).toString()+"元";
     }
 
@@ -304,13 +304,13 @@ public class UtRoot {
                                      String strBtTitle,
                                      View.OnClickListener onClickListener){
         //构建snackbar
-        Snackbar snackbar=Snackbar.make(view, strMsge, iDuration);
+        Snackbar snackbar= Snackbar.make(view, strMsge, iDuration);
         //click的字体颜色
-        snackbar.setActionTextColor(Color.parseColor("#2D9C93"));
+        snackbar.setActionTextColor(getColor(R.color.libroot_accent));
         //获得view
         View viewSnack=snackbar.getView();
         //设置背景
-        viewSnack.setBackgroundColor(Color.parseColor("#AAAAAA"));
+        viewSnack.setBackgroundColor(getColor(R.color.libroot_snackbar_bg));
         //内容字体颜色
         TextView tvSnackbarText = viewSnack.findViewById(android.support.design.R.id.snackbar_text);
         tvSnackbarText.setTextColor(Color.WHITE);
@@ -351,18 +351,18 @@ public class UtRoot {
         // 这种方式可以间接的获得当前activity的顶层容器
         View view=((ViewGroup)activity.findViewById(android.R.id.content)).getChildAt(0);
         //构建snackbar
-        final Snackbar snackbar=Snackbar.make(view, strMsge, Snackbar.LENGTH_INDEFINITE);
+        final Snackbar snackbar= Snackbar.make(view, strMsge, Snackbar.LENGTH_INDEFINITE);
         //click的字体颜色
-        snackbar.setActionTextColor(Color.parseColor("#2D9C93"));
+        snackbar.setActionTextColor(getColor(R.color.libroot_accent));
         //获得view
         View viewSnack=snackbar.getView();
         //设置背景
-        viewSnack.setBackgroundColor(Color.parseColor("#AAAAAA"));
+        viewSnack.setBackgroundColor(getColor(R.color.libroot_snackbar_bg));
         //内容字体颜色
         TextView tvSnackbarText = viewSnack.findViewById(android.support.design.R.id.snackbar_text);
         tvSnackbarText.setTextColor(Color.WHITE);
         //设置点击监听
-        snackbar.setAction(getString(R.string.libroot_dialogedit_esc), new View.OnClickListener() {
+        snackbar.setAction(getString(R.string.libroot_dialog_esc), new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 snackbar.dismiss();

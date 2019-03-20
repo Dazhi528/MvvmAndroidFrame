@@ -13,6 +13,10 @@ import android.util.Log;
 public class UtLog {
     private static boolean booDebug=false; //默认关闭
 
+    public static boolean booDebug() {
+        return booDebug;
+    }
+
     public static void setOpen(){
         booDebug=true;
     }

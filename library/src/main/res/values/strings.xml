@@ -1,8 +1,14 @@
 <resources>
+    <string name="web_rsps_null">The network request return null</string>
 
     <!--编辑对话框-->
-    <string name="libroot_dialogedit_ent">ENT</string>
-    <string name="libroot_dialogedit_esc">ESC</string>
+    <string name="libroot_dialog_ent">ENT</string>
+    <string name="libroot_dialog_esc">ESC</string>
+
+    <!--扫描-->
+    <string name="libroot_scan_close">ScanClose</string>
+    <string name="libroot_scan_lighton">LightOn</string>
+    <string name="libroot_scan_lightoff">LightOff</string>
 
     <!--安卓动态权限管理-->
     <string name="permission_title">Please open the permission in permission management</string>

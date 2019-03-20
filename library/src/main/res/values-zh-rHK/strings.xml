@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="web_rsps_null">網絡請求返回內容為空</string>
+
     <!--编辑对话框-->
-    <string name="libroot_dialogedit_ent">確 定</string>
-    <string name="libroot_dialogedit_esc">關 閉</string>
+    <string name="libroot_dialog_ent">確 定</string>
+    <string name="libroot_dialog_esc">關 閉</string>
+
+    <!--扫描-->
+    <string name="libroot_scan_close">關閉掃描</string>
+    <string name="libroot_scan_lighton">打開燈光</string>
+    <string name="libroot_scan_lightoff">關閉燈光</string>
 
     <!--安卓动态权限管理-->
     <string name="permission_title">請到權限管理中開啟權限</string>

@@ -1,4 +1,4 @@
-package com.dazhi.libroot.base.adapter;
+package com.dazhi.libroot.root;
 
 import android.content.Context;
 import android.util.SparseArray;
