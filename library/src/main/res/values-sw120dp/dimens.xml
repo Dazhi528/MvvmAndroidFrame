@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+	<dimen name="libroot_toast_padding">3.3333dp</dimen>
+	<dimen name="libroot_load_padding">6.6667dp</dimen>
+	<dimen name="libroot_scan_framewidth">73.3333dp</dimen>
+	<dimen name="libroot_scan_frameheight">63.3333dp</dimen>
+	<dimen name="libroot_scan_cornerlinelength">5.0000dp</dimen>
+	<dimen name="libroot_scan_cornerlinewidth">0.6667dp</dimen>
+	<dimen name="libroot_scan_btmargin">16.6667dp</dimen>
+	<dimen name="libroot_scan_btdrawablepadding">3.3333dp</dimen>
+</resources>

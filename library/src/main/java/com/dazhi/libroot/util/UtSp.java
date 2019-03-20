@@ -22,11 +22,7 @@ import java.util.Set;
 public final class UtSp {
     private static final SimpleArrayMap<String, UtSp> SP_MAP = new SimpleArrayMap<>();
     private SharedPreferences sp;
-    //
-    private final String SP_USER = "sp_user";
-    private final String SP_RQST = "sp_rqst";
-
-
+    
     private UtSp(final String spName, final int mode) {
         sp = UtRoot.getAppContext().getSharedPreferences(spName, mode);
     }
