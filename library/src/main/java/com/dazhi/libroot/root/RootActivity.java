@@ -19,7 +19,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.TextView;
-
 import com.dazhi.libroot.R;
 import com.dazhi.libroot.inte.InteRootView;
 import com.dazhi.libroot.ui.dialog.DialogLoad;

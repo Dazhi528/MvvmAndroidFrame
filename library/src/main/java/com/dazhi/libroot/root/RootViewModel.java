@@ -1,9 +1,7 @@
 package com.dazhi.libroot.root;
 
 import android.arch.lifecycle.ViewModel;
-
 import com.dazhi.libroot.inte.InteRootView;
-
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 

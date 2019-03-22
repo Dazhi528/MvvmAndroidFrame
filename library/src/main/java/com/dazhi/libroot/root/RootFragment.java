@@ -11,7 +11,6 @@ import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.dazhi.libroot.R;
 import com.dazhi.libroot.inte.InteRootView;
 import com.dazhi.libroot.ui.dialog.DialogLoad;

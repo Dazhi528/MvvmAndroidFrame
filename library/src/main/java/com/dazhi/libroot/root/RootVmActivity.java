@@ -9,10 +9,13 @@ package com.dazhi.libroot.root;
  * 修改日期：2018/4/19 14:16
  */
 public abstract class RootVmActivity<T extends RootViewModel> extends RootActivity {
-    protected T vm; // vm=ViewModelProviders.of(this).get(VmDebug.class);
+    protected T vm;
 
     @Override
     protected void initViewAndDataAndEvent() {
+        if(vm==null){
+            throw new RuntimeException("Failure to instantiate VM!");
+        }
         vm.attachUiView(this);
     }
 

@@ -3,7 +3,6 @@ package com.dazhi.libroot.root;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.support.multidex.MultiDexApplication;
-
 import com.dazhi.libroot.util.UtRoot;
 import com.uuzuche.lib_zxing.activity.ZXingLibrary;
 
