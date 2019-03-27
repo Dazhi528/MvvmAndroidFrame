@@ -9,7 +9,7 @@
     <color name="libroot_text_dark">#383838</color>
     <color name="libroot_text_light">#5b5a5a</color>
     <color name="libroot_text_hint">#aaaaaa</color>
-    <color name="libroot_line">#cdcdcd</color>
+    <color name="libroot_line">#EAEAEA</color>
     <!--snackbar背景-->
     <color name="libroot_toast_bg">#aaaaaa</color>
     <color name="libroot_snackbar_bg">#aaaaaa</color>
