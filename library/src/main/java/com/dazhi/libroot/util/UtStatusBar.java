@@ -6,6 +6,7 @@ import android.os.Build;
 import android.support.annotation.ColorInt;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
+import android.support.v4.graphics.ColorUtils;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -104,7 +105,7 @@ public class UtStatusBar {
      * =======================================
      */
     // 设置状态条为沉浸式； android:fitsSystemWindows="false"
-    public static void setStatusBarImmersive(@NonNull Activity activity) {
+    public static void setStatusBarImmersive(@NonNull Activity activity, boolean booBlackText) {
         // api小于19处理部分
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
             return;
@@ -126,6 +127,14 @@ public class UtStatusBar {
             //上面代码是开启沉浸式用的
             //直接设置状态栏颜色
             window.setStatusBarColor(Color.TRANSPARENT);
+            // 设置状态条字体自动变化
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                if (booBlackText) { // 设置状态栏文字为黑色
+                    window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+                } else { // 设置状态栏文字为白色
+                    window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);
+                }
+            }
         } else {
             // 设置半透明(沉浸式)
             WindowManager.LayoutParams attributes = window.getAttributes();
@@ -151,23 +160,16 @@ public class UtStatusBar {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             //直接设置状态栏颜色
             window.setStatusBarColor(color);
-        } // else {
-//            // 设置半透明(沉浸式)
-//            WindowManager.LayoutParams attributes = window.getAttributes();
-//            if (attributes == null) {
-//                return;
-//            }
-//            attributes.flags |= WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
-//            window.setAttributes(attributes);
-//            // 设置状态栏颜色
-//            // 增加占位状态栏
-//            ViewGroup decorView = (ViewGroup) window.getDecorView();
-//            View statusBarView = new View(activity);
-//            ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-//                    getStatusBarHeight(activity));
-//            statusBarView.setBackgroundColor(color);
-//            decorView.addView(statusBarView, lp);
-        // }
+            // 设置状态条字体自动变化
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                // 如果亮色，设置状态栏文字为黑色
+                if (ColorUtils.calculateLuminance(color) >= 0.5) { // 设置状态栏文字为黑色
+                    window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+                } else { // 设置状态栏文字为白色
+                    window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);
+                }
+            }
+        }
     }
 
 
