@@ -105,7 +105,7 @@ public class UtStatusBar {
      * =======================================
      */
     // 设置状态条为沉浸式； android:fitsSystemWindows="false"
-    public static void setStatusBarImmersive(@NonNull Activity activity, boolean booBlackText) {
+    public static void setStatusBarImmersive(@NonNull Activity activity) {
         // api小于19处理部分
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
             return;
@@ -127,14 +127,6 @@ public class UtStatusBar {
             //上面代码是开启沉浸式用的
             //直接设置状态栏颜色
             window.setStatusBarColor(Color.TRANSPARENT);
-            // 设置状态条字体自动变化
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                if (booBlackText) { // 设置状态栏文字为黑色
-                    window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-                } else { // 设置状态栏文字为白色
-                    window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);
-                }
-            }
         } else {
             // 设置半透明(沉浸式)
             WindowManager.LayoutParams attributes = window.getAttributes();
