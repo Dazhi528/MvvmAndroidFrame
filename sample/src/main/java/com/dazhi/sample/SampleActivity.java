@@ -6,15 +6,17 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.support.annotation.Nullable;
 import android.widget.Button;
 import android.widget.TextView;
-import com.alibaba.fastjson.JSON;
-import com.dazhi.libroot.base.activity.RootVmActivity;
+import com.dazhi.libroot.root.RootVmActivity;
 import com.dazhi.sample.db.DbPerson;
+import com.google.gson.Gson;
 import com.jakewharton.rxbinding2.view.RxView;
+
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import io.reactivex.functions.Consumer;
 
-public class MainActivity extends RootVmActivity<VmMain> {
+public class SampleActivity extends RootVmActivity<VmMain> {
 
     @Override
     protected int getLayoutId() {
@@ -22,13 +24,13 @@ public class MainActivity extends RootVmActivity<VmMain> {
     }
 
     @Override
-    protected void initConfig() {
+    protected void initConfig(TextView tvToolTitle) {
         // 初始化ViewModel
         vm=ViewModelProviders.of(this).get(VmMain.class);
         // 设置标题
-        //配置标题
-        TextView tvToolTitle = findViewById(R.id.librootToolbarTitle);
-        tvToolTitle.setText("我的第一个MVVM架构");
+        if(tvToolTitle!=null){
+            tvToolTitle.setText("我的第一个MVVM架构");
+        }
     }
 
     @SuppressLint("CheckResult")
@@ -49,7 +51,7 @@ public class MainActivity extends RootVmActivity<VmMain> {
             @Override
             public void accept(Object o) {
                 String str=tvMainShowDbData.getText().toString();
-                List<DbPerson> lsBn=JSON.parseArray(str, DbPerson.class);
+                List<DbPerson> lsBn=Arrays.asList(new Gson().fromJson(str, DbPerson[].class));
                 lsBn.remove(0);
 //                List<BnPerson> lsBn= new ArrayList<>();
 //                BnPerson bn=new BnPerson();
@@ -63,7 +65,7 @@ public class MainActivity extends RootVmActivity<VmMain> {
         vm.getDbLsBnPerson().observe(this, new Observer<List<DbPerson>>() {
             @Override
             public void onChanged(@Nullable List<DbPerson> lsBnPeople) {
-                String strTemp=JSON.toJSONString(lsBnPeople);
+                String strTemp=new Gson().toJson(lsBnPeople);
                 tvMainShowDbData.setText(strTemp);
             }
         });

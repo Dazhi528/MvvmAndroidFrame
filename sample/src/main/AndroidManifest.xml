@@ -4,15 +4,16 @@
     package="com.dazhi.sample">
 
     <application
-        android:name=".App"
+        android:name=".SampleApp"
         android:allowBackup="false"
         android:supportsRtl="true"
         android:icon="@mipmap/ic_launcher"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:label="@string/meapp_name"
         android:theme="@style/LibRootTheme"
+        tools:replace="android:allowBackup"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".MainActivity">
+        <activity android:name=".SampleActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

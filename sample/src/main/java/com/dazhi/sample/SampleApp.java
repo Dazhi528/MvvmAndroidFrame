@@ -1,6 +1,6 @@
 package com.dazhi.sample;
 
-import com.dazhi.libroot.base.RootApp;
+import com.dazhi.libroot.root.RootApp;
 import com.dazhi.sample.db.AppDatabase;
 import com.dazhi.sample.db.FactoryDaoPerson;
 
@@ -12,7 +12,7 @@ import com.dazhi.sample.db.FactoryDaoPerson;
  * 创建日期：2018/12/8 15:15
  * 修改日期：2018/12/8 15:15
  */
-public class App extends RootApp {
+public class SampleApp extends RootApp {
 
     @Override
     public void onCreate() {

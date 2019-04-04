@@ -1,12 +1,10 @@
 package com.dazhi.sample;
 
 import android.arch.lifecycle.MutableLiveData;
-
-import com.dazhi.libroot.base.vm.RootViewModel;
+import com.dazhi.libroot.root.RootViewModel;
 import com.dazhi.libroot.util.UtThread;
 import com.dazhi.sample.db.DbPerson;
 import com.dazhi.sample.db.FactoryDaoPerson;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +16,7 @@ import java.util.List;
  * 创建日期：2018/12/8 14:57
  * 修改日期：2018/12/8 14:57
  */
-public class VmMain extends RootViewModel<MainActivity> {
+public class VmMain extends RootViewModel {
     // 用于观察数据库所有消息变动
     private MutableLiveData<List<DbPerson>> dbLsBnPerson=new MutableLiveData<>();
 
