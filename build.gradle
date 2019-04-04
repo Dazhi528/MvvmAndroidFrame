@@ -10,9 +10,12 @@ buildscript {
         jcenter()
         // Android Permissions Dispatcher
         maven { url 'http://oss.jfrog.org/artifactory/oss-snapshot-local/' }
+        // 友盟
+        maven { url 'https://dl.bintray.com/umsdk/release' }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.2.1'
+        // 上传到jitpack.io的maven仓库用
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
     }
 }
@@ -22,6 +25,8 @@ allprojects {
         google()
         jcenter()
         maven { url 'https://jitpack.io' }
+        // 友盟
+        maven { url 'https://dl.bintray.com/umsdk/release' }
     }
 }
 

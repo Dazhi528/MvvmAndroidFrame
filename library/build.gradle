@@ -63,8 +63,8 @@ dependencies {
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.5.0'
 
     // 友盟统计
-    implementation 'com.umeng.sdk:common:1.5.0'
-    implementation 'com.umeng.sdk:analytics:7.5.0'
+    implementation  'com.umeng.umsdk:common:2.0.0'
+    implementation  'com.umeng.umsdk:analytics:8.0.0'
 
     //
     //implementation 'com.github.bumptech.glide:glide:4.7.1'
