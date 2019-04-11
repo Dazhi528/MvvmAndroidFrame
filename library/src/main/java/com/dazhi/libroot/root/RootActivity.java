@@ -56,7 +56,7 @@ abstract class RootActivity extends AppCompatActivity implements InteRootView {
 
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //
         setContentView(getLayoutId());
