@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="LibRootTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/libroot_primary</item>
+        <item name="colorPrimaryDark">@color/libroot_primarydark</item>
+        <item name="colorAccent">@color/libroot_accent</item>
     <!--注意android的拼写是个错误的-->
     <!--<style name="LibRootTheme" parent="@andorid:style/Theme.AppCompat.Light.NoActionBar">-->
         <item name="android:windowActionBar">false</item>

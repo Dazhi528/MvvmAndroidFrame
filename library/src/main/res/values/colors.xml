@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="libroot_primary">#3F51B5</color>
-    <color name="libroot_primarydark">#303F9F</color>
+    <color name="libroot_primary">#19a0ff</color>
+    <color name="libroot_primarydark">#19a0ff</color>
     <color name="libroot_accent">#2D9C93</color>
     <!--全局颜色配置-->
     <color name="libroot_toolbar_bg">#19a0ff</color>

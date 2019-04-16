@@ -26,7 +26,6 @@
     <string name="REFRESH_HEADER_FINISH">刷新完成</string>
     <string name="REFRESH_HEADER_FAILED">刷新失败</string>
     <string name="REFRESH_HEADER_LASTTIME">上次更新 M-d HH:mm</string>
-    <string name="REFRESH_HEADER_SECOND_FLOOR">释放显示最新数据</string>
     <!--上拉加载更多-->
     <string name="REFRESH_FOOTER_PULLUP">上拉加载更多</string>
     <string name="REFRESH_FOOTER_RELEASE">释放立即加载</string>

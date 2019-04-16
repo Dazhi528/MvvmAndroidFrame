@@ -49,7 +49,6 @@ public class HeaderRefresh extends ClassicsHeader {
         ClassicsHeader.REFRESH_HEADER_FINISH = UtRoot.getString(R.string.REFRESH_HEADER_FINISH);
         ClassicsHeader.REFRESH_HEADER_FAILED = UtRoot.getString(R.string.REFRESH_HEADER_FAILED);
         ClassicsHeader.REFRESH_HEADER_LASTTIME = UtRoot.getString(R.string.REFRESH_HEADER_LASTTIME);
-        ClassicsHeader.REFRESH_HEADER_SECOND_FLOOR = UtRoot.getString(R.string.REFRESH_HEADER_SECOND_FLOOR);
     }
 
 

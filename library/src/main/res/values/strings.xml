@@ -25,7 +25,6 @@
     <string name="REFRESH_HEADER_FINISH">Refresh  completion</string>
     <string name="REFRESH_HEADER_FAILED">refresh failed</string>
     <string name="REFRESH_HEADER_LASTTIME">Last update M-d HH:mm</string>
-    <string name="REFRESH_HEADER_SECOND_FLOOR">Release display latest data</string>
     <!--上拉加载更多-->
     <string name="REFRESH_FOOTER_PULLUP">Pull up to load more</string>
     <string name="REFRESH_FOOTER_RELEASE">Release immediate loading</string>
