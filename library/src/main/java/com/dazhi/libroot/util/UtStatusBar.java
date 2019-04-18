@@ -1,6 +1,7 @@
 package com.dazhi.libroot.util;
 
 import android.app.Activity;
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Build;
 import android.support.annotation.ColorInt;
@@ -162,6 +163,19 @@ public class UtStatusBar {
                 }
             }
         }
+    }
+
+    //获得状态条的高度
+    public static int getStatusBarHeightPx(Context context) {
+        int result = 0;
+        int resourceId = context.getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            result = context.getResources().getDimensionPixelSize(resourceId);
+        }
+        return result;
+    }
+    public static int getStatusBarHeightDp(Context context) {
+        return UtRoot.pxToDp(getStatusBarHeightPx(context));
     }
 
 
