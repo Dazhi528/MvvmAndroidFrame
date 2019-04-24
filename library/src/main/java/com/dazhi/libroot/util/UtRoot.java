@@ -225,12 +225,12 @@ public class UtRoot {
         if(TextUtils.isEmpty(strDateSta) || TextUtils.isEmpty(strDateEnd)){
             return intFail;
         }
-//        SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd", Locale.CHINA);
-        DateFormat df = DateFormat.getDateInstance();
+        SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd", Locale.CHINESE);
+//        DateFormat df = DateFormat.getDateInstance();
         Date dateSta, dateEnd;
         try {
-            dateSta=df.parse(strDateSta);
-            dateEnd=df.parse(strDateEnd);
+            dateSta=sdf.parse(strDateSta);
+            dateEnd=sdf.parse(strDateEnd);
         } catch (ParseException e) {
             e.printStackTrace();
             return intFail;
@@ -255,17 +255,17 @@ public class UtRoot {
     public static String getDateStrByDaysAgo(int iDaysAgo) {
         Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.DATE, calendar.get(Calendar.DATE) - iDaysAgo);
-//        SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd", Locale.CHINA);
-        DateFormat df = DateFormat.getDateInstance();
-        return df.format(calendar.getTime());
+        SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd", Locale.CHINESE);
+//        DateFormat df = DateFormat.getDateInstance();
+        return sdf.format(calendar.getTime());
     }
 
     public static long timeStandardToStamp(String strTimeStandard){
-        // SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA);
-        DateFormat df = DateFormat.getDateTimeInstance();
+        SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINESE);
+//        DateFormat df = DateFormat.getDateTimeInstance();
         long lonTime=0;
         try {
-            lonTime=df.parse(strTimeStandard).getTime();
+            lonTime=sdf.parse(strTimeStandard).getTime();
         } catch (ParseException e) {
             e.printStackTrace();
             return lonTime;
@@ -284,22 +284,24 @@ public class UtRoot {
     }
 
     public static String getDateTimeStr(){
-        DateFormat df = DateFormat.getDateTimeInstance();
-        return df.format(new Date());
-//        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA);
-//        return sdf.format(new Date());
+//        DateFormat df = DateFormat.getDateTimeInstance();
+//        return df.format(new Date());
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINESE);
+        return sdf.format(new Date());
     }
 
     public static String getDateStr() {
-        DateFormat df = DateFormat.getDateInstance();
-        return df.format(new Date());
-//        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd", Locale.CHINA);
-//        return sdf.format(new Date());
+//        DateFormat df = DateFormat.getDateInstance();
+//        return df.format(new Date());
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd", Locale.CHINESE);
+        return sdf.format(new Date());
     }
 
     public static String getTimeStr() {
-        DateFormat df = DateFormat.getTimeInstance();
-        return df.format(new Date());
+//        DateFormat df = DateFormat.getTimeInstance();
+//        return df.format(new Date());
+        SimpleDateFormat sdf=new SimpleDateFormat("HH:mm:ss", Locale.CHINESE);
+        return sdf.format(new Date());
     }
 
 
