@@ -42,7 +42,7 @@ import permissions.dispatcher.RuntimePermissions;
  * 修改日期：2019/2/26 17:28
  */
 @RuntimePermissions //标记需要运行时判断的类(用于动态生成代理类)
-abstract class RootActivity extends AppCompatActivity implements InteRootView {
+public abstract class RootActivity extends AppCompatActivity implements InteRootView {
     private DialogLoad dialogLoading;  //进度对话框
     private AlertDialog dialogMsgBox; //警告对话框
 
