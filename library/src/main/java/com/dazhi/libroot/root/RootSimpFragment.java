@@ -15,6 +15,7 @@ public abstract class RootSimpFragment extends RootFragment {
     //每一个p都去创建本地的CompositeDisposable，从而是否资源时，不相互影响
     private CompositeDisposable compositeDisposable;
 
+    protected void initConfig(){ }
 
     /**=======================================
      * 作者：WangZezhi  (2018/7/2  11:45)

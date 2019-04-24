@@ -36,7 +36,7 @@ public abstract class RootFragment extends Fragment implements InteRootView {
     /*获得布局id*/
     protected abstract int getLayoutId();
     /*初始化配置*/
-    protected void initConfig(){ }
+    protected abstract void initConfig();
     /*初始化视图等*/
     protected abstract void initViewAndDataAndEvent();
 
