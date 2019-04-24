@@ -24,8 +24,8 @@ import com.dazhi.libroot.util.UtRoot;
  * 创建日期：2019/2/27 14:19
  * 修改日期：2019/2/27 14:19
  */
-public abstract class RootFragment extends Fragment implements InteRootView {
-    protected Activity activity;
+public abstract class RootFragment<T extends RootActivity> extends Fragment implements InteRootView {
+    protected T activity;
     protected View view;
     //
     private DialogLoad dialogLoading; //进度对话框
@@ -44,7 +44,7 @@ public abstract class RootFragment extends Fragment implements InteRootView {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        activity= (Activity) context;
+        activity= (T) context;
     }
 
     @Nullable
