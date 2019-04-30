@@ -93,8 +93,6 @@ public abstract class RootActivity extends AppCompatActivity implements InteRoot
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
         //
-        permissionPhoneStorage();
-        //
         initConfig(tvContent);
         //
         initViewAndDataAndEvent();
@@ -224,33 +222,93 @@ public abstract class RootActivity extends AppCompatActivity implements InteRoot
      * 功能：  安卓动态权限处理部分
      * 描述：
      *=======================================*/
-    //=====================电话、存储======================
+    //=====================电话、存储、相机、位置======================
     //校验phone、storage动态权限
-    protected void permissionPhoneStorage(){
-        RootActivityPermissionsDispatcher.phoneStorageNeedWithPermissionCheck(this);
+    protected void permissionDhCcXjWz(){
+        RootActivityPermissionsDispatcher.dhCcXjWzNeedWithPermissionCheck(this);
     }
     //用户允许打开权限后执行本方法
-    @NeedsPermission({Manifest.permission.READ_PHONE_STATE, Manifest.permission.WRITE_EXTERNAL_STORAGE})
-    void phoneStorageNeed() {
+    @NeedsPermission({Manifest.permission.READ_PHONE_STATE, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA, Manifest.permission.ACCESS_COARSE_LOCATION})
+    void dhCcXjWzNeed() {
         //UtRoot.toastLong("Need");
         //客户允许时，走本方法，这里无需做任何操作
     }
     //描述、阐述、基本原理
-    @OnShowRationale({Manifest.permission.READ_PHONE_STATE, Manifest.permission.WRITE_EXTERNAL_STORAGE})
-    void phoneStorageRationale(final PermissionRequest request) {
+    @OnShowRationale({Manifest.permission.READ_PHONE_STATE, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA, Manifest.permission.ACCESS_COARSE_LOCATION})
+    void dhCcXjWzRationale(final PermissionRequest request) {
         if(request==null){
             return;
         }
         request.proceed();
     }
     //拒绝
-    @OnPermissionDenied({Manifest.permission.READ_PHONE_STATE, Manifest.permission.WRITE_EXTERNAL_STORAGE})
-    void phoneStorageDenied() {
+    @OnPermissionDenied({Manifest.permission.READ_PHONE_STATE, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA, Manifest.permission.ACCESS_COARSE_LOCATION})
+    void dhCcXjWzDenied() {
         msgBoxShow(getString(R.string.permission_denied));
     }
     //用户勾选“不再询问”，则调用该方法（此时权限被拒绝）
-    @OnNeverAskAgain({Manifest.permission.READ_PHONE_STATE, Manifest.permission.WRITE_EXTERNAL_STORAGE})
-    void phoneStorageNever() {
+    @OnNeverAskAgain({Manifest.permission.READ_PHONE_STATE, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA, Manifest.permission.ACCESS_COARSE_LOCATION})
+    void dhCcXjWzNever() {
+        permissionSet();
+    }
+
+    //=====================电话======================
+    //校验phone动态权限
+    protected void permissionPhone(){
+        RootActivityPermissionsDispatcher.phoneNeedWithPermissionCheck(this);
+    }
+    //用户允许打开权限后执行本方法
+    @NeedsPermission({Manifest.permission.READ_PHONE_STATE})
+    void phoneNeed() {
+        //UtRoot.toastLong("Need");
+        //客户允许时，走本方法，这里无需做任何操作
+    }
+    //描述、阐述、基本原理
+    @OnShowRationale({Manifest.permission.READ_PHONE_STATE})
+    void phoneRationale(final PermissionRequest request) {
+        if(request==null){
+            return;
+        }
+        request.proceed();
+    }
+    //拒绝
+    @OnPermissionDenied({Manifest.permission.READ_PHONE_STATE})
+    void phoneDenied() {
+        msgBoxShow(getString(R.string.permission_denied));
+    }
+    //用户勾选“不再询问”，则调用该方法（此时权限被拒绝）
+    @OnNeverAskAgain({Manifest.permission.READ_PHONE_STATE})
+    void phoneNever() {
+        permissionSet();
+    }
+
+    //=====================存储======================
+    //校验storage动态权限
+    protected void permissionStorage(){
+        RootActivityPermissionsDispatcher.storageNeedWithPermissionCheck(this);
+    }
+    //用户允许打开权限后执行本方法
+    @NeedsPermission({Manifest.permission.WRITE_EXTERNAL_STORAGE})
+    void storageNeed() {
+        //UtRoot.toastLong("Need");
+        //客户允许时，走本方法，这里无需做任何操作
+    }
+    //描述、阐述、基本原理
+    @OnShowRationale({Manifest.permission.WRITE_EXTERNAL_STORAGE})
+    void storageRationale(final PermissionRequest request) {
+        if(request==null){
+            return;
+        }
+        request.proceed();
+    }
+    //拒绝
+    @OnPermissionDenied({Manifest.permission.WRITE_EXTERNAL_STORAGE})
+    void storageDenied() {
+        msgBoxShow(getString(R.string.permission_denied));
+    }
+    //用户勾选“不再询问”，则调用该方法（此时权限被拒绝）
+    @OnNeverAskAgain({Manifest.permission.WRITE_EXTERNAL_STORAGE})
+    void storageNever() {
         permissionSet();
     }
 
