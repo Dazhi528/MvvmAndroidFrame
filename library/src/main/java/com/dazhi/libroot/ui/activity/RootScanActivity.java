@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.dazhi.libroot.R;
 import com.dazhi.libroot.root.RootSimpActivity;
 import com.uuzuche.lib_zxing.activity.CaptureFragment;
@@ -20,6 +20,7 @@ import com.uuzuche.lib_zxing.activity.CodeUtils;
  * 创建日期：2018/5/18 10:33
  * 修改日期：2018/5/18 10:33
  */
+@Route(path = "/root/ScanActivity")
 public class RootScanActivity extends RootSimpActivity implements View.OnClickListener {
     private Button btLibScanEsc, btLibScanLight;
     private boolean booLight = false; //默认闪光灯是关闭的
