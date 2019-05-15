@@ -167,7 +167,6 @@ public abstract class RootActivity extends AppCompatActivity implements InteRoot
         dialogLoading=null;
     }
 
-
     @Override
     public void msgBoxShow(String msg) {
         if (dialogMsgBox != null && dialogMsgBox.isShowing()) {
@@ -181,6 +180,7 @@ public abstract class RootActivity extends AppCompatActivity implements InteRoot
                 .create();
         dialogMsgBox.show();
     }
+
     @Override
     public void msgBoxShow(String msg, String strEnt, DialogInterface.OnClickListener onClickListener) {
         if (dialogMsgBox != null) {
@@ -249,6 +249,36 @@ public abstract class RootActivity extends AppCompatActivity implements InteRoot
     //用户勾选“不再询问”，则调用该方法（此时权限被拒绝）
     @OnNeverAskAgain({Manifest.permission.READ_PHONE_STATE, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA, Manifest.permission.ACCESS_COARSE_LOCATION})
     void dhCcXjWzNever() {
+        permissionSet();
+    }
+
+    //=====================电话、存储、相机======================
+    //校验phone、storage动态权限
+    protected void permissionDhCcXj(){
+        RootActivityPermissionsDispatcher.dhCcXjWzNeedWithPermissionCheck(this);
+    }
+    //用户允许打开权限后执行本方法
+    @NeedsPermission({Manifest.permission.READ_PHONE_STATE, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA})
+    void dhCcXjNeed() {
+        //UtRoot.toastLong("Need");
+        //客户允许时，走本方法，这里无需做任何操作
+    }
+    //描述、阐述、基本原理
+    @OnShowRationale({Manifest.permission.READ_PHONE_STATE, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA})
+    void dhCcXjRationale(final PermissionRequest request) {
+        if(request==null){
+            return;
+        }
+        request.proceed();
+    }
+    //拒绝
+    @OnPermissionDenied({Manifest.permission.READ_PHONE_STATE, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA})
+    void dhCcXjDenied() {
+        msgBoxShow(getString(R.string.permission_denied));
+    }
+    //用户勾选“不再询问”，则调用该方法（此时权限被拒绝）
+    @OnNeverAskAgain({Manifest.permission.READ_PHONE_STATE, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA})
+    void dhCcXjNever() {
         permissionSet();
     }
 

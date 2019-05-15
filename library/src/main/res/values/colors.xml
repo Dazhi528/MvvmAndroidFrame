@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="libroot_primary">#19a0ff</color>
-    <color name="libroot_primarydark">#19a0ff</color>
-    <color name="libroot_accent">#2D9C93</color>
+    <color name="libroot_primary">#008577</color>
+    <color name="libroot_primarydark">#00574B</color>
+    <color name="libroot_accent">#19A0FF</color>
     <!--全局颜色配置-->
-    <color name="libroot_toolbar_bg">#19a0ff</color>
-    <color name="libroot_toolbar_text">#ffffff</color>
+    <color name="libroot_toolbar_bg">#19A0FF</color>
+    <color name="libroot_toolbar_text">#FFFFFF</color>
     <color name="libroot_text_dark">#383838</color>
-    <color name="libroot_text_light">#5b5a5a</color>
-    <color name="libroot_text_hint">#aaaaaa</color>
+    <color name="libroot_text_light">#555555</color>
+    <color name="libroot_text_hint">#AAAAAA</color>
     <color name="libroot_line">#EAEAEA</color>
     <!--snackbar背景-->
-    <color name="libroot_toast_bg">#aaaaaa</color>
-    <color name="libroot_snackbar_bg">#aaaaaa</color>
+    <color name="libroot_toast_bg">#AAAAAA</color>
+    <color name="libroot_snackbar_bg">#AAAAAA</color>
     <!--扫描库-->
-    <color name="libroot_scan_bttext">#ffffff</color>
+    <color name="libroot_scan_bttext">#FFFFFF</color>
     <color name="libroot_scan_line">#3B8DE9</color>
 </resources>
