@@ -20,19 +20,18 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.res.ResourcesCompat;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
+import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.dazhi.libroot.R;
-
 import java.math.BigDecimal;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -139,27 +138,27 @@ public class UtRoot {
 
     /**=======================================
      * 作者：WangZezhi  (2018/10/17  09:54)
-     * 功能：
-     * 描述：当floScaleH是0时，设置floScaleW==floScaleH
+     * 功能：设置对话框最大高度
+     * 描述：单位是像素，建议调用本工具的getPx(@DimenRes int intId)获得资源文件的dp
      *=======================================*/
-    public static void setWHDialog(Dialog dialog, float floScaleW, float floScaleH){
-        try {
-            Window window = dialog.getWindow();
-            if(window==null){
-                return;
-            }
-            Display display = window.getWindowManager().getDefaultDisplay();
-            android.view.WindowManager.LayoutParams wmLp = window.getAttributes();
-            wmLp.width = (int) (display.getWidth() * floScaleW);
-            // 当floScaleH是0时，设置floScaleW==floScaleH
-            if(floScaleH==0){
-                wmLp.height = wmLp.width;
-            }else {
-                wmLp.height = (int) (display.getHeight() * floScaleH);
-            }
-            window.setAttributes(wmLp);
-        }catch (Exception e){
-            e.printStackTrace();
+    public static void setDialogMaxHeight(Context context, Dialog dialog, int intMaxH) {
+        if (context == null || dialog == null || intMaxH <= 0) {
+            return;
+        }
+        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        if (wm == null) {
+            return;
+        }
+        DisplayMetrics metrics = new DisplayMetrics();
+        wm.getDefaultDisplay().getMetrics(metrics);
+        Window window = dialog.getWindow();
+        if (window == null) {
+            return;
+        }
+        if (metrics.heightPixels < intMaxH) {
+            window.setLayout(WindowManager.LayoutParams.WRAP_CONTENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        } else {
+            window.setLayout(WindowManager.LayoutParams.WRAP_CONTENT, intMaxH);
         }
     }
 
