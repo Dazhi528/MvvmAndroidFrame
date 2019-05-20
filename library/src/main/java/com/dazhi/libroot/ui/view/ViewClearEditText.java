@@ -15,6 +15,7 @@ import android.view.animation.CycleInterpolator;
 import android.view.animation.TranslateAnimation;
 import com.dazhi.libroot.R;
 import com.dazhi.libroot.inte.InteCallRoot;
+import com.dazhi.libroot.util.UtRoot;
 
 /**
  * 功能：自定义带删除功能EditText
@@ -25,6 +26,7 @@ import com.dazhi.libroot.inte.InteCallRoot;
  * 修改日期：2018/5/18 16:37
  */
 public class ViewClearEditText extends AppCompatEditText {
+    private Context context;
     private boolean booFocus=false; //是否有焦点（默认没有焦点）
     private Drawable drawableClear; //删除按钮的引用
     private InteCallRoot inteRootCall; //单纯的点击清除事件回调
@@ -42,6 +44,7 @@ public class ViewClearEditText extends AppCompatEditText {
 
     public ViewClearEditText(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
+        this.context=context;
         init();
     }
 
@@ -128,7 +131,7 @@ public class ViewClearEditText extends AppCompatEditText {
                 return super.onTouchEvent(event);
             }
             this.setText("");
-            this.clearFocus();
+            UtRoot.keyboardHide(context, this);
             if(inteRootCall!=null){
                 inteRootCall.call();
             }
