@@ -138,11 +138,11 @@ public class UtRoot {
 
     /**=======================================
      * 作者：WangZezhi  (2018/10/17  09:54)
-     * 功能：设置对话框最大高度
+     * 功能：设置对话框最小、最大高度
      * 描述：单位是像素，建议调用本工具的getPx(@DimenRes int intId)获得资源文件的dp
      *=======================================*/
-    public static void setDialogMaxHeight(Context context, Dialog dialog, int intMaxH) {
-        if (context == null || dialog == null || intMaxH <= 0) {
+    public static void setDialogMinMaxHeight(Context context, Dialog dialog, int intMinH, int intMaxH) {
+        if (context == null || dialog == null || intMinH<=0 || intMaxH <= 0 || intMaxH < intMinH) {
             return;
         }
         WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
@@ -155,11 +155,18 @@ public class UtRoot {
         if (window == null) {
             return;
         }
-        if (metrics.heightPixels < intMaxH) {
-            window.setLayout(WindowManager.LayoutParams.WRAP_CONTENT, WindowManager.LayoutParams.WRAP_CONTENT);
-        } else {
-            window.setLayout(WindowManager.LayoutParams.WRAP_CONTENT, intMaxH);
+        // 如果高度小于最小，则设置最小值
+        if(metrics.heightPixels< intMinH) {
+            window.setLayout(WindowManager.LayoutParams.WRAP_CONTENT, intMinH);
+            return;
         }
+        // 如果高度大于最大值，则设置最大值
+        if(metrics.heightPixels> intMaxH) {
+            window.setLayout(WindowManager.LayoutParams.WRAP_CONTENT, intMaxH);
+            return;
+        }
+        // 在最大值和最小值之间，则设置适应
+        window.setLayout(WindowManager.LayoutParams.WRAP_CONTENT, WindowManager.LayoutParams.WRAP_CONTENT);
     }
 
     /**=======================================
