@@ -141,6 +141,29 @@ public class UtRoot {
      * 功能：设置对话框最小、最大高度
      * 描述：单位是像素，建议调用本工具的getPx(@DimenRes int intId)获得资源文件的dp
      *=======================================*/
+    public static void setDialogMaxHeight(Context context, Dialog dialog, int intMaxH) {
+        if (context == null || dialog == null ||  intMaxH <= 0 ) {
+            return;
+        }
+        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        if (wm == null) {
+            return;
+        }
+        DisplayMetrics metrics = new DisplayMetrics();
+        wm.getDefaultDisplay().getMetrics(metrics);
+        Window window = dialog.getWindow();
+        if (window == null) {
+            return;
+        }
+        if(metrics.heightPixels> intMaxH) {
+            // 如果高度大于最大值，则设置最大值
+            window.setLayout(WindowManager.LayoutParams.WRAP_CONTENT, intMaxH);
+        } else {
+            // 设置适应
+            window.setLayout(WindowManager.LayoutParams.WRAP_CONTENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        }
+    }
+
     public static void setDialogMinMaxHeight(Context context, Dialog dialog, int intMinH, int intMaxH) {
         if (context == null || dialog == null || intMinH<=0 || intMaxH <= 0 || intMaxH < intMinH) {
             return;

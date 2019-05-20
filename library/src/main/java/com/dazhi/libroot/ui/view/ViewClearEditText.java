@@ -128,6 +128,7 @@ public class ViewClearEditText extends AppCompatEditText {
                 return super.onTouchEvent(event);
             }
             this.setText("");
+            this.clearFocus();
             if(inteRootCall!=null){
                 inteRootCall.call();
             }
