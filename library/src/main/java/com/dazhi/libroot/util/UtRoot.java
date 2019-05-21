@@ -202,13 +202,25 @@ public class UtRoot {
     /**=======================================
      * 作者：WangZezhi  (2019-05-21  14:03)
      * 功能：四舍五入保留intScale位小数
-     * 描述：
+     * 描述：在实际应用中发现返回值是double时，应用可能会变形，因此统一返回String
      *=======================================*/
-    public static double roundHalfUp(double douNumber, int intScale){
-        return new BigDecimal(douNumber).setScale(intScale, BigDecimal.ROUND_HALF_UP).doubleValue();
+    public static String roundHalfUp(float floNumber, int intScale){
+        BigDecimal bigDecimal=new BigDecimal(floNumber);
+        return roundHalfUp(bigDecimal, intScale);
     }
-    public static double roundHalfUp(String strNumber, int intScale){
-        return new BigDecimal(strNumber).setScale(intScale, BigDecimal.ROUND_HALF_UP).doubleValue();
+    public static String roundHalfUp(double douNumber, int intScale){
+        BigDecimal bigDecimal=new BigDecimal(douNumber);
+        return roundHalfUp(bigDecimal, intScale);
+    }
+    public static String roundHalfUp(String strNumber, int intScale){
+        BigDecimal bigDecimal=new BigDecimal(strNumber);
+        return roundHalfUp(bigDecimal, intScale);
+    }
+    public static String roundHalfUp(BigDecimal bigDecimal, int intScale){
+        if(bigDecimal==null || intScale<0) {
+            return "0";
+        }
+        return bigDecimal.setScale(intScale, BigDecimal.ROUND_HALF_UP).toString();
     }
 
     /**
