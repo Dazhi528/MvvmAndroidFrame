@@ -199,6 +199,18 @@ public class UtRoot {
         window.setLayout(WindowManager.LayoutParams.WRAP_CONTENT, WindowManager.LayoutParams.WRAP_CONTENT);
     }
 
+    /**=======================================
+     * 作者：WangZezhi  (2019-05-21  14:03)
+     * 功能：四舍五入保留intScale位小数
+     * 描述：
+     *=======================================*/
+    public static double roundHalfUp(double douNumber, int intScale){
+        return new BigDecimal(douNumber).setScale(intScale, BigDecimal.ROUND_HALF_UP).doubleValue();
+    }
+    public static double roundHalfUp(String strNumber, int intScale){
+        return new BigDecimal(strNumber).setScale(intScale, BigDecimal.ROUND_HALF_UP).doubleValue();
+    }
+
     /**
      * 设置可输入小数点位数
      * @param editText 输入框对象
