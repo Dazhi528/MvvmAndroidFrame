@@ -1,6 +1,7 @@
 package com.dazhi.libroot.util;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
@@ -36,12 +37,18 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.dazhi.libroot.R;
+import com.dazhi.libroot.inte.InteCallRoot;
+import com.jakewharton.rxbinding2.view.RxView;
+
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+import java.util.concurrent.TimeUnit;
+
+import io.reactivex.functions.Consumer;
 
 import static android.content.Context.INPUT_METHOD_SERVICE;
 
@@ -110,6 +117,23 @@ public class UtRoot {
     public static int pxToDp(float pxValue) {
         final float scale = context.getResources().getDisplayMetrics().density;
         return (int) (pxValue / scale + 0.5f);
+    }
+
+    /**=======================================
+     * 作者：WangZezhi  (2019-05-23  17:11)
+     * 功能：
+     * 描述：
+     *=======================================*/
+    @SuppressLint("CheckResult")
+    public static void rxViewClick(@NonNull View view, @NonNull final InteCallRoot inteCallRoot) {
+        RxView.clicks(view)
+                .throttleFirst(1, TimeUnit.SECONDS)
+                .subscribe(new Consumer<Object>() {
+                    @Override
+                    public void accept(Object o) {
+                        inteCallRoot.call();
+                    }
+                });
     }
 
     /**=======================================
