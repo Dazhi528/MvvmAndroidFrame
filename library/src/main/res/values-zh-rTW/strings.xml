@@ -10,6 +10,7 @@
     <string name="libroot_scan_close">關閉掃描</string>
     <string name="libroot_scan_lighton">打開燈光</string>
     <string name="libroot_scan_lightoff">關閉燈光</string>
+    <string name="libroot_scan_fail">掃描失敗</string>
 
     <!--安卓动态权限管理-->
     <string name="permission_title">請到權限管理中開啟權限</string>

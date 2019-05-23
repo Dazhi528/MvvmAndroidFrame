@@ -6,9 +6,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.dazhi.libroot.R;
+import com.dazhi.libroot.event.EtScanContent;
 import com.dazhi.libroot.root.RootSimpActivity;
+import com.dazhi.libroot.rx.RxBus;
+import com.dazhi.libroot.util.UtRoot;
 import com.uuzuche.lib_zxing.activity.CaptureFragment;
 import com.uuzuche.lib_zxing.activity.CodeUtils;
 
@@ -22,6 +28,9 @@ import com.uuzuche.lib_zxing.activity.CodeUtils;
  */
 @Route(path = "/root/ScanActivity")
 public class RootScanActivity extends RootSimpActivity implements View.OnClickListener {
+    @Autowired(name = "BOO_BATCH")
+    public boolean booBatch=false; // 默认不开批量扫描
+    //
     private Button btLibScanEsc, btLibScanLight;
     private boolean booLight = false; //默认闪光灯是关闭的
 
@@ -32,7 +41,7 @@ public class RootScanActivity extends RootSimpActivity implements View.OnClickLi
 
     @Override
     protected void initConfig(TextView tvToolTitle) {
-
+        ARouter.getInstance().inject(this);
     }
 
     @Override
@@ -76,29 +85,43 @@ public class RootScanActivity extends RootSimpActivity implements View.OnClickLi
 
     private void initLibScan() {
         //执行扫面Fragment的初始化操作
-        CaptureFragment captureFragment = new CaptureFragment();
+        final CaptureFragment captureFragment = new CaptureFragment();
         //为二维码扫描界面设置定制化界面
         CodeUtils.setFragmentArgs(captureFragment, R.layout.libroot_scanframe);
         captureFragment.setAnalyzeCallback(new CodeUtils.AnalyzeCallback() {
             @Override
             public void onAnalyzeSuccess(Bitmap mBitmap, String result) {
-                Intent resultIntent = new Intent();
-                Bundle bundle = new Bundle();
-                bundle.putInt(CodeUtils.RESULT_TYPE, CodeUtils.RESULT_SUCCESS);
-                bundle.putString(CodeUtils.RESULT_STRING, result);
-                resultIntent.putExtras(bundle);
-                setResult(RESULT_OK, resultIntent);
-                finish();
+                if(booBatch) {
+                    // 批量扫描
+                    RxBus.self().post(new EtScanContent(result));
+                    // 重新开始扫描
+                    captureFragment.getHandler().sendEmptyMessageDelayed(R.id.restart_preview, 1000);
+                } else {
+                    // 单笔扫描
+                    Intent resultIntent = new Intent();
+                    Bundle bundle = new Bundle();
+                    bundle.putInt(CodeUtils.RESULT_TYPE, CodeUtils.RESULT_SUCCESS);
+                    bundle.putString(CodeUtils.RESULT_STRING, result);
+                    resultIntent.putExtras(bundle);
+                    setResult(RESULT_OK, resultIntent);
+                    finish();
+                }
             }
             @Override
             public void onAnalyzeFailed() {
-                Intent resultIntent = new Intent();
-                Bundle bundle = new Bundle();
-                bundle.putInt(CodeUtils.RESULT_TYPE, CodeUtils.RESULT_FAILED);
-                bundle.putString(CodeUtils.RESULT_STRING, "");
-                resultIntent.putExtras(bundle);
-                setResult(RESULT_OK, resultIntent);
-                finish();
+                if(booBatch) {
+                    // 批量扫描
+                    UtRoot.toastLong(R.string.libroot_scan_fail);
+                } else {
+                    // 单笔扫描
+                    Intent resultIntent = new Intent();
+                    Bundle bundle = new Bundle();
+                    bundle.putInt(CodeUtils.RESULT_TYPE, CodeUtils.RESULT_FAILED);
+                    bundle.putString(CodeUtils.RESULT_STRING, "");
+                    resultIntent.putExtras(bundle);
+                    setResult(RESULT_OK, resultIntent);
+                    finish();
+                }
             }
         });
         //替换我们的扫描控件

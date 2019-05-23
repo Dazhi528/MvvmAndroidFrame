@@ -44,5 +44,12 @@ public abstract class RootApp extends MultiDexApplication {
         return res;
     }
 
+    @Override
+    public void onTerminate() {
+        ARouter.getInstance().destroy();
+        //
+        super.onTerminate();
+    }
+
 
 }

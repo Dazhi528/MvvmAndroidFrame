@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <!--安卓9开始如果http通信是明文则不被允许，设置这个允许哲盟的明文通信-->
+    <!--设置true为明文允许通信-->
+    <base-config cleartextTrafficPermitted="true" />
+</network-security-config>

@@ -9,6 +9,7 @@
     <string name="libroot_scan_close">ScanClose</string>
     <string name="libroot_scan_lighton">LightOn</string>
     <string name="libroot_scan_lightoff">LightOff</string>
+    <string name="libroot_scan_fail">Scan failed</string>
 
     <!--安卓动态权限管理-->
     <string name="permission_title">Please open the permission in permission management</string>
