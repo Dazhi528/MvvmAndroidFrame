@@ -131,7 +131,6 @@ public class ViewClearEditText extends AppCompatEditText {
                 return super.onTouchEvent(event);
             }
             this.setText("");
-            UtRoot.keyboardHide(context, this);
             if(inteRootCall!=null){
                 inteRootCall.call();
             }
