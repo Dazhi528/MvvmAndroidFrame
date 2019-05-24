@@ -6,10 +6,8 @@ import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.dazhi.libroot.R;
 import com.dazhi.libroot.root.RootDialog;
-
 
 /**
  * 功能：进度对话框
@@ -29,8 +27,9 @@ public class DialogLoad extends RootDialog {
 
     public DialogLoad(Context context, String strMsg) {
         super(context);
-        // 设置窗口大小
-        //UtRoot.setWHDialog(this, 0.33f, 0);
+        //
+        setCancelable(false); // 禁用返回按钮销毁
+        setCanceledOnTouchOutside(false); // 禁用触摸屏幕销毁
         //
         TextView tvMsg = findViewById(R.id.tvDlogloadMsg);
         if (tvMsg != null) {
