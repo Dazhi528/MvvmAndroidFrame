@@ -167,6 +167,27 @@ public class UtRoot {
         }
     }
 
+    // floScaleW 设置值要小于1，即：实际宽度是屏幕宽度的倍数
+    // 调用实例：UtRoot.setDialogWidthScale(this, dialog, 0.8F)
+    public static void setDialogWidthScale(Activity activity, Dialog dialog, float floScaleW) {
+        if(activity==null || dialog==null || floScaleW<=0 || floScaleW>1) {
+            return;
+        }
+        try {
+            Window winScreen = activity.getWindow();
+            Display displayScreen = winScreen.getWindowManager().getDefaultDisplay();
+            int intWidth=(int) (displayScreen.getWidth() * floScaleW); // 要显示的宽度
+            //
+            Window winDialog = dialog.getWindow();
+            assert winDialog != null;
+            android.view.WindowManager.LayoutParams wmLp = winDialog.getAttributes();
+            wmLp.width = intWidth;
+            winDialog.setAttributes(wmLp);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
     /**=======================================
      * 作者：WangZezhi  (2018/10/17  09:54)
      * 功能：设置对话框最小、最大高度
