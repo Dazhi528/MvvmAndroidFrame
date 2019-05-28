@@ -306,30 +306,41 @@ public class UtRoot {
     /**
      * 打开输入法
      */
-    public static void keyboardShow(Context context, EditText editText) {
-        if(context==null || editText==null){
+    @Deprecated
+    public static void keyboardShow(Context context, View view) {
+        keyboardShow(view);
+    }
+    public static void keyboardShow(View view) {
+        if(view==null || !view.isFocusable()){
             return;
         }
-        InputMethodManager imm = (InputMethodManager) context.getSystemService(INPUT_METHOD_SERVICE);
+        InputMethodManager imm = (InputMethodManager) view.getContext().getSystemService(INPUT_METHOD_SERVICE);
         if (imm != null) {
+            view.requestFocus();
             // 接受软键盘输入的编辑文本或其它视图
-            imm.showSoftInput(editText, InputMethodManager.SHOW_FORCED);
+            imm.showSoftInput(view, 0);
         }
     }
 
     /**
      * 关闭输入法
      */
-    public static void keyboardHide(Context context, EditText editText) {
-        if(context==null || editText==null){
+    @Deprecated
+    public static void keyboardHide(Context context, View view) {
+        keyboardHide(view);
+    }
+    public static void keyboardHide(View view) {
+        if(view==null || !view.isFocusable()){
             return;
         }
-        InputMethodManager imm = (InputMethodManager) context.getSystemService(INPUT_METHOD_SERVICE);
+        InputMethodManager imm = (InputMethodManager) view.getContext().getSystemService(INPUT_METHOD_SERVICE);
         if (imm != null) {
-            imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
+            // 接受软键盘输入的编辑文本或其它视图
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
-        editText.clearFocus();
+        view.clearFocus();
     }
+
 
     /**=======================================
      * 作者：WangZezhi  (2018/3/23  15:10)
