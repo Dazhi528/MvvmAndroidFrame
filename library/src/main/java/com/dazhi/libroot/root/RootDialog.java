@@ -18,7 +18,7 @@ import io.reactivex.disposables.Disposable;
  */
 public abstract class RootDialog extends AppCompatDialog {
     //每一个p都去创建本地的CompositeDisposable，从而释放资源时，不相互影响
-    private CompositeDisposable compositeDisposable;
+    private CompositeDisposable compositeDisposable = new CompositeDisposable();
 
     protected RootDialog(Context context) {
         super(context, R.style.LibRootDialogBaseStyle);
@@ -46,17 +46,17 @@ public abstract class RootDialog extends AppCompatDialog {
      * 功能：本方法用于统一管理Rx事件
      * 描述：
      *=======================================*/
-    protected void rxAdd(Disposable subscription) {
-        if (compositeDisposable == null) {
-            compositeDisposable = new CompositeDisposable();
+    protected void rxAdd(Disposable disposable) {
+        if (compositeDisposable == null || disposable==null) {
+            return;
         }
-        compositeDisposable.add(subscription);
+        compositeDisposable.add(disposable);
     }
 
     @Override
     public void dismiss() {
         if (compositeDisposable != null) {
-            compositeDisposable.clear();
+            compositeDisposable.dispose();
             compositeDisposable=null;
         }
         //
