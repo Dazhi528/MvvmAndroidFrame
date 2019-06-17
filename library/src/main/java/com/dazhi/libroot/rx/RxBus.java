@@ -88,12 +88,7 @@ public class RxBus {
         flowableProcessor.onComplete();
     }
 
-    /**
-     * 作者：WangZezhi  (17-11-21  上午9:32)
-     * 功能：  统一线程处理
-     * 详情：
-     *   transformer变压器/转换器
-     */
+
     /**
      * 作者：WangZezhi  (17-11-21  上午9:32)
      * 功能：  统一线程处理

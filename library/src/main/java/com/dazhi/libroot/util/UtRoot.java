@@ -306,10 +306,6 @@ public class UtRoot {
     /**
      * 打开输入法
      */
-    @Deprecated
-    public static void keyboardShow(Context context, View view) {
-        keyboardShow(view);
-    }
     public static void keyboardShow(View view) {
         if(view==null || !view.isFocusable()){
             return;
@@ -325,10 +321,6 @@ public class UtRoot {
     /**
      * 关闭输入法
      */
-    @Deprecated
-    public static void keyboardHide(Context context, View view) {
-        keyboardHide(view);
-    }
     public static void keyboardHide(View view) {
         if(view==null || !view.isFocusable()){
             return;
