@@ -28,17 +28,19 @@ public class UtCatch implements Thread.UncaughtExceptionHandler {
 
     @Override
     public void uncaughtException(Thread t, Throwable e) {
+        // 打印异常
+        UtLog.e(e.getMessage());
         // 抓到异常后自动重启App
         Context app = UtRoot.getAppContext();
         Intent intent = app.getPackageManager().getLaunchIntentForPackage(app.getPackageName());
         if(intent!=null){
-            // 关闭所有Activity
-            UtStack.self().exitApp();
             // 重启
             if(restart) {
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 app.startActivity(intent);
             }
+            // 关闭所有Activity
+            UtStack.self().exitApp();
         }
     }
 
