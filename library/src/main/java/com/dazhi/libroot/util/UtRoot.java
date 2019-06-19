@@ -304,7 +304,22 @@ public class UtRoot {
     }
 
     /**
-     * 打开输入法
+     * 显示/隐藏输入法
+     */
+    public static void keyboardToggle(@NonNull Activity activity) {
+        View view = activity.getWindow().peekDecorView();
+        if(view==null){
+            return;
+        }
+        InputMethodManager imm = (InputMethodManager) view.getContext().getSystemService(INPUT_METHOD_SERVICE);
+        if (imm != null) {
+            // 接受软键盘输入的编辑文本或其它视图
+            imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
+        }
+    }
+
+    /**
+     * 显示输入法
      */
     public static void keyboardShow(View view) {
         if(view==null || !view.isFocusable()){
@@ -319,7 +334,7 @@ public class UtRoot {
     }
 
     /**
-     * 关闭输入法
+     * 隐藏输入法
      */
     public static void keyboardHide(View view) {
         if(view==null || !view.isFocusable()){
@@ -331,6 +346,21 @@ public class UtRoot {
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
         view.clearFocus();
+    }
+
+    public static void keyboardHide(@NonNull Activity activity, boolean booClearFocus) {
+        View view = activity.getWindow().peekDecorView();
+        if(view==null){
+            return;
+        }
+        InputMethodManager imm = (InputMethodManager) view.getContext().getSystemService(INPUT_METHOD_SERVICE);
+        if (imm != null) {
+            // 接受软键盘输入的编辑文本或其它视图
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
+        if(booClearFocus){
+            view.clearFocus();
+        }
     }
 
 
