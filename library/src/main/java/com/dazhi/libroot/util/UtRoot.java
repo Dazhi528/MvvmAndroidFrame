@@ -461,6 +461,11 @@ public class UtRoot {
         return sdf.format(new Date());
     }
 
+    public static String getDateTimeStr(long lonTimeStamp){
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINESE);
+        return sdf.format(lonTimeStamp);
+    }
+
     public static String getDateStr() {
 //        DateFormat df = DateFormat.getDateInstance();
 //        return df.format(new Date());
@@ -468,11 +473,21 @@ public class UtRoot {
         return sdf.format(new Date());
     }
 
+    public static String getDateStr(long lonTimeStamp) {
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd", Locale.CHINESE);
+        return sdf.format(lonTimeStamp);
+    }
+
     public static String getTimeStr() {
 //        DateFormat df = DateFormat.getTimeInstance();
 //        return df.format(new Date());
         SimpleDateFormat sdf=new SimpleDateFormat("HH:mm:ss", Locale.CHINESE);
         return sdf.format(new Date());
+    }
+
+    public static String getTimeStr(long lonTimeStamp) {
+        SimpleDateFormat sdf=new SimpleDateFormat("HH:mm:ss", Locale.CHINESE);
+        return sdf.format(lonTimeStamp);
     }
 
 
