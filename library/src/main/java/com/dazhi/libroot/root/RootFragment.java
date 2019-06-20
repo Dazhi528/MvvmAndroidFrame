@@ -79,6 +79,15 @@ public abstract class RootFragment extends Fragment implements InteRootView {
         dialogLoading.show();
     }
     @Override
+    public void loadingShow(int intStrId) {
+        loadingShut();
+        if(activity==null){
+            return;
+        }
+        dialogLoading=new DialogLoad(activity, UtRoot.getString(intStrId));
+        dialogLoading.show();
+    }
+    @Override
     public void loadingShut() {
         if(dialogLoading!=null){
             dialogLoading.dismiss();

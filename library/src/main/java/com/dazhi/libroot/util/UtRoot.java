@@ -40,6 +40,7 @@ import com.dazhi.libroot.R;
 import com.dazhi.libroot.inte.InteCallRoot;
 import com.jakewharton.rxbinding2.view.RxView;
 
+import java.lang.reflect.Method;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -360,6 +361,49 @@ public class UtRoot {
         }
         if(booClearFocus){
             view.clearFocus();
+        }
+    }
+
+    /**
+     * 描述：用于禁用系统软键盘但显示光标
+     * 用法：仅创建方法中每个EditText调用一次即可
+     * 注意：要完成软键盘的启动与禁用，需要配合下方的keyboardCtrl方法
+     *      即用此方法初始化后，用keyboardCtrl方法来控制键盘的启用与禁用
+     */
+    public static void keyboardDisableOnlyInit(@NonNull EditText editText) {
+        int curVersion = android.os.Build.VERSION.SDK_INT;
+        String methodName = null; //4.0以上和4.2以上方法名有所改变
+        if (curVersion >= 16) { // 4.2
+            methodName = "setShowSoftInputOnFocus";
+        } else if (curVersion >= 14) {  // 4.0
+            methodName = "setSoftInputShownOnFocus";
+        }else { // 4.0以下采用此方法
+            editText.setInputType(InputType.TYPE_NULL);
+            return;
+        }
+        Class<EditText> cls = EditText.class;
+        try {
+            Method method = cls.getMethod(methodName, boolean.class);
+            method.setAccessible(true);
+            method.invoke(editText, false);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 描述：用于禁用系统软键盘但显示光标
+     * 用法：仅创建方法中每个EditText调用一次即可
+     */
+    public static void keyboardCtrl(@NonNull Activity activity, boolean booUsable) {
+        Window window=activity.getWindow();
+        if(window==null) {
+            return;
+        }
+        if(booUsable) {
+            window.clearFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
+        }else {
+            window.addFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
         }
     }
 

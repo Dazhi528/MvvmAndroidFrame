@@ -160,6 +160,13 @@ public abstract class RootActivity extends AppCompatActivity implements InteRoot
     }
 
     @Override
+    public void loadingShow(int intStrId) {
+        loadingShut();
+        dialogLoading=new DialogLoad(this, getString(intStrId));
+        dialogLoading.show();
+    }
+
+    @Override
     public void loadingShut() {
         if(dialogLoading!=null){
             dialogLoading.dismiss();

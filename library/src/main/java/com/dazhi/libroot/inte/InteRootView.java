@@ -1,6 +1,7 @@
 package com.dazhi.libroot.inte;
 
 import android.content.DialogInterface;
+import android.support.annotation.StringRes;
 
 /**
  * 功能：
@@ -14,6 +15,7 @@ public interface InteRootView {
 
     /*加载框显示*/
     void loadingShow(String msg);
+    void loadingShow(@StringRes int intStrId);
     /*加载框销毁*/
     void loadingShut();
 
