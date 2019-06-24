@@ -5,8 +5,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v4.util.SimpleArrayMap;
-import android.text.TextUtils;
-import com.google.gson.Gson;
 import java.util.Collections;
 import java.util.Map;
 import java.util.Set;
