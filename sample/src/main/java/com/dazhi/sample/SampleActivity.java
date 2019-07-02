@@ -8,7 +8,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import com.dazhi.libroot.root.RootVmActivity;
 import com.dazhi.sample.db.DbPerson;
-import com.google.gson.Gson;
 import com.jakewharton.rxbinding2.view.RxView;
 
 import java.util.Arrays;
@@ -51,13 +50,13 @@ public class SampleActivity extends RootVmActivity<VmMain> {
             @Override
             public void accept(Object o) {
                 String str=tvMainShowDbData.getText().toString();
-                List<DbPerson> lsBn=Arrays.asList(new Gson().fromJson(str, DbPerson[].class));
-                lsBn.remove(0);
+//                List<DbPerson> lsBn=Arrays.asList(new Gson().fromJson(str, DbPerson[].class));
+//                lsBn.remove(0);
 //                List<BnPerson> lsBn= new ArrayList<>();
 //                BnPerson bn=new BnPerson();
 //                bn.setId(118L);
 //                lsBn.add(bn);
-                vm.deleteLsBnPerson(lsBn);
+//                vm.deleteLsBnPerson(lsBn);
             }
         });
 
@@ -65,8 +64,8 @@ public class SampleActivity extends RootVmActivity<VmMain> {
         vm.getDbLsBnPerson().observe(this, new Observer<List<DbPerson>>() {
             @Override
             public void onChanged(@Nullable List<DbPerson> lsBnPeople) {
-                String strTemp=new Gson().toJson(lsBnPeople);
-                tvMainShowDbData.setText(strTemp);
+//                String strTemp=new Gson().toJson(lsBnPeople);
+//                tvMainShowDbData.setText(strTemp);
             }
         });
     }

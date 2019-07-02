@@ -104,7 +104,6 @@ public abstract class RootFragment extends Fragment implements InteRootView {
             return;
         }
         dialogMsgBox = new AlertDialog.Builder(activity)
-                //.setTitle(getString(R.string.libroot_dialogedit_title))
                 .setMessage(msg)
                 .setPositiveButton(R.string.libroot_dialog_ent, null)
                 .setCancelable(false)
@@ -121,7 +120,6 @@ public abstract class RootFragment extends Fragment implements InteRootView {
             return;
         }
         dialogMsgBox = new AlertDialog.Builder(activity)
-                //.setTitle(getString(R.string.libroot_dialogedit_title))
                 .setMessage(msg)
                 .setPositiveButton(strEnt, onClickListener)
                 .setCancelable(false)
@@ -138,7 +136,31 @@ public abstract class RootFragment extends Fragment implements InteRootView {
             return;
         }
         dialogMsgBox = new AlertDialog.Builder(activity)
-                //.setTitle(getString(R.string.libroot_dialogedit_title))
+                .setMessage(msg)
+                //取消
+                .setNegativeButton(strEsc, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialogMsgBox.dismiss();
+                    }
+                })
+                //确定
+                .setPositiveButton(strEnt, onClickListener)
+                .setCancelable(false)
+                .create();
+        dialogMsgBox.show();
+    }
+
+    @Override
+    public void msgBoxShow(String title, String msg, String strEsc, String strEnt, DialogInterface.OnClickListener onClickListener) {
+        if (dialogMsgBox != null) {
+            dialogMsgBox.dismiss();
+        }
+        if(activity==null){
+            return;
+        }
+        dialogMsgBox = new AlertDialog.Builder(activity)
+                .setTitle(title)
                 .setMessage(msg)
                 //取消
                 .setNegativeButton(strEsc, new DialogInterface.OnClickListener() {
