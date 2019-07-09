@@ -176,5 +176,25 @@ public abstract class RootFragment extends Fragment implements InteRootView {
         dialogMsgBox.show();
     }
 
+    @Override
+    public void msgBoxShow(String title, String msg, String strEsc, DialogInterface.OnClickListener onClickListenerEsc, String strEnt, DialogInterface.OnClickListener onClickListenerEnt) {
+        if (dialogMsgBox != null) {
+            dialogMsgBox.dismiss();
+        }
+        if(activity==null){
+            return;
+        }
+        dialogMsgBox = new AlertDialog.Builder(activity)
+                .setTitle(title)
+                .setMessage(msg)
+                //取消
+                .setNegativeButton(strEsc, onClickListenerEsc)
+                //确定
+                .setPositiveButton(strEnt, onClickListenerEnt)
+                .setCancelable(false)
+                .create();
+        dialogMsgBox.show();
+    }
+
 
 }

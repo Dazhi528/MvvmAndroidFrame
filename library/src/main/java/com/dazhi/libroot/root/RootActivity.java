@@ -243,6 +243,23 @@ public abstract class RootActivity extends AppCompatActivity implements InteRoot
         dialogMsgBox.show();
     }
 
+    @Override
+    public void msgBoxShow(String title, String msg, String strEsc, DialogInterface.OnClickListener onClickListenerEsc, String strEnt, DialogInterface.OnClickListener onClickListenerEnt) {
+        if (dialogMsgBox != null) {
+            dialogMsgBox.dismiss();
+        }
+        dialogMsgBox = new AlertDialog.Builder(this)
+                .setTitle(title)
+                .setMessage(msg)
+                //取消
+                .setNegativeButton(strEsc, onClickListenerEsc)
+                //确定
+                .setPositiveButton(strEnt, onClickListenerEnt)
+                .setCancelable(false)
+                .create();
+        dialogMsgBox.show();
+    }
+
     /**=======================================
      * 作者：WangZezhi  (2018/6/13  15:13)
      * 功能：  安卓动态权限处理部分
