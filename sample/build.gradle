@@ -24,5 +24,6 @@ android {
 
 dependencies {
     annotationProcessor "android.arch.persistence.room:compiler:1.1.1"
-    implementation 'com.github.Dazhi528:MvvmAndroidLib:2.5.0'
+    // implementation 'com.github.Dazhi528:MvvmAndroidLib:2.5.0'
+    implementation project(':library')
 }
