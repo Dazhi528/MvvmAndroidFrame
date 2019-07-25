@@ -47,6 +47,8 @@ public abstract class RootActivity extends AppCompatActivity implements InteRoot
     private AlertDialog dialogMsgBox; //警告对话框
 
     /*==============抽象方法============*/
+    /**/
+    protected void initAtSetContentViewBefore(){}
     /*获得布局id*/
     protected abstract int getLayoutId();
     /*初始化配置等，如标题*/
@@ -55,10 +57,17 @@ public abstract class RootActivity extends AppCompatActivity implements InteRoot
     protected abstract void initViewAndDataAndEvent();
 
 
+    // 设置为true为了解决部分华为手机按Home后，点应用图标，应用重启问题
+    @Override
+    public boolean moveTaskToBack(boolean nonRoot) {
+        return super.moveTaskToBack(true);
+    }
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //
+        initAtSetContentViewBefore();
         setContentView(getLayoutId());
         //
         TextView tvContent=findViewById(R.id.librootToolbarTitle);
