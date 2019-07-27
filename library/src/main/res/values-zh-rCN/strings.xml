@@ -6,6 +6,8 @@
     <string name="libroot_dialog_ent">确 定</string>
     <string name="libroot_dialog_esc">关 闭</string>
 
+    <string name="libroot_empty_content">暂无内容</string>
+
     <!--扫描-->
     <string name="libroot_scan_close">关闭扫描</string>
     <string name="libroot_scan_lighton">打开灯光</string>
