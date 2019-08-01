@@ -1,5 +1,47 @@
-#-keepattributes Singature    #避免混淆泛型
-#-keepattributes *Annotation  #不混淆注释
+# 不做预校验，preverify是proguard的4个步骤之一
+# Android不需要preverify，去掉这一步可加快混淆速度
+-dontpreverify
+
+#用于告诉ProGuard，不要跳过对非公开类的处理；默认情况下是跳过的，
+#因为程序中不会引用它们，有些情况下人们编写的代码与类库中的类在同一个包下，
+#并且对包中内容加以引用，此时需要加入此条声明
+#-dontskipnonpubliclibraryclasses
+
+#忽略警告
+-ignorewarnings
+
+#保持泛型
+-keepattributes Signature
+#保持注解
+#-keepattributes *Annotation*
+
+#抛出异常时保留代码行号，在异常分析中可以方便定位
+-keepattributes SourceFile, LineNumberTable
+
+# 保持R文件不混淆，防止反射找不到资源
+-keep class **.R$* {*;}
+
+# JNI保留所有的本地native方法不被混淆
+-keepclasseswithmembernames class * {
+    native <methods>;
+}
+
+# 保留Parcelable序列化的类不被混淆
+-keep class * implements android.os.Parcelable {
+    public static final android.os.Parcelable$Creator *;
+}
+
+# 保留Serializable序列化的类不被混淆
+-keepclassmembers class * implements java.io.Serializable {
+    static final long serialVersionUID;
+    private static final java.io.ObjectStreamField[] serialPersistentFields;
+    private void writeObject(java.io.ObjectOutputStream);
+    private void readObject(java.io.ObjectInputStream);
+    java.lang.Object writeReplace();
+    java.lang.Object readResolve();
+}
+
+
 
 # arouter路由库
 -keep public class com.alibaba.android.arouter.routes.**{*;}
@@ -11,18 +53,6 @@
  -keep class * implements com.alibaba.android.arouter.facade.template.IProvider
 
 # rx库无需添加规则
-
-# gson
--keepattributes Signature
--keepattributes *Annotation*
--dontwarn sun.misc.**
--keep class com.google.gson.examples.android.model.** { <fields>; }
--keep class * implements com.google.gson.TypeAdapterFactory
--keep class * implements com.google.gson.JsonSerializer
--keep class * implements com.google.gson.JsonDeserializer
--keepclassmembers,allowobfuscation class * {
-  @com.google.gson.annotations.SerializedName <fields>;
-}
 
 # okhttp
 -dontwarn javax.annotation.**
@@ -64,3 +94,12 @@
      <init>(...);
 }
 -keepattributes InnerClasses
+
+# glide
+-keep public class * implements com.bumptech.glide.module.GlideModule
+-keep public class * extends com.bumptech.glide.module.AppGlideModule
+-keep public enum com.bumptech.glide.load.ImageHeaderParser$** {
+  **[] $VALUES;
+  public *;
+}
+# -keepresourcexmlelements manifest/application/meta-data@value=GlideModule
