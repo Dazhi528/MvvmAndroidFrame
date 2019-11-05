@@ -11,6 +11,7 @@ import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Looper;
+import android.provider.Settings;
 import android.support.annotation.ColorRes;
 import android.support.annotation.DimenRes;
 import android.support.annotation.DrawableRes;
@@ -442,19 +443,22 @@ public class UtRoot {
     /**
      * 调用此方法获得设备号
      */
+    @SuppressLint("HardwareIds")
     public static String getDeviceId() {
         String IMEI = "";
         try {
             TelephonyManager telephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
-            if (ActivityCompat.checkSelfPermission(context, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
-                return "";
+            if (ActivityCompat.checkSelfPermission(context, Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED) {
+                IMEI = telephonyManager != null ? telephonyManager.getDeviceId() : "";
             }
-            IMEI = telephonyManager.getDeviceId();
         } catch (Exception e) {
             e.printStackTrace();
-            return "";
         }
-        return IMEI;
+        if(TextUtils.isEmpty(IMEI)){
+            IMEI = Settings.System.getString(context.getContentResolver(),
+                    Settings.Secure.ANDROID_ID);
+        }
+        return IMEI==null ? "" : IMEI;
     }
 
     /**=======================================
