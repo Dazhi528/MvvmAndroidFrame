@@ -18,6 +18,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import com.dazhi.libroot.R;
 import com.dazhi.libroot.inte.InteRootView;
@@ -51,6 +52,9 @@ public abstract class RootActivity extends AppCompatActivity implements InteRoot
     protected void initAtSetContentViewBefore(){}
     /*获得布局id*/
     protected abstract int getLayoutId();
+    protected View getLayoutView(){
+        return null;
+    }
     /*初始化配置等，如标题*/
     protected abstract void initConfig(TextView tvToolTitle);
     /*初始化视图等*/
@@ -68,7 +72,14 @@ public abstract class RootActivity extends AppCompatActivity implements InteRoot
         super.onCreate(savedInstanceState);
         //
         initAtSetContentViewBefore();
-        setContentView(getLayoutId());
+        int layoutId = getLayoutId();
+        // 当要设置view，而不是资源ID时，需实现getLayoutId回0，
+        // 并覆盖getLayoutView方法，回实际的view
+        if(layoutId==0){
+            setContentView(getLayoutView());
+        }else {
+            setContentView(layoutId);
+        }
         //
         TextView tvContent=findViewById(R.id.librootToolbarTitle);
         if(tvContent!=null){
