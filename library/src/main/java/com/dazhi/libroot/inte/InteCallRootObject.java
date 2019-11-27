@@ -8,6 +8,6 @@ package com.dazhi.libroot.inte;
  * 创建日期：2018/4/19 14:48
  * 修改日期：2018/4/19 14:48
  */
-public interface InteCallRootLong {
-    void call(long lonNum);
+public interface InteCallRootObject<T> {
+    void call(T obj);
 }
