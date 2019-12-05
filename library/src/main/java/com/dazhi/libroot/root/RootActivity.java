@@ -194,12 +194,31 @@ public abstract class RootActivity extends AppCompatActivity implements InteRoot
         dialogLoading=null;
     }
 
+    /*=======================================
+     * 作者：WangZezhi  (2019-12-05  15:26)
+     * 功能：对话框部分
+     * 描述：
+     *=======================================*/
     @Override
     public void msgBoxShow(String msg) {
         if (dialogMsgBox != null && dialogMsgBox.isShowing()) {
             dialogMsgBox.dismiss();
         }
         dialogMsgBox = new AlertDialog.Builder(this)
+                .setMessage(msg)
+                .setPositiveButton(R.string.libroot_dialog_ent, null)
+                .setCancelable(false)
+                .create();
+        dialogMsgBox.show();
+    }
+
+    @Override
+    public void msgBoxShow(String title, String msg) {
+        if (dialogMsgBox != null && dialogMsgBox.isShowing()) {
+            dialogMsgBox.dismiss();
+        }
+        dialogMsgBox = new AlertDialog.Builder(this)
+                .setTitle(title)
                 .setMessage(msg)
                 .setPositiveButton(R.string.libroot_dialog_ent, null)
                 .setCancelable(false)
@@ -221,19 +240,15 @@ public abstract class RootActivity extends AppCompatActivity implements InteRoot
     }
 
     @Override
-    public void msgBoxShow(String msg, String strEsc, String strEnt, DialogInterface.OnClickListener onClickListener) {
+    public void msgBoxShow(String title, String msg, String strEnt, DialogInterface.OnClickListener onClickListener) {
         if (dialogMsgBox != null) {
             dialogMsgBox.dismiss();
         }
         dialogMsgBox = new AlertDialog.Builder(this)
+                .setTitle(title)
                 .setMessage(msg)
                 //取消
-                .setNegativeButton(strEsc, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialogMsgBox.dismiss();
-                    }
-                })
+                .setCancelable(false)
                 //确定
                 .setPositiveButton(strEnt, onClickListener)
                 .setCancelable(false)
