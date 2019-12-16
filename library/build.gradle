@@ -97,7 +97,7 @@ dependencies {
     api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.50'
 
     //zxing scan code
-    implementation 'cn.yipianfengye.android:zxing-library:2.2'
+    api 'cn.yipianfengye.android:zxing-library:2.2'
 
     //Android Permissions Dispatcher
 //    api('com.github.hotchemi:permissionsdispatcher:3.2.0') {

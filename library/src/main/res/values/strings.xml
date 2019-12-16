@@ -19,22 +19,4 @@
     <string name="permission_ent">ToSetUp</string>
     <string name="permission_denied">Application authorization has been rejected by you, continue to operate, part of the function will be used exceptionally!</string>
 
-    <!--上拉刷新、下拉加载-->
-    <!--下拉刷新-->
-<!--    <string name="REFRESH_HEADER_PULLDOWN">Drop-down can be refreshed</string>-->
-<!--    <string name="REFRESH_HEADER_REFRESHING">Refreshing...</string>-->
-<!--    <string name="REFRESH_HEADER_LOADING">Loading...</string>-->
-<!--    <string name="REFRESH_HEADER_RELEASE">Release immediate refresh</string>-->
-<!--    <string name="REFRESH_HEADER_FINISH">Refresh  completion</string>-->
-<!--    <string name="REFRESH_HEADER_FAILED">refresh failed</string>-->
-<!--    <string name="REFRESH_HEADER_LASTTIME">Last update M-d HH:mm</string>-->
-    <!--上拉加载更多-->
-<!--    <string name="REFRESH_FOOTER_PULLUP">Pull up to load more</string>-->
-<!--    <string name="REFRESH_FOOTER_RELEASE">Release immediate loading</string>-->
-<!--    <string name="REFRESH_FOOTER_REFRESHING">Refreshing...</string>-->
-<!--    <string name="REFRESH_FOOTER_LOADING">Loading...</string>-->
-<!--    <string name="REFRESH_FOOTER_FINISH">Load completion</string>-->
-<!--    <string name="REFRESH_FOOTER_FAILED">Load failure</string>-->
-<!--    <string name="REFRESH_FOOTER_ALLLOADED">No more data</string>-->
-
 </resources>
