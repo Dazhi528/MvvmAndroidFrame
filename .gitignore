@@ -8,9 +8,9 @@ library/build
 sample/build
 *.iml
 #.gitignore
-#gradle 如果不上传这个，jitpack会用自己的gradle版本编译，上传会用上传的版本编译
-gradlew
-gradlew.bat
+#gradlew
+#gradlew.bat
+#gradle 如果不上传这三个，jitpack会用自己的gradle版本编译，上传会用上传的版本编译
 /local.properties
 
 
