@@ -8,7 +8,6 @@ android {
         targetSdkVersion Integer.parseInt(project.SDK_VERSION)
         versionCode Integer.parseInt(project.VERSION_CODE)
         versionName project.VERSION_NAME
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
@@ -23,7 +22,8 @@ android {
 }
 
 dependencies {
-    annotationProcessor "android.arch.persistence.room:compiler:1.1.1"
+//    annotationProcessor "android.arch.persistence.room:compiler:1.1.1"
+    annotationProcessor 'androidx.room:room-compiler:2.2.2'
     // implementation 'com.github.Dazhi528:MvvmAndroidLib:2.6.0'
     implementation project(':library')
 }

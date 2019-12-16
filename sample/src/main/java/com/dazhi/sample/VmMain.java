@@ -1,12 +1,12 @@
 package com.dazhi.sample;
 
-import android.arch.lifecycle.MutableLiveData;
 import com.dazhi.libroot.root.RootViewModel;
 import com.dazhi.libroot.util.UtThread;
 import com.dazhi.sample.db.DbPerson;
 import com.dazhi.sample.db.FactoryDaoPerson;
 import java.util.ArrayList;
 import java.util.List;
+import androidx.lifecycle.MutableLiveData;
 
 /**
  * 功能：Room框架数据库操作实例
@@ -59,6 +59,5 @@ public class VmMain extends RootViewModel {
             }
         });
     }
-
 
 }

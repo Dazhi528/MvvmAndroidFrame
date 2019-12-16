@@ -4,10 +4,10 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
-import android.support.v7.widget.AppCompatEditText;
 import android.util.AttributeSet;
-
 import com.dazhi.libroot.R;
+
+import androidx.appcompat.widget.AppCompatEditText;
 
 /**
  * 功能：自定义带图片的EditText

@@ -1,31 +1,28 @@
 package com.dazhi.sample;
 
 import android.annotation.SuppressLint;
-import android.arch.lifecycle.Observer;
-import android.arch.lifecycle.ViewModelProviders;
-import android.support.annotation.Nullable;
 import android.widget.Button;
 import android.widget.TextView;
+import com.dazhi.libroot.inte.InteCallRoot;
 import com.dazhi.libroot.root.RootVmActivity;
+import com.dazhi.libroot.util.UtRoot;
 import com.dazhi.sample.db.DbPerson;
-import com.jakewharton.rxbinding2.view.RxView;
-
-import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
-import io.reactivex.functions.Consumer;
+import androidx.annotation.Nullable;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 
 public class SampleActivity extends RootVmActivity<VmMain> {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_main;
+        return R.layout.activity_sample;
     }
 
     @Override
     protected void initConfig(TextView tvToolTitle) {
         // 初始化ViewModel
-        vm=ViewModelProviders.of(this).get(VmMain.class);
+        vm = ViewModelProviders.of(this).get(VmMain.class);
         // 设置标题
         if(tvToolTitle!=null){
             tvToolTitle.setText("我的第一个MVVM架构");
@@ -37,18 +34,18 @@ public class SampleActivity extends RootVmActivity<VmMain> {
     protected void initViewAndDataAndEvent() {
         super.initViewAndDataAndEvent();
         // UI
-        final TextView tvMainShowDbData=findViewById(R.id.tvMainShowDbData);
-        Button btMainInsertData=findViewById(R.id.btMainInsertData);
-        RxView.clicks(btMainInsertData).throttleFirst(1, TimeUnit.SECONDS).subscribe(new Consumer<Object>() {
+        final TextView tvMainShowDbData = findViewById(R.id.tvMainShowDbData);
+        Button btMainInsertData = findViewById(R.id.btMainInsertData);
+        UtRoot.rxViewClick(btMainInsertData, new InteCallRoot(){
             @Override
-            public void accept(Object o) {
+            public void call() {
                 vm.insertLsBnPerson();
             }
         });
-        Button btMainDeleteData=findViewById(R.id.btMainDeleteData);
-        RxView.clicks(btMainDeleteData).throttleFirst(1, TimeUnit.SECONDS).subscribe(new Consumer<Object>() {
+        Button btMainDeleteData = findViewById(R.id.btMainDeleteData);
+        UtRoot.rxViewClick(btMainDeleteData, new InteCallRoot(){
             @Override
-            public void accept(Object o) {
+            public void call() {
                 String str=tvMainShowDbData.getText().toString();
 //                List<DbPerson> lsBn=Arrays.asList(new Gson().fromJson(str, DbPerson[].class));
 //                lsBn.remove(0);

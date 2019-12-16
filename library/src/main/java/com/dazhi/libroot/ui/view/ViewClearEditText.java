@@ -3,8 +3,6 @@ package com.dazhi.libroot.ui.view;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.AppCompatEditText;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
@@ -15,7 +13,8 @@ import android.view.animation.CycleInterpolator;
 import android.view.animation.TranslateAnimation;
 import com.dazhi.libroot.R;
 import com.dazhi.libroot.inte.InteCallRoot;
-import com.dazhi.libroot.util.UtRoot;
+import androidx.appcompat.widget.AppCompatEditText;
+import androidx.core.content.ContextCompat;
 
 /**
  * 功能：自定义带删除功能EditText

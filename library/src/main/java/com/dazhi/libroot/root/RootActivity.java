@@ -6,17 +6,11 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -27,6 +21,13 @@ import com.dazhi.libroot.util.UtRoot;
 import com.dazhi.libroot.util.UtStack;
 import com.dazhi.libroot.util.UtStatusBar;
 import com.umeng.analytics.MobclickAgent;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 import permissions.dispatcher.NeedsPermission;
 import permissions.dispatcher.OnNeverAskAgain;
 import permissions.dispatcher.OnPermissionDenied;
@@ -81,14 +82,14 @@ public abstract class RootActivity extends AppCompatActivity implements InteRoot
             setContentView(layoutId);
         }
         //
-        TextView tvContent=findViewById(R.id.librootToolbarTitle);
+        TextView tvContent = (TextView) findViewById(R.id.librootToolbarTitle);
         if(tvContent!=null){
             tvContent.setTextColor(UtStatusBar.getToolbarCtColor());
         }
         //状态条配置
         UtStatusBar.setStatusBarColor(this, UtStatusBar.getToolbarBgColor());
         //
-        Toolbar toolbar= findViewById(R.id.librootToolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.librootToolbar);
         if(toolbar!=null){
             toolbar.setTitle(""); //主题不显示，用自定义文本显示
             toolbar.setBackgroundColor(UtStatusBar.getToolbarBgColor());
@@ -96,7 +97,11 @@ public abstract class RootActivity extends AppCompatActivity implements InteRoot
             //
             Drawable drawableRetIc = ContextCompat.getDrawable(this, R.mipmap.ico_root_arrowback);
             if(drawableRetIc!=null){
-                drawableRetIc.setColorFilter(UtStatusBar.getToolbarCtColor(), PorterDuff.Mode.SRC_ATOP);
+//                drawableRetIc.setColorFilter(UtStatusBar.getToolbarCtColor(), PorterDuff.Mode.SRC_ATOP);
+                PorterDuffColorFilter filter = new PorterDuffColorFilter(
+                        UtStatusBar.getToolbarCtColor(),
+                        PorterDuff.Mode.SRC_ATOP);
+                drawableRetIc.setColorFilter(filter);
                 ActionBar actionBar=getSupportActionBar();
                 if(actionBar!=null){
                     actionBar.setHomeAsUpIndicator(drawableRetIc);

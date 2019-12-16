@@ -1,7 +1,7 @@
 package com.dazhi.libroot.inte;
 
 import android.content.DialogInterface;
-import android.support.annotation.StringRes;
+import androidx.annotation.StringRes;
 
 /**
  * 功能：

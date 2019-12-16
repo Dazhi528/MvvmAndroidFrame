@@ -5,10 +5,10 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
-import android.support.v7.widget.AppCompatRadioButton;
 import android.util.AttributeSet;
-
 import com.dazhi.libroot.R;
+
+import androidx.appcompat.widget.AppCompatRadioButton;
 
 /**
  * 功能描述：

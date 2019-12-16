@@ -12,14 +12,11 @@ import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Looper;
 import android.provider.Settings;
-import android.support.annotation.ColorRes;
-import android.support.annotation.DimenRes;
-import android.support.annotation.DrawableRes;
-import android.support.annotation.NonNull;
-import android.support.annotation.StringRes;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.res.ResourcesCompat;
+import androidx.annotation.ColorRes;
+import androidx.annotation.DimenRes;
+import androidx.annotation.DrawableRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.StringRes;
 import android.telephony.TelephonyManager;
 import android.text.InputFilter;
 import android.text.InputType;
@@ -39,6 +36,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.dazhi.libroot.R;
 import com.dazhi.libroot.inte.InteCallRoot;
+import com.google.android.material.snackbar.Snackbar;
 import com.jakewharton.rxbinding2.view.RxView;
 
 import java.lang.reflect.Method;
@@ -50,6 +48,8 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.res.ResourcesCompat;
 import io.reactivex.functions.Consumer;
 
 import static android.content.Context.INPUT_METHOD_SERVICE;
@@ -597,7 +597,7 @@ public class UtRoot {
         //设置背景
         viewSnack.setBackgroundColor(getColor(R.color.libroot_snackbar_bg));
         //内容字体颜色
-        TextView tvSnackbarText = viewSnack.findViewById(android.support.design.R.id.snackbar_text);
+        TextView tvSnackbarText = viewSnack.findViewById(R.id.snackbar_text);
         tvSnackbarText.setTextColor(Color.WHITE);
         //设置点击监听
         if(!TextUtils.isEmpty(strBtTitle) && onClickListener!=null){
@@ -644,7 +644,7 @@ public class UtRoot {
         //设置背景
         viewSnack.setBackgroundColor(getColor(R.color.libroot_snackbar_bg));
         //内容字体颜色
-        TextView tvSnackbarText = viewSnack.findViewById(android.support.design.R.id.snackbar_text);
+        TextView tvSnackbarText = viewSnack.findViewById(R.id.snackbar_text);
         tvSnackbarText.setTextColor(Color.WHITE);
         //设置点击监听
         snackbar.setAction(getString(R.string.libroot_dialog_esc), new View.OnClickListener() {

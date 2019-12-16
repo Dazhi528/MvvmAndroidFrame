@@ -1,12 +1,10 @@
 package com.dazhi.libroot.rx;
 
 import android.text.TextUtils;
-
 import com.dazhi.libroot.R;
 import com.dazhi.libroot.inte.InteRootView;
 import com.dazhi.libroot.util.UtLog;
 import com.dazhi.libroot.util.UtRoot;
-
 import io.reactivex.subscribers.ResourceSubscriber;
 
 /**

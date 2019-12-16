@@ -1,0 +1,18 @@
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.gradle
+.idea
+library/build
+sample/build
+*.iml
+#.gitignore
+#gradle 如果不上传这个，jitpack会用自己的gradle版本编译，上传会用上传的版本编译
+gradlew
+gradlew.bat
+/local.properties
+
+
+
+

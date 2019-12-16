@@ -1,8 +1,8 @@
 package com.dazhi.libroot.decoration;
 
 import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * 功能：主页面网格布局间隔定制
@@ -23,6 +23,5 @@ public class DecorationIntervalSimple extends RecyclerView.ItemDecoration {
     public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
         outRect.set(interval, interval, interval, interval);
     }
-
 
 }

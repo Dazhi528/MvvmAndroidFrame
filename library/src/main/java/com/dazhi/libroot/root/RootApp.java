@@ -2,11 +2,12 @@ package com.dazhi.libroot.root;
 
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.support.multidex.MultiDexApplication;
+
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.dazhi.libroot.util.UtLog;
 import com.dazhi.libroot.util.UtRoot;
 import com.uuzuche.lib_zxing.activity.ZXingLibrary;
+import androidx.multidex.MultiDexApplication;
 
 /**
  * 功能：分包超类App

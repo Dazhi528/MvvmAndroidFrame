@@ -2,7 +2,7 @@ package com.dazhi.libroot.root;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatDialog;
+import androidx.appcompat.app.AppCompatDialog;
 import android.view.Window;
 import com.dazhi.libroot.R;
 import io.reactivex.disposables.CompositeDisposable;

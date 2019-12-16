@@ -31,12 +31,12 @@ public class DialogLoad extends RootDialog {
         setCancelable(false); // 禁用返回按钮销毁
         setCanceledOnTouchOutside(false); // 禁用触摸屏幕销毁
         //
-        TextView tvMsg = findViewById(R.id.tvDlogloadMsg);
+        TextView tvMsg = (TextView) findViewById(R.id.tvDlogloadMsg);
         if (tvMsg != null) {
             tvMsg.setText(strMsg);
         }
         //
-        ImageView ivLoading = findViewById(R.id.ivDlogloading);
+        ImageView ivLoading = (ImageView) findViewById(R.id.ivDlogloading);
         if (ivLoading != null) {
             rotateAnimation = new RotateAnimation(0, 360, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
             rotateAnimation.setInterpolator(new LinearInterpolator());

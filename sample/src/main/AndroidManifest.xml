@@ -5,14 +5,15 @@
 
     <application
         android:name=".SampleApp"
-        android:allowBackup="false"
         android:supportsRtl="true"
+        android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:label="@string/meapp_name"
+        android:label="基础库"
         android:theme="@style/LibRootTheme"
-        tools:replace="android:allowBackup"
-        tools:ignore="GoogleAppIndexingWarning">
+        android:appComponentFactory="1"
+        tools:replace="android:allowBackup, android:appComponentFactory"
+        tools:ignore="AllowBackup,GoogleAppIndexingWarning,UnusedAttribute">
         <activity android:name=".SampleActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
