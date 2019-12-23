@@ -19,4 +19,9 @@
         <attr name="drawableBottomWidth" format="dimension"/>
         <attr name="drawableBottomHeight" format="dimension"/>
     </declare-styleable>
+
+    <!--悬浮按钮拖动配置-->
+    <declare-styleable name="ViewFloatingDragButton">
+        <attr name="dragEnable" format="boolean" />
+    </declare-styleable>
 </resources>
