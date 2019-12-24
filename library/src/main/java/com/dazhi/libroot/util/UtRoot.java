@@ -8,7 +8,9 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 import android.provider.Settings;
@@ -54,6 +56,7 @@ import io.reactivex.functions.Consumer;
 
 import static android.content.Context.INPUT_METHOD_SERVICE;
 
+@SuppressWarnings("ALL")
 public class UtRoot {
     private static Context context;
 
@@ -126,7 +129,6 @@ public class UtRoot {
      * 功能：
      * 描述：
      *=======================================*/
-    @SuppressLint("CheckResult")
     public static void rxViewClick(@NonNull View view, @NonNull final InteCallRoot inteCallRoot) {
         RxView.clicks(view)
                 .throttleFirst(1, TimeUnit.SECONDS)
@@ -405,6 +407,35 @@ public class UtRoot {
             window.clearFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
         }else {
             window.addFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
+        }
+    }
+
+    public static boolean keyboardBooVisible(@NonNull Activity activity) {
+        //获取当前屏幕内容的高度
+        int screenHeight = activity.getWindow().getDecorView().getHeight();
+        //获取View可见区域的bottom
+        Rect rect = new Rect();
+        activity.getWindow().getDecorView().getWindowVisibleDisplayFrame(rect);
+        return screenHeight - rect.bottom - getSoftButtonsBarHeight(activity)!= 0;
+    }
+
+    /**
+     * 底部虚拟按键栏的高度
+     */
+    public static int getSoftButtonsBarHeight(@NonNull Activity activity) {
+        DisplayMetrics dm = new DisplayMetrics();
+        //这个方法获取可能不是真实屏幕的高度
+        activity.getWindowManager().getDefaultDisplay().getMetrics(dm);
+        int usableHeight = dm.heightPixels;
+        //获取当前屏幕的真实高度
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            activity.getWindowManager().getDefaultDisplay().getRealMetrics(dm);
+        }
+        int realHeight = dm.heightPixels;
+        if (realHeight > usableHeight) {
+            return realHeight - usableHeight;
+        } else {
+            return 0;
         }
     }
 
