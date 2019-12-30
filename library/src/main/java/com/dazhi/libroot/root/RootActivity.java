@@ -231,8 +231,6 @@ public abstract class RootActivity extends AppCompatActivity implements InteRoot
      * 功能：对话框部分
      * 描述：
      *=======================================*/
-    @SuppressWarnings("DeprecatedIsStillUsed")
-    @Deprecated
     @Override
     public void msgBoxShow(String msg) {
         if (dialogMsgBox != null && dialogMsgBox.isShowing()) {
@@ -246,7 +244,6 @@ public abstract class RootActivity extends AppCompatActivity implements InteRoot
         dialogMsgBox.show();
     }
 
-    @Deprecated
     @Override
     public void msgBoxShow(String title, String msg) {
         if (dialogMsgBox != null && dialogMsgBox.isShowing()) {
@@ -261,7 +258,6 @@ public abstract class RootActivity extends AppCompatActivity implements InteRoot
         dialogMsgBox.show();
     }
 
-    @Deprecated
     @Override
     public void msgBoxShow(String msg, String strEnt, DialogInterface.OnClickListener onClickListener) {
         if (dialogMsgBox != null) {
@@ -275,8 +271,6 @@ public abstract class RootActivity extends AppCompatActivity implements InteRoot
         dialogMsgBox.show();
     }
 
-    @SuppressWarnings("DeprecatedIsStillUsed")
-    @Deprecated
     @Override
     public void msgBoxShow(String title, String msg, String strEnt, DialogInterface.OnClickListener onClickListener) {
         if (dialogMsgBox != null) {
@@ -294,7 +288,6 @@ public abstract class RootActivity extends AppCompatActivity implements InteRoot
         dialogMsgBox.show();
     }
 
-    @Deprecated
     @Override
     public void msgBoxShow(String title, String msg, String strEsc, String strEnt, DialogInterface.OnClickListener onClickListener) {
         if (dialogMsgBox != null) {
@@ -317,7 +310,6 @@ public abstract class RootActivity extends AppCompatActivity implements InteRoot
         dialogMsgBox.show();
     }
 
-    @Deprecated
     @Override
     public void msgBoxShow(String title, String msg, String strEsc, DialogInterface.OnClickListener onClickListenerEsc, String strEnt, DialogInterface.OnClickListener onClickListenerEnt) {
         if (dialogMsgBox != null) {
