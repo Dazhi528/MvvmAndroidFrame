@@ -19,12 +19,21 @@ public interface InteRootView {
     /*加载框销毁*/
     void loadingShut();
 
-
-    /*简单消息窗口显示*/
+    /*=======================================
+     * 作者：WangZezhi  (2019-12-28  11:02)
+     * 功能：简单消息窗口显示(不推荐，改为：@link{}方式调用)
+     * 描述：这种实现方式局限性太高，改为链式调用方式
+     *=======================================*/
+    @Deprecated
     void msgBoxShow(String msg);
+    @Deprecated
     void msgBoxShow(String title, String msg);
+    @Deprecated
     void msgBoxShow(String msg, String strEnt, DialogInterface.OnClickListener onClickListener);
+    @Deprecated
     void msgBoxShow(String title, String msg, String strEnt, DialogInterface.OnClickListener onClickListener);
+    @Deprecated
     void msgBoxShow(String title, String msg, String strEsc, String strEnt, DialogInterface.OnClickListener onClickListener);
+    @Deprecated
     void msgBoxShow(String title, String msg, String strEsc, DialogInterface.OnClickListener onClickListenerEsc, String strEnt, DialogInterface.OnClickListener onClickListenerEnt);
 }

@@ -1,8 +1,12 @@
 package com.dazhi.sample;
 
 import com.dazhi.libroot.root.RootApp;
+import com.dazhi.libroot.util.UtConfig;
 import com.dazhi.sample.db.AppDatabase;
 import com.dazhi.sample.db.FactoryDaoPerson;
+import com.dazhi.sample.youmeng.EngineLifecycleApp;
+import com.umeng.analytics.MobclickAgent;
+import com.umeng.commonsdk.UMConfigure;
 
 /**
  * 功能：
@@ -17,6 +21,13 @@ public class SampleApp extends RootApp {
     @Override
     public void onCreate() {
         super.onCreate();
+        //
+        // 友盟统计(没有推送，最后一个值填null即可)
+        // UMConfigure.init(Context context, String appkey, String channel, int deviceType, String pushSecret);
+        UMConfigure.init(this, "5e070e85570df387c2000353", "MvvmAndroidLib",
+                UMConfigure.DEVICE_TYPE_PHONE, null);
+        MobclickAgent.setCatchUncaughtExceptions(true);
+        UtConfig.self().initEngineLifecycle(new EngineLifecycleApp());
         //
         FactoryDaoPerson.self().init(AppDatabase.self(this).getDaoPerson());
     }

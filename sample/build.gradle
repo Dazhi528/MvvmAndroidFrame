@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion Integer.parseInt(project.SDK_VERSION)
+    compileSdkVersion Integer.parseInt(SDK_VERSION_CUR)
     defaultConfig {
         applicationId "com.dazhi.sample"
-        minSdkVersion Integer.parseInt(project.SDK_VERSION_MIN)
-        targetSdkVersion Integer.parseInt(project.SDK_VERSION)
-        versionCode Integer.parseInt(project.VERSION_CODE)
-        versionName project.VERSION_NAME
+        minSdkVersion Integer.parseInt(SDK_VERSION_MIN)
+        targetSdkVersion Integer.parseInt(SDK_VERSION_CUR)
+        versionCode Integer.parseInt(VERSION_CODE)
+        versionName VERSION_NAME
     }
     buildTypes {
         release {
@@ -22,8 +22,11 @@ android {
 }
 
 dependencies {
-//    annotationProcessor "android.arch.persistence.room:compiler:1.1.1"
-    annotationProcessor 'androidx.room:room-compiler:2.2.2'
-    // implementation 'com.github.Dazhi528:MvvmAndroidLib:2.6.0'
+    // implementation 'com.github.Dazhi528:MvvmAndroidLib:x.x.x'
     implementation project(':library')
+    // room数据库
+    annotationProcessor 'androidx.room:room-compiler:2.2.3'
+    // 友盟统计
+    implementation  'com.umeng.umsdk:common:2.1.8'
+    implementation  'com.umeng.umsdk:analytics:8.1.4'
 }

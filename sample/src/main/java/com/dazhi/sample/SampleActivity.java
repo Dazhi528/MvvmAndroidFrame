@@ -3,7 +3,7 @@ package com.dazhi.sample;
 import android.annotation.SuppressLint;
 import android.widget.Button;
 import android.widget.TextView;
-import com.dazhi.libroot.inte.InteCallRoot;
+import com.dazhi.libroot.inte.InteRootCall;
 import com.dazhi.libroot.root.RootVmActivity;
 import com.dazhi.libroot.util.UtRoot;
 import com.dazhi.sample.db.DbPerson;
@@ -36,14 +36,14 @@ public class SampleActivity extends RootVmActivity<VmMain> {
         // UI
         final TextView tvMainShowDbData = findViewById(R.id.tvMainShowDbData);
         Button btMainInsertData = findViewById(R.id.btMainInsertData);
-        UtRoot.rxViewClick(btMainInsertData, new InteCallRoot(){
+        UtRoot.rxViewClick(btMainInsertData, new InteRootCall(){
             @Override
             public void call() {
                 vm.insertLsBnPerson();
             }
         });
         Button btMainDeleteData = findViewById(R.id.btMainDeleteData);
-        UtRoot.rxViewClick(btMainDeleteData, new InteCallRoot(){
+        UtRoot.rxViewClick(btMainDeleteData, new InteRootCall(){
             @Override
             public void call() {
                 String str=tvMainShowDbData.getText().toString();

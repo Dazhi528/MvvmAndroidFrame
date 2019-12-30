@@ -8,6 +8,6 @@ package com.dazhi.libroot.inte;
  * 创建日期：2018/6/6 15:42
  * 修改日期：2018/6/6 15:42
  */
-public interface InteCallRoot {
+public interface InteRootCall {
     void call();
 }

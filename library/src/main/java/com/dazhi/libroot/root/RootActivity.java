@@ -15,12 +15,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import com.dazhi.libroot.R;
+import com.dazhi.libroot.inte.InteRootEngineLifecycle;
 import com.dazhi.libroot.inte.InteRootView;
 import com.dazhi.libroot.ui.dialog.DialogLoad;
+import com.dazhi.libroot.util.UtConfig;
 import com.dazhi.libroot.util.UtRoot;
 import com.dazhi.libroot.util.UtStack;
 import com.dazhi.libroot.util.UtStatusBar;
-import com.umeng.analytics.MobclickAgent;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
@@ -47,6 +48,9 @@ import permissions.dispatcher.RuntimePermissions;
 public abstract class RootActivity extends AppCompatActivity implements InteRootView {
     private DialogLoad dialogLoading;  //进度对话框
     private AlertDialog dialogMsgBox; //警告对话框
+    // 依赖注入：生命周期引擎
+    @SuppressWarnings("unused")
+    private InteRootEngineLifecycle inteRootEngineLifecycle = UtConfig.self().getEngineLifecycle();
 
     /*==============抽象方法============*/
     /**/
@@ -72,6 +76,10 @@ public abstract class RootActivity extends AppCompatActivity implements InteRoot
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //
+        if(inteRootEngineLifecycle!=null) {
+            inteRootEngineLifecycle.onCreateRoot(this);
+        }
+        //
         initAtSetContentViewBefore();
         int layoutId = getLayoutId();
         // 当要设置view，而不是资源ID时，需实现getLayoutId回0，
@@ -82,14 +90,14 @@ public abstract class RootActivity extends AppCompatActivity implements InteRoot
             setContentView(layoutId);
         }
         //
-        TextView tvContent = (TextView) findViewById(R.id.librootToolbarTitle);
+        TextView tvContent = findViewById(R.id.librootToolbarTitle);
         if(tvContent!=null){
             tvContent.setTextColor(UtStatusBar.getToolbarCtColor());
         }
         //状态条配置
         UtStatusBar.setStatusBarColor(this, UtStatusBar.getToolbarBgColor());
         //
-        Toolbar toolbar = (Toolbar) findViewById(R.id.librootToolbar);
+        Toolbar toolbar = findViewById(R.id.librootToolbar);
         if(toolbar!=null){
             toolbar.setTitle(""); //主题不显示，用自定义文本显示
             toolbar.setBackgroundColor(UtStatusBar.getToolbarBgColor());
@@ -123,6 +131,7 @@ public abstract class RootActivity extends AppCompatActivity implements InteRoot
         initViewAndDataAndEvent();
     }
 
+    @SuppressWarnings({"NullableProblems", "ConstantConditions"})
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item!=null && (android.R.id.home==item.getItemId())){
@@ -135,20 +144,37 @@ public abstract class RootActivity extends AppCompatActivity implements InteRoot
     @Override
     protected void onResume() {
         super.onResume();
-        // 友盟统计
-        MobclickAgent.onResume(this);
+        // 放入接口引擎里实现：友盟统计
+        // MobclickAgent.onResume(this);
+        if(inteRootEngineLifecycle!=null) {
+            inteRootEngineLifecycle.onResumeRoot(this);
+        }
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        // 友盟统计
-        MobclickAgent.onPause(this);
+        // 放入接口引擎里实现：友盟统计
+        // MobclickAgent.onPause(this);
+        if(inteRootEngineLifecycle!=null) {
+            inteRootEngineLifecycle.onPauseRoot(this);
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if(inteRootEngineLifecycle!=null) {
+            inteRootEngineLifecycle.onStopRoot(this);
+        }
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        if(inteRootEngineLifecycle!=null) {
+            inteRootEngineLifecycle.onDestroyRoot(this);
+        }
         // 关闭对话框
         loadingShut();
         if (dialogMsgBox != null) {
@@ -156,6 +182,7 @@ public abstract class RootActivity extends AppCompatActivity implements InteRoot
             dialogMsgBox=null;
         }
         //
+        inteRootEngineLifecycle = null;
         UtStack.self().removeActivity(this);
     }
 
@@ -204,6 +231,8 @@ public abstract class RootActivity extends AppCompatActivity implements InteRoot
      * 功能：对话框部分
      * 描述：
      *=======================================*/
+    @SuppressWarnings("DeprecatedIsStillUsed")
+    @Deprecated
     @Override
     public void msgBoxShow(String msg) {
         if (dialogMsgBox != null && dialogMsgBox.isShowing()) {
@@ -217,6 +246,7 @@ public abstract class RootActivity extends AppCompatActivity implements InteRoot
         dialogMsgBox.show();
     }
 
+    @Deprecated
     @Override
     public void msgBoxShow(String title, String msg) {
         if (dialogMsgBox != null && dialogMsgBox.isShowing()) {
@@ -231,6 +261,7 @@ public abstract class RootActivity extends AppCompatActivity implements InteRoot
         dialogMsgBox.show();
     }
 
+    @Deprecated
     @Override
     public void msgBoxShow(String msg, String strEnt, DialogInterface.OnClickListener onClickListener) {
         if (dialogMsgBox != null) {
@@ -244,6 +275,8 @@ public abstract class RootActivity extends AppCompatActivity implements InteRoot
         dialogMsgBox.show();
     }
 
+    @SuppressWarnings("DeprecatedIsStillUsed")
+    @Deprecated
     @Override
     public void msgBoxShow(String title, String msg, String strEnt, DialogInterface.OnClickListener onClickListener) {
         if (dialogMsgBox != null) {
@@ -261,6 +294,7 @@ public abstract class RootActivity extends AppCompatActivity implements InteRoot
         dialogMsgBox.show();
     }
 
+    @Deprecated
     @Override
     public void msgBoxShow(String title, String msg, String strEsc, String strEnt, DialogInterface.OnClickListener onClickListener) {
         if (dialogMsgBox != null) {
@@ -283,6 +317,7 @@ public abstract class RootActivity extends AppCompatActivity implements InteRoot
         dialogMsgBox.show();
     }
 
+    @Deprecated
     @Override
     public void msgBoxShow(String title, String msg, String strEsc, DialogInterface.OnClickListener onClickListenerEsc, String strEnt, DialogInterface.OnClickListener onClickListenerEnt) {
         if (dialogMsgBox != null) {
@@ -307,6 +342,7 @@ public abstract class RootActivity extends AppCompatActivity implements InteRoot
      *=======================================*/
     //=====================电话、存储、相机、位置======================
     //校验phone、storage动态权限
+    @SuppressWarnings("unused")
     protected void permissionDhCcXjWz(){
         RootActivityPermissionsDispatcher.dhCcXjWzNeedWithPermissionCheck(this);
     }
@@ -337,6 +373,7 @@ public abstract class RootActivity extends AppCompatActivity implements InteRoot
 
     //=====================电话、存储、相机======================
     //校验phone、storage动态权限
+    @SuppressWarnings("unused")
     protected void permissionDhCcXj(){
         RootActivityPermissionsDispatcher.dhCcXjWzNeedWithPermissionCheck(this);
     }
@@ -367,6 +404,7 @@ public abstract class RootActivity extends AppCompatActivity implements InteRoot
 
     //=====================电话======================
     //校验phone动态权限
+    @SuppressWarnings("unused")
     protected void permissionPhone(){
         RootActivityPermissionsDispatcher.phoneNeedWithPermissionCheck(this);
     }
@@ -397,6 +435,7 @@ public abstract class RootActivity extends AppCompatActivity implements InteRoot
 
     //=====================存储======================
     //校验storage动态权限
+    @SuppressWarnings("unused")
     protected void permissionStorage(){
         RootActivityPermissionsDispatcher.storageNeedWithPermissionCheck(this);
     }
@@ -427,6 +466,7 @@ public abstract class RootActivity extends AppCompatActivity implements InteRoot
 
     //=====================相机权限管理部分======================
     //校验camera动态权限
+    @SuppressWarnings("unused")
     protected void permissionCamera(){
         RootActivityPermissionsDispatcher.cameraNeedWithPermissionCheck(this);
     }
@@ -457,6 +497,7 @@ public abstract class RootActivity extends AppCompatActivity implements InteRoot
 
     //=====================定位权限管理部分======================
     //校验camera动态权限
+    @SuppressWarnings("unused")
     protected void permissionLocation(){
         RootActivityPermissionsDispatcher.locationNeedWithPermissionCheck(this);
     }
@@ -487,6 +528,7 @@ public abstract class RootActivity extends AppCompatActivity implements InteRoot
 
     //=====================联系人权限管理部分======================
     //校验contact动态权限
+    @SuppressWarnings("unused")
     protected void permissionContact(){
         RootActivityPermissionsDispatcher.contactNeedWithPermissionCheck(this);
     }

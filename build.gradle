@@ -6,7 +6,7 @@ buildscript {
         jcenter()
         // Android Permissions Dispatcher
         maven { url 'http://oss.jfrog.org/artifactory/oss-snapshot-local/' }
-        // 友盟
+        // 友盟：sample演示依赖注入方式用到
         maven { url 'https://dl.bintray.com/umsdk/release' }
     }
     dependencies {
@@ -21,7 +21,7 @@ allprojects {
         google()
         jcenter()
         maven { url 'https://jitpack.io' }
-        // 友盟
+        //  友盟：sample演示依赖注入方式用到
         maven { url 'https://dl.bintray.com/umsdk/release' }
     }
 }

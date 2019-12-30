@@ -2,12 +2,12 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 
 android {
-    compileSdkVersion Integer.parseInt(project.SDK_VERSION)
+    compileSdkVersion Integer.parseInt(SDK_VERSION_CUR)
     defaultConfig {
-        minSdkVersion Integer.parseInt(project.SDK_VERSION_MIN)
-        targetSdkVersion Integer.parseInt(project.SDK_VERSION)
-        versionCode Integer.parseInt(project.VERSION_CODE)
-        versionName project.VERSION_NAME
+        minSdkVersion Integer.parseInt(SDK_VERSION_MIN)
+        targetSdkVersion Integer.parseInt(SDK_VERSION_CUR)
+        versionCode Integer.parseInt(VERSION_CODE)
+        versionName VERSION_NAME
         // 分包
         multiDexEnabled true
         // ARouter
@@ -39,14 +39,18 @@ dependencies {
 
     // jetpack
     api 'androidx.lifecycle:lifecycle-extensions:2.1.0'
-    api 'androidx.room:room-runtime:2.2.2'
-    api 'androidx.room:room-rxjava2:2.2.2'
-    // kapt "android.arch.persistence.room:compiler:1.1.1"
-    annotationProcessor 'androidx.room:room-compiler:2.2.2'
+    api 'androidx.room:room-runtime:2.2.3'
+    api 'androidx.room:room-rxjava2:2.2.3'
+    // kapt "android.arch.persistence.room:compiler:2.2.3"
+    annotationProcessor 'androidx.room:room-compiler:2.2.3'
 
     // ARouter
     api 'com.alibaba:arouter-api:1.5.0'
     annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'
+
+    // dagger
+//    api 'com.google.dagger:dagger:2.25.4'
+//    annotationProcessor 'com.google.dagger:dagger-compiler:2.25.4'
 
     // rx
     api 'com.jakewharton.rxbinding2:rxbinding:2.2.0'
@@ -76,8 +80,4 @@ dependencies {
 
     // util
     //implementation 'com.blankj:utilcode:1.12.0'
-
-    // 友盟统计
-    api  'com.umeng.umsdk:common:2.1.8'
-    api  'com.umeng.umsdk:analytics:8.1.4'
 }

@@ -37,7 +37,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.dazhi.libroot.R;
-import com.dazhi.libroot.inte.InteCallRoot;
+import com.dazhi.libroot.inte.InteRootCall;
 import com.google.android.material.snackbar.Snackbar;
 import com.jakewharton.rxbinding2.view.RxView;
 
@@ -129,7 +129,7 @@ public class UtRoot {
      * 功能：
      * 描述：
      *=======================================*/
-    public static void rxViewClick(@NonNull View view, @NonNull final InteCallRoot inteCallRoot) {
+    public static void rxViewClick(@NonNull View view, @NonNull final InteRootCall inteCallRoot) {
         RxView.clicks(view)
                 .throttleFirst(1, TimeUnit.SECONDS)
                 .subscribe(new Consumer<Object>() {
