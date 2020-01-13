@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -51,10 +50,10 @@ public abstract class RootAdapter<T> extends BaseAdapter {
     }
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder holder = ViewHolder.bind(parent.getContext(), convertView,
+        ViewHolder holder = ViewHolder.bind(convertView,
                 parent, intLayout, position);
         onBindView(holder, getItem(position));
-        return holder.getItemView();
+        return holder.getConvertView();
     }
 
 
@@ -65,82 +64,54 @@ public abstract class RootAdapter<T> extends BaseAdapter {
      *=======================================*/
     public abstract void onBindView(ViewHolder holder, T obj);
 
-    //添加一个元素
-    public void add(T data) {
-        if (lsData == null) {
-            lsData = new ArrayList<>();
-        }
-        lsData.add(data);
-        notifyDataSetChanged();
-    }
-    //往特定位置，添加一个元素
-    public void add(int position, T data) {
-        if (lsData == null) {
-            lsData = new ArrayList<>();
-        }
-        lsData.add(position, data);
-        notifyDataSetChanged();
-    }
-    public void remove(T data) {
-        if (lsData != null) {
-            lsData.remove(data);
-        }
-        notifyDataSetChanged();
-    }
-    public void remove(int position) {
-        if (lsData != null) {
-            lsData.remove(position);
-        }
-        notifyDataSetChanged();
-    }
-    public void clear() {
-        if (lsData != null) {
-            lsData.clear();
-        }
-        notifyDataSetChanged();
-    }
-
-
     /**=======================================
      * 作者：WangZezhi  (2018/3/8  12:00)
      * 功能：视图持有器
      * 描述：
      *=======================================*/
     public static class ViewHolder {
-        //private Context context;            //Context上下文
+        private Context context;          //Context上下文
         private SparseArray<View> saView;   //存储ListView 的 item中的View
-        private View item;                  //存放convertView
+        private View convertView;           //存放convertView
         private int position;               //游标
 
         //构造方法，完成相关初始化
         //private ViewHolder(Context context, ViewGroup parent, int layoutRes) {
-        private ViewHolder(Context context, ViewGroup parent, int layoutRes) {
-            //this.context = context;
+        private ViewHolder(ViewGroup parent, int layoutRes) {
+            this.context = parent.getContext();
             saView = new SparseArray<>();
             View convertView = LayoutInflater.from(context).inflate(layoutRes, parent, false);
             convertView.setTag(this);
-            item = convertView;
+            this.convertView = convertView;
         }
         //绑定ViewHolder与item
-        public static ViewHolder bind(Context context, View convertView, ViewGroup parent,
+        public static ViewHolder bind(View convertView, ViewGroup parent,
                                       int layoutRes, int position) {
             ViewHolder holder;
             if (convertView == null) {
-                holder = new ViewHolder(context, parent, layoutRes);
+                holder = new ViewHolder(parent, layoutRes);
             } else {
                 holder = (ViewHolder) convertView.getTag();
-                holder.item = convertView;
+                holder.convertView = convertView;
             }
             holder.position = position;
             return holder;
         }
+
+        /**
+         * 获取context
+         */
+        private Context getContext() {
+            return context;
+        }
+
         /**
          * 获取view
          */
         public <T extends View> T getView(int id) {
             T t = (T)saView.get(id);
             if (t == null) {
-                t = (T) item.findViewById(id);
+                t = (T) convertView.findViewById(id);
                 saView.put(id, t);
             }
             return t;
@@ -148,8 +119,8 @@ public abstract class RootAdapter<T> extends BaseAdapter {
         /**
          * 获取当前条目
          */
-        public View getItemView() {
-            return item;
+        private View getConvertView() {
+            return convertView;
         }
         /**
          * 获取条目位置
@@ -179,13 +150,7 @@ public abstract class RootAdapter<T> extends BaseAdapter {
             }
             return this;
         }
-        /**
-         * 设置点击监听
-         */
-        /*public ViewHolder setOnClickListener(int id, View.OnClickListener listener) {
-            getView(id).setOnClickListener(listener);
-            return this;
-        }*/
+
         /**
          * 设置可见
          */
@@ -193,14 +158,14 @@ public abstract class RootAdapter<T> extends BaseAdapter {
             getView(id).setVisibility(visible);
             return this;
         }
+
         /**
-         * 设置标签
+         * 设置点击监听
          */
-        public ViewHolder setTag(int id, Object obj) {
-            getView(id).setTag(obj);
+        public ViewHolder setOnClickListener(int id, View.OnClickListener listener) {
+            getView(id).setOnClickListener(listener);
             return this;
         }
     }
-
 
 }
