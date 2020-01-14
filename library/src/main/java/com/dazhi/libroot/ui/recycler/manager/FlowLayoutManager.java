@@ -9,9 +9,6 @@ import android.util.SparseArray;
 import android.util.SparseIntArray;
 import android.view.View;
 import android.view.ViewGroup;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import androidx.annotation.IntDef;
 import androidx.recyclerview.widget.LinearSmoothScroller;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -26,13 +23,6 @@ import androidx.recyclerview.widget.RecyclerView;
 @SuppressWarnings("WeakerAccess")
 public class FlowLayoutManager extends RecyclerView.LayoutManager implements
         RecyclerView.SmoothScroller.ScrollVectorProvider {
-    public static final int HORIZONTAL = 0;
-    public static final int VERTICAL = 1;
-
-    @IntDef({HORIZONTAL, VERTICAL})
-    @Retention(RetentionPolicy.SOURCE)
-    private @interface Orientation {}
-
     private static final int INVALID_OFFSET = Integer.MIN_VALUE;
 
     private int mVerticalSpace = 0;
@@ -55,20 +45,20 @@ public class FlowLayoutManager extends RecyclerView.LayoutManager implements
 
     private int mPendingScrollPositionOffset = INVALID_OFFSET;
 
-    @Orientation
-    private int mOrientation = VERTICAL;
+    @RecyclerView.Orientation
+    private int mOrientation = RecyclerView.VERTICAL;
 
     private RecyclerView.Recycler mRecycler;
     private RecyclerView.State mState;
 
 
     public FlowLayoutManager() {
-        this(VERTICAL);
+        this(RecyclerView.VERTICAL);
     }
-    public FlowLayoutManager(@Orientation int orientation) {
+    public FlowLayoutManager(@RecyclerView.Orientation int orientation) {
         this(orientation, 0, 0);
     }
-    public FlowLayoutManager(@Orientation int orientation, int verticalSpace, int horizontalSpace) {
+    public FlowLayoutManager(@RecyclerView.Orientation int orientation, int verticalSpace, int horizontalSpace) {
         setOrientation(orientation);
         setSpace(verticalSpace, horizontalSpace);
     }
@@ -96,7 +86,7 @@ public class FlowLayoutManager extends RecyclerView.LayoutManager implements
         return true;
     }
 
-    public void setOrientation(@Orientation int orientation) {
+    public void setOrientation(@RecyclerView.Orientation int orientation) {
         if (orientation == mOrientation) {
             return;
         }
@@ -312,12 +302,12 @@ public class FlowLayoutManager extends RecyclerView.LayoutManager implements
 
     @Override
     public boolean canScrollVertically() {
-        return mOrientation == VERTICAL;
+        return mOrientation == RecyclerView.VERTICAL;
     }
 
     @Override
     public boolean canScrollHorizontally() {
-        return mOrientation == HORIZONTAL;
+        return mOrientation == RecyclerView.HORIZONTAL;
     }
 
     @Override
