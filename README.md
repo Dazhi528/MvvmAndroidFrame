@@ -6,6 +6,11 @@
 **说明**<br/>
 基于jetpack包下的 lifecycle+room+rxjava2+retrofit2搭建
 
+### 引入方式 
+[![Release](https://img.shields.io/github/release/Dazhi528/MvvmAndroidLib?style=flat)](https://jitpack.io/#Dazhi528/MvvmAndroidLib)
+[![API](https://img.shields.io/badge/API-16%2B-green.svg?style=flat)](https://android-arsenal.com/api?level=16)
+
+
 ### 引用本库
 **Gradle** <br/>
 Step 1. Add the JitPack repository to your build file
@@ -55,10 +60,10 @@ screenMatchDP.jar文件到你项目的对应位置，然后在终端执行
 #### 安卓动态权限管理
 二次封装的第三方permissionsdispatcher库
 
-#### 友盟统计
-引入了友盟统计第三方库，用于统计项目崩溃日志，自己注册友盟账号
-并创建统计项目，拿到appkey配置到自己的项目中，自己项目不用再
-引友盟统计sdk，本库已集成
+#### 友盟统计等需要在BaseActivity生命周期方法中添加内容的引擎加载方式
+类似友盟统计等的一些库，需要写入BaseAcitvity生命周期方法中时，我们提供了
+InteRootEngineLifecycle引擎加载接口，只有实现此接口，然后App类里调用
+UtConfig.self().initEngineLifecycle(你的引擎)即可
 
 #### 上拉刷新、下拉加载
 二次封装的第三方SmartRefreshLayout库
@@ -74,8 +79,7 @@ screenMatchDP.jar文件到你项目的对应位置，然后在终端执行
 带图片的RadioButton：ViewDrawableRadioBt <br/>
 
 #### 适配器Item间隔
-DecorationIntervalGridLinear <br/>
-DecorationIntervalSimple
+DecorationSpace
 
 #### 通用适配器
 RootAdapter
