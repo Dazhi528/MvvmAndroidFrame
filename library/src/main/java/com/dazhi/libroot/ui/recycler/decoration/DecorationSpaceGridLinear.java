@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
  * 修改日期：2018/6/5 17:41
  */
 @SuppressWarnings({"WeakerAccess", "unused"})
-public class DecorationSpace extends RecyclerView.ItemDecoration {
+public class DecorationSpaceGridLinear extends RecyclerView.ItemDecoration {
     @RecyclerView.Orientation
     private int orientation; //布局方向
     private int space; //间隔像素值
@@ -22,16 +22,16 @@ public class DecorationSpace extends RecyclerView.ItemDecoration {
     private boolean booEdge; //边缘是否放入间隔
 
     //LinearLayoutManager用本构造方法，线性时，即跨度为1
-    public DecorationSpace(int space) {
+    public DecorationSpaceGridLinear(int space) {
         this(space, false);
     }
 
-    public DecorationSpace(int space, boolean booEdge) {
+    public DecorationSpaceGridLinear(int space, boolean booEdge) {
         this(RecyclerView.VERTICAL, space, booEdge);
     }
 
-    public DecorationSpace(@RecyclerView.Orientation int orientation,
-                           int space, boolean booEdge) {
+    public DecorationSpaceGridLinear(@RecyclerView.Orientation int orientation,
+                                     int space, boolean booEdge) {
         this(orientation, space, 1, booEdge);
     }
 
@@ -47,8 +47,8 @@ public class DecorationSpace extends RecyclerView.ItemDecoration {
      * @param booEdge     边缘是否放入间隔
      *                    =======================================
      */
-    public DecorationSpace(@RecyclerView.Orientation int orientation, int space,
-                           int spanCount, boolean booEdge) {
+    public DecorationSpaceGridLinear(@RecyclerView.Orientation int orientation, int space,
+                                     int spanCount, boolean booEdge) {
         this.orientation = orientation;
         this.space = space;
         this.spanCount = spanCount;

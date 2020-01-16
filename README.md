@@ -79,7 +79,7 @@ UtConfig.self().initEngineLifecycle(你的引擎)即可
 带图片的RadioButton：ViewDrawableRadioBt <br/>
 
 #### 适配器Item间隔
-DecorationSpace
+DecorationSpaceGridLinear
 
 #### 通用适配器
 RootAdapter

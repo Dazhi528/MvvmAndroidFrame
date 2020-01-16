@@ -5,6 +5,7 @@
     <string name="libroot_dialog_ent">ENT</string>
     <string name="libroot_dialog_esc">ESC</string>
 
+    <string name="libroot_loading">loading</string>
     <string name="libroot_empty_content">EmptyContent</string>
 
     <!--扫描-->
