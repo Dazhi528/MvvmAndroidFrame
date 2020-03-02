@@ -411,23 +411,27 @@ public class UtRoot {
     }
 
     public static boolean keyboardBooVisible(@NonNull Activity activity) {
-        //获取当前屏幕内容的高度
+        //获取当前屏幕的真实高度(即：整个屏幕高度)
         int screenHeight = activity.getWindow().getDecorView().getHeight();
-        //获取View可见区域的bottom
+        //获取当前屏幕的可用区域框架(范围)
         Rect rect = new Rect();
         activity.getWindow().getDecorView().getWindowVisibleDisplayFrame(rect);
-        return screenHeight - rect.bottom - getSoftButtonsBarHeight(activity)!= 0;
+        //获得当前屏幕的可用高度(即：可以编辑的地方；例如：软底部控制条就不包括在内)
+        //即：底部像素-顶部像素=真实高度
+        int usableHeight = rect.bottom - rect.top;
+        // 根据是否相等，判断软键盘是否显示
+        return screenHeight - usableHeight - screenUnusableHeight(activity)!= 0;
     }
 
     /**
-     * 底部虚拟按键栏的高度
+     * 获得屏幕不可用的显示高度
      */
-    public static int getSoftButtonsBarHeight(@NonNull Activity activity) {
+    public static int screenUnusableHeight(@NonNull Activity activity) {
         DisplayMetrics dm = new DisplayMetrics();
-        //这个方法获取可能不是真实屏幕的高度
+        //获得当前屏幕的可用高度(即：可以编辑的地方；例如：软底部控制条就不包括在内)
         activity.getWindowManager().getDefaultDisplay().getMetrics(dm);
         int usableHeight = dm.heightPixels;
-        //获取当前屏幕的真实高度
+        //获取当前屏幕的真实高度(即：整个屏幕高度)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
             activity.getWindowManager().getDefaultDisplay().getRealMetrics(dm);
         }
