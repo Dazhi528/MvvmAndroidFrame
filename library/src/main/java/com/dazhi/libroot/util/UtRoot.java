@@ -10,7 +10,6 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 import android.provider.Settings;
@@ -39,7 +38,7 @@ import android.widget.Toast;
 import com.dazhi.libroot.R;
 import com.dazhi.libroot.inte.InteRootCall;
 import com.google.android.material.snackbar.Snackbar;
-import com.jakewharton.rxbinding2.view.RxView;
+import com.jakewharton.rxbinding3.view.RxView;
 
 import java.lang.reflect.Method;
 import java.math.BigDecimal;
@@ -49,11 +48,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
-
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.res.ResourcesCompat;
 import io.reactivex.functions.Consumer;
-
 import static android.content.Context.INPUT_METHOD_SERVICE;
 
 @SuppressWarnings("ALL")

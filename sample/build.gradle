@@ -8,6 +8,8 @@ android {
         targetSdkVersion Integer.parseInt(SDK_VERSION_CUR)
         versionCode Integer.parseInt(VERSION_CODE)
         versionName VERSION_NAME
+        // 分包
+        multiDexEnabled true
     }
     buildTypes {
         release {
