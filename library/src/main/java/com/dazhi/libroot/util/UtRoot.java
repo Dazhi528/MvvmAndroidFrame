@@ -10,6 +10,10 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
+import android.net.ConnectivityManager;
+import android.net.NetworkCapabilities;
+import android.net.NetworkInfo;
+import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 import android.provider.Settings;
@@ -428,6 +432,31 @@ public class UtRoot {
         return usableHeight > visibleHeight;
     }
 
+    /*=======================================
+     * 作者：WangZezhi  (2020/3/20  17:24)
+     * 功能：检查网络是否连接
+     * 描述：
+     *=======================================*/
+    public static Boolean booNetworkConnected(Context context) {
+        if(context==null) {
+            return false;
+        }
+        ConnectivityManager manager = (ConnectivityManager) context
+                .getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            NetworkCapabilities networkCapabilities = manager
+                    .getNetworkCapabilities(manager.getActiveNetwork());
+            if (networkCapabilities != null) {
+                return (networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)
+                        || networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)
+                        || networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET));
+            }
+        } else {
+            NetworkInfo networkInfo = manager.getActiveNetworkInfo();
+            return networkInfo != null && networkInfo.isConnected();
+        }
+        return false;
+    }
 
     /**=======================================
      * 作者：WangZezhi  (2018/3/23  15:10)
