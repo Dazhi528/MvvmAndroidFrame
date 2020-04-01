@@ -43,7 +43,6 @@ import com.dazhi.libroot.R;
 import com.dazhi.libroot.inte.InteRootCall;
 import com.google.android.material.snackbar.Snackbar;
 import com.jakewharton.rxbinding3.view.RxView;
-
 import java.lang.reflect.Method;
 import java.math.BigDecimal;
 import java.text.ParseException;
@@ -437,7 +436,7 @@ public class UtRoot {
      * 功能：检查网络是否连接
      * 描述：
      *=======================================*/
-    public static Boolean booNetworkConnected(Context context) {
+    public static Boolean booNetworkConnected() {
         if(context==null) {
             return false;
         }
