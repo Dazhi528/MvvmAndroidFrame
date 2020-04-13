@@ -10,7 +10,7 @@ buildscript {
         maven { url 'https://dl.bintray.com/umsdk/release' }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.6.1'
+        classpath 'com.android.tools.build:gradle:3.6.2'
         // 上传到jitpack.io的maven仓库用
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
     }

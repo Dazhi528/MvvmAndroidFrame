@@ -38,7 +38,7 @@ public class VmMain extends RootViewModel {
         }
 
         // 数据库操作
-        UtThread.runSingleThread(new Runnable() {
+        UtThread.execute(new Runnable() {
             @Override
             public void run() {
                 // 插入测试数据
@@ -50,7 +50,7 @@ public class VmMain extends RootViewModel {
     }
 
     public void deleteLsBnPerson(final List<DbPerson> lsBnPerson){
-        UtThread.runSingleThread(new Runnable() {
+        UtThread.execute(new Runnable() {
             @Override
             public void run() {
                 FactoryDaoPerson.self().getDaoPerson().dbDeleteLsBnPerson(lsBnPerson);
