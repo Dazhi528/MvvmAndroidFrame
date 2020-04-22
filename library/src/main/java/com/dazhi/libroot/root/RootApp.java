@@ -2,7 +2,6 @@ package com.dazhi.libroot.root;
 
 import android.content.res.Configuration;
 import android.content.res.Resources;
-
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.dazhi.libroot.util.UtLog;
 import com.dazhi.libroot.util.UtRoot;
@@ -18,11 +17,13 @@ import androidx.multidex.MultiDexApplication;
  * 修改日期：2018/3/1 14:31
  */
 public abstract class RootApp extends MultiDexApplication {
+    // 用于配置打开日志等操作
+    protected void initConfigBaseFront(){}
 
     @Override
     public void onCreate() {
         super.onCreate();
-        //
+        initConfigBaseFront();
         UtRoot.initApp(this);
         ZXingLibrary.initDisplayOpinion(this);
         // ARouter
@@ -43,13 +44,6 @@ public abstract class RootApp extends MultiDexApplication {
             res.updateConfiguration(configuration, res.getDisplayMetrics());
         }
         return res;
-    }
-
-    @Override
-    public void onTerminate() {
-        ARouter.getInstance().destroy();
-        //
-        super.onTerminate();
     }
 
 

@@ -2,6 +2,8 @@ package com.dazhi.libroot.util;
 
 import android.app.Activity;
 
+import com.alibaba.android.arouter.launcher.ARouter;
+
 import java.util.LinkedList;
 
 /**
@@ -65,7 +67,7 @@ public class UtStack {
     /**
      * 判断某一Activity是否在运行
      */
-    public boolean nRunnActivity(String className) {
+    public boolean booRunnActivity(String className) {
         if (className != null) {
             for (Activity activity : lkActivity) {
                 if (activity.getClass().getName().equals(className)) {
@@ -81,6 +83,7 @@ public class UtStack {
      */
     public void exitApp() {
         try {
+            ARouter.getInstance().destroy();
             // 关闭工具的线程池
             UtThread.shutdownNow();
             // 关闭数据库
@@ -94,6 +97,7 @@ public class UtStack {
             e.printStackTrace();
         }
     }
+
     /**
      * 退出所有的Activity
      */
@@ -104,6 +108,5 @@ public class UtStack {
             }
         }
     }
-
 
 }
