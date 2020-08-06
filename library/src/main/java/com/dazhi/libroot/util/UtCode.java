@@ -1,7 +1,11 @@
 package com.dazhi.libroot.util;
 
 import android.util.Base64;
+
 import java.security.MessageDigest;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
+
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
@@ -14,24 +18,27 @@ import javax.crypto.spec.SecretKeySpec;
  * 创建日期：17-11-22 上午11:15
  * 修改日期：17-11-22 上午11:15
  */
+@SuppressWarnings("unused")
 public class UtCode {
     //秘钥
     private static final String SECRET_KEY = "&*u!^%$#";
     //初始化向量，随意填充,单只能是8个字节
-    private static byte[] iv = { 'a', 'n', 'j', 'd', 'p', 13, 22, '*'};
+    private static byte[] iv = {'a', 'n', 'j', 'd', 'p', 13, 22, '*'};
 
 
-    /**=======================================
+    /**
+     * =======================================
      * 作者：WangZezhi  (2018/6/8  17:23)
      * 功能： 获得加密的字符串
      * 描述：
-     *=======================================*/
-    public static String getEncryptStr(String plaintext){
+     * =======================================
+     */
+    public static String getEncryptStr(String plaintext) {
         return getEncryptStr(plaintext, SECRET_KEY);
     }
 
     public static String getEncryptStr(String plaintext, String strKey) {
-        try{
+        try {
             // 实例化IvParameterSpec对象，使用指定的初始化向量
             IvParameterSpec spec = new IvParameterSpec(iv);
             // 实例化SecretKeySpec类,根据字节数组来构造SecretKeySpec
@@ -44,24 +51,26 @@ public class UtCode {
             byte[] encryptData = cipher.doFinal(plaintext.getBytes());
             // 返回加密后的数据
             return base64Encode(encryptData);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return "";
         }
     }
 
 
-    /**=======================================
+    /**
+     * =======================================
      * 作者：WangZezhi  (2018/6/8  17:23)
      * 功能：获得解密的字符串
      * 描述：
-     *=======================================*/
-    public static String getDecryptStr(String ciphertext){
+     * =======================================
+     */
+    public static String getDecryptStr(String ciphertext) {
         return getDecryptStr(ciphertext, SECRET_KEY);
     }
 
     public static String getDecryptStr(String decryptString, String decryptKey) {
-        try{
+        try {
             // 先使用Base64解密
             byte[] base64byte = base64Decode(decryptString);
             // 实例化IvParameterSpec对象，使用指定的初始化向量
@@ -73,25 +82,28 @@ public class UtCode {
             // 用密码初始化Cipher对象
             cipher.init(Cipher.DECRYPT_MODE, key, spec);
             // 获取解密后的数据
-            byte decryptedData[] = cipher.doFinal(base64byte);
+            byte[] decryptedData = cipher.doFinal(base64byte);
             // 将解密后数据转换为字符串输出
             return new String(decryptedData);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return "";
         }
     }
 
 
-    /**=======================================
+    /**
+     * =======================================
      * 作者：WangZezhi  (2019-05-15  16:08)
      * 功能：Base64 编码/解码
      * 描述：
-     *=======================================*/
+     * =======================================
+     */
     // 编码
     public static String base64Encode(final String input) {
         return base64Encode(input.getBytes());
     }
+
     public static String base64Encode(final byte[] input) {
         if (input == null || input.length == 0) return "";
         return Base64.encodeToString(input, Base64.NO_WRAP);
@@ -102,47 +114,205 @@ public class UtCode {
         if (input == null || input.length() == 0) return new byte[0];
         return Base64.decode(input, Base64.NO_WRAP);
     }
+
     public static byte[] base64Decode(final byte[] input) {
         if (input == null || input.length == 0) return new byte[0];
         return Base64.decode(input, Base64.NO_WRAP);
     }
 
 
-    /**=======================================
+    /**
+     * =======================================
      * 作者：WangZezhi  (2019-05-15  16:23)
      * 功能：MD5
      * 描述：
-     *=======================================*/
+     * =======================================
+     */
     public static String md5(String strText) {
         return md5(strText, "I1j0l9n4DF3Aac|spP03DGqd4msbb");
     }
+
+    @SuppressWarnings("CharsetObjectCanBeUsed")
     public static String md5(String strText, String strSecret) {
         try {
             strText = strText + strSecret;
             MessageDigest m = MessageDigest.getInstance("MD5");
             m.update(strText.getBytes("UTF8"));
-            byte s[] = m.digest();
-            String result = "";
-            for (int i = 0; i < s.length; i++) {
-                result += Integer.toHexString((0x000000FF & s[i]) | 0xFFFFFF00).substring(6);
+            byte[] s = m.digest();
+            StringBuilder result = new StringBuilder();
+            for (byte b : s) {
+                result.append(Integer.toHexString((0x000000FF & b) | 0xFFFFFF00).substring(6));
             }
-            return result;
+            return result.toString();
         } catch (Exception e) {
             e.printStackTrace();
             return "";
         }
     }
 
+    /*=======================================
+     * 作者：WangZezhi  (2020/8/6  14:24)
+     * 功能：bcd与10进制互转
+     * 描述：BIN、OCT、HEX、DEC(decimal)分别代表二、八、十六、十进制
+     *=======================================*/
+    public static byte[] decToBcd(String str) {
+        if (str == null || str.isEmpty()) {
+            return null;
+        }
+        str = str.replace(" ", "")
+                .replace(",", "");
+        int len = str.length();
+        if (len % 2 == 1) {
+            // 奇数需补零
+            ++len;
+            str = "0" + str;
+        }
+        len /= 2;
+        byte[] result = new byte[len];
+        String temp;
+        for (int i = 0, j = 0; j < len; i += 2, j++) {
+            temp = str.substring(i, i + 2);
+            try {
+                // 10进制数直接拿来当16进制数
+                result[j] = Integer.valueOf(temp, 16).byteValue();
+            } catch (Exception ignored) {
+                return null;
+            }
+        }
+        return result;
+    }
+
+    // 十进制转为BCD (注意：10进制最大为99，不可能出现负数)
+    public static byte decToBcd(byte bt) {
+        return (byte) (bt / 10 * 6 + bt);
+    }
+
+    // BCD转为十进制 (注意：BCD最大为0x99，可能为负，需&0xFF转int)
+    public static byte bcdToDec(byte bt) {
+        return (byte) (bt & 0xFF - (bt >>> 4) * 6);
+    }
+
+    public static String bcdToDec(byte[] btArr) {
+        return bcdToDec(btArr, "");
+    }
+
+    public static String bcdToDec(byte[] btArr, String separator) {
+        if (btArr == null || btArr.length == 0) {
+            return null;
+        }
+        final int len = btArr.length;
+        StringBuilder sb = new StringBuilder(len * 2);
+        separator = separator == null ? "" : separator;
+        for (byte bt : btArr) {
+            // BCD最大为0x99，可能为负，需&转int，拆分后最大为9，因此可直接追加
+            sb.append((byte) ((bt & 0xF0) >>> 4));
+            sb.append((byte) (bt & 0x0F));
+            sb.append(separator);
+        }
+//        return sb.toString().substring(0, 1)
+//                .equalsIgnoreCase("0") ? sb.toString()
+//                .substring(1) : sb.toString();
+        return sb.toString();
+    }
+
+    /*=======================================
+     * 作者：WangZezhi  (2020/8/6  15:26)
+     * 功能：时间戳与BCD互转
+     * 描述：
+     *=======================================*/
+    public static byte[] timestampToBcd(long timestamp) {
+        return timestampToBcd(timestamp, "yyMMddHHmmss");
+    }
+
+    public static byte[] timestampToBcd(long timestamp, String format) {
+        String dateTime;
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat(format, Locale.CHINESE);
+            dateTime = sdf.format(timestamp);
+        } catch (Exception ignored) {
+            return null;
+        }
+        return decToBcd(dateTime);
+    }
+
+    public static long bcdToTimestamp(byte[] bcd) {
+        return bcdToTimestamp(bcd, "yyMMddHHmmss");
+    }
+
+    @SuppressWarnings("ConstantConditions")
+    public static long bcdToTimestamp(byte[] bcd, String format) {
+        String dec = bcdToDec(bcd, null);
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat(format, Locale.CHINESE);
+            return sdf.parse(dec).getTime();
+        } catch (Exception ignored) {
+            return 0;
+        }
+    }
+
+    /*=======================================
+     * 作者：WangZezhi  (2020/8/6  14:49)
+     * 功能：10进制与16进制互转
+     * 描述：
+     *=======================================*/
+    public static String decToHex(byte[] btArr, String separator) {
+        if (btArr == null || btArr.length == 0) {
+            return null;
+        }
+        return decToHex(btArr, 0, btArr.length, separator);
+    }
+
+    public static String decToHex(byte[] btArr, int offset, int len, String separator) {
+        if (btArr == null || offset < 0 || len < 1 || btArr.length < offset + len) {
+            return null;
+        }
+        StringBuilder sb = new StringBuilder();
+        separator = separator == null ? "" : separator;
+        for (int i = 0; i < len; i++) {
+            sb.append(String.format("%02x", btArr[offset + i]));
+            sb.append(separator);
+        }
+        return sb.toString().toUpperCase();
+    }
+
+    public static byte[] hexToDec(String hexStr) {
+        if (hexStr == null || hexStr.isEmpty()) {
+            return null;
+        }
+        hexStr = hexStr.replace(" ", "").replace(",", "");
+        if (hexStr.isEmpty()) {
+            return null;
+        }
+        int len = hexStr.length();
+        if ((len & 0x1) == 1) { //是奇数
+            ++len;
+            hexStr = "0" + hexStr; // 是奇数，首位加个0
+        }
+        byte[] result = new byte[len / 2]; //两个数作为一组，放到一个字节里
+        for (int i = 0, j = 0; i < len; i += 2, j++) {
+            try {
+                result[j] = (byte) Integer.parseInt(hexStr.substring(i, i + 2), 16);
+            } catch (Exception ignored) {
+                return null;
+            }
+        }
+        return result;
+    }
 
 }
 
 
-
-/**===============================================
+/*
+ * ===============================================
  * 作者：WangZezhi  (17-5-26  上午11:36)
  * 功能：Base64编码/解码部分
  * 详情：合法的（legal）
- ================================================*/
+ * =======================================================================================
+ * 作者：WangZezhi  (2018/6/8  17:22)
+ * 功能：base64Decode
+ * 描述：
+ * =======================================
+ */
 //    private static final char[] CARR_LEGAL_CHAR = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/".toCharArray();
 //    /**
 //     * data[]进行编码
@@ -190,7 +360,7 @@ public class UtCode {
 //    }
 
 
-/**=======================================
+/*=======================================
  * 作者：WangZezhi  (2018/6/8  17:22)
  * 功能：base64Decode
  * 描述：
