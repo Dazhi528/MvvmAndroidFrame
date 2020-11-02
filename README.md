@@ -38,10 +38,12 @@ URL：
 URL：
 
 *图片选择库*
-URL：
+URL：https://jitpack.io/#Dazhi528/PictureSelector
+导入：implementation 'com.github.Dazhi528:PictureSelector:1.0.1'
 
 *常用视图库*
-URL：
+URL：https://jitpack.io/#Dazhi528/RootView
+导入：implementation 'com.github.Dazhi528:RootView:1.0.1'
 #### 自定义view
 带删除内容的EditText: ViewClearEditText<br/>
 带图片的TextView：ViewDrawableText <br/>
@@ -49,6 +51,9 @@ URL：
 带图片的Button：ViewDrawableButton <br/>
 带图片的RadioButton：ViewDrawableRadioBt <br/>
 
+*由RxJava实现的事件总线库*
+URL：https://jitpack.io/#Dazhi528/RootRxbus
+导入：implementation 'com.github.Dazhi528:RootRxbus:1.0.1'
 
 ### 引入方式 
 [![Release](https://img.shields.io/github/release/Dazhi528/MvvmAndroidLib?style=flat)](https://jitpack.io/#Dazhi528/MvvmAndroidLib)
