@@ -8,13 +8,6 @@
 
     <string name="libroot_loading">加载中</string>
     <string name="libroot_empty_content">暂无内容</string>
-
-    <!--扫描-->
-    <string name="libroot_scan_close">关闭扫描</string>
-    <string name="libroot_scan_lighton">打开灯光</string>
-    <string name="libroot_scan_lightoff">关闭灯光</string>
-    <string name="libroot_scan_fail">扫描失败</string>
-
     <!--安卓动态权限管理-->
     <string name="permission_title">请到权限管理中开启权限</string>
     <string name="permission_esc">残忍拒绝</string>

@@ -9,11 +9,4 @@
     <!--=======尺寸=======-->
     <dimen name="libroot_toast_padding">10dp</dimen>
     <dimen name="libroot_load_padding">20dp</dimen>
-    <!--扫描-->
-    <dimen name="libroot_scan_framewidth">220dp</dimen>
-    <dimen name="libroot_scan_frameheight">190dp</dimen>
-    <dimen name="libroot_scan_cornerlinelength">15dp</dimen>
-    <dimen name="libroot_scan_cornerlinewidth">2dp</dimen>
-    <dimen name="libroot_scan_btmargin">50dp</dimen>
-    <dimen name="libroot_scan_btdrawablepadding">10dp</dimen>
 </resources>

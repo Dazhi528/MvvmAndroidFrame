@@ -13,7 +13,4 @@
     <!--snackbar背景-->
     <color name="libroot_toast_bg">#AAAAAA</color>
     <color name="libroot_snackbar_bg">#AAAAAA</color>
-    <!--扫描库-->
-    <color name="libroot_scan_bttext">#FFFFFF</color>
-    <color name="libroot_scan_line">#3B8DE9</color>
 </resources>

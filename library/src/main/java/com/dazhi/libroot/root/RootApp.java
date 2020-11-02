@@ -3,9 +3,8 @@ package com.dazhi.libroot.root;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.dazhi.libroot.util.UtLog;
-import com.dazhi.libroot.util.UtRoot;
-import com.uuzuche.lib_zxing.activity.ZXingLibrary;
+import com.dazhi.libroot.util.RtLog;
+import com.dazhi.libroot.util.RtCmn;
 import androidx.multidex.MultiDexApplication;
 
 /**
@@ -18,21 +17,22 @@ import androidx.multidex.MultiDexApplication;
  */
 public abstract class RootApp extends MultiDexApplication {
     // 用于配置打开日志等操作
-    protected void initConfigBaseFront(){}
+    protected void initConfig(){}
 
     @Override
     public void onCreate() {
         super.onCreate();
-        initConfigBaseFront();
-        UtRoot.initApp(this);
-        ZXingLibrary.initDisplayOpinion(this);
+        RtCmn.initApp(this);
+        initConfig();
         // ARouter
-        if (UtLog.booDebug()) { // 这两行必须写在init之前，否则这些配置在init过程中将无效
+        if (RtLog.booDebug()) { // 这两行必须写在init之前，否则这些配置在init过程中将无效
             ARouter.openLog();  // 打印日志
             ARouter.openDebug(); // 开启调试模式(如果在InstantRun模式下运行，必须开启调试模式！线上版本需要关闭,否则有安全风险)
         }
         ARouter.init(this); // 尽可能早，推荐在Application中初始化
     }
+
+
 
     @Override
     public Resources getResources() {
@@ -45,6 +45,5 @@ public abstract class RootApp extends MultiDexApplication {
         }
         return res;
     }
-
 
 }

@@ -4,7 +4,51 @@
 快速搭建Mvvm架构的安卓(Android)项目<br/>
 
 **说明**<br/>
-基于jetpack包下的 lifecycle+room+rxjava2+retrofit2搭建
+基于jetpack包下的 lifecycle+room+ktcoroutines搭建<br/>
+
+*如下是内部集成的库*
+```
+// 协程
+api "org.jetbrains.kotlinx:kotlinx-coroutines-android:xxx"
+// Android兼容库
+api 'androidx.multidex:multidex:xxx'
+api 'androidx.appcompat:appcompat:xxx'
+api 'androidx.constraintlayout:constraintlayout:xxx'
+api 'androidx.recyclerview:recyclerview:xxx'
+api 'androidx.cardview:cardview:xxx'
+// jetpack 生命周期管理及数据库
+api 'androidx.lifecycle:lifecycle-extensions:xxx'
+api 'androidx.room:room-runtime:xxx' 
+// ARouter 路由解耦(Dagger需要时自己引用)
+api 'com.alibaba:arouter-api:xxx'
+// 下拉刷新，上拉加载
+api 'com.scwang.smartrefresh:SmartRefreshLayout:xxx'
+// recycler adapter 快速搭建
+api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:xxx'
+// Android动态权限
+api "org.permissionsdispatcher:permissionsdispatcher:xxx"
+```
+
+**扩展库**<br/>
+TODO 待加入 <br/>
+*网络请求库需引入扩展库，或自己写*
+URL：
+
+*一维码二维码扫描*
+URL：
+
+*图片选择库*
+URL：
+
+*常用视图库*
+URL：
+#### 自定义view
+带删除内容的EditText: ViewClearEditText<br/>
+带图片的TextView：ViewDrawableText <br/>
+带图片的EditText：ViewDrawableEdit <br/>
+带图片的Button：ViewDrawableButton <br/>
+带图片的RadioButton：ViewDrawableRadioBt <br/>
+
 
 ### 引入方式 
 [![Release](https://img.shields.io/github/release/Dazhi528/MvvmAndroidLib?style=flat)](https://jitpack.io/#Dazhi528/MvvmAndroidLib)
@@ -32,18 +76,20 @@ dependencies {
 }
 ```
 
-#### 安卓开发必备常用支持库已引入
-constraint、appcompat-v7、recyclerview-v7、design、cardview、
-multidex：集成至BaseRootApp类里，继承此类可解决最大方法数问题
-
 ####  目录util下存放了常用工具类
 ***考虑到挺火的第三方库blankj:utilcode不能部分引入，冗余太多，这里封装了几个常用工具类*** <br/>
-UtRoot：常用方法类<br/>
-UtSp：偏好存储类<br/>（copy第三方工具库：blankj:utilcode）
-UtLog：统一管理日志
-UtFile: 文件相关工具类（copy第三方工具库：blankj:utilcode）
-UtStack：管理Acitvity堆栈
-UtStatusBar：状态条控制类（沉浸式、状态条颜色修改等）
+RtCmn：常用方法类<br/>
+RtSp：偏好存储类<br/>（copy第三方工具库：blankj:utilcode）
+RtLog：统一管理日志
+RtFile: 文件相关工具类（copy第三方工具库：blankj:utilcode）
+RtStack：管理Acitvity堆栈
+RtStatusBar：状态条控制类（沉浸式、状态条颜色修改等）
+RtConfig:生命周期扩展引擎加载配置类
+RtCode：常用加密及编码工具方法
+RtCatch：全局捕获异常，防止崩溃，可处理重启等操作
+RtThread：线程池封装，替换某些new Thread场景
+Rtview：封装点击防抖动方法
+
 
 #### 屏幕适配
 美工喜欢用720*1280开发安卓，在这个分辨率下，2px=1dp <br/>
@@ -70,13 +116,6 @@ UtConfig.self().initEngineLifecycle(你的引擎)即可
 
 #### 快速搭建Recycler适配器，去除冗余代码
 引入了第三方BaseRecyclerViewAdapterHelper库，可直接用
-
-#### 自定义view
-带删除内容的EditText: ViewClearEditText<br/>
-带图片的TextView：ViewDrawableText <br/>
-带图片的EditText：ViewDrawableEdit <br/>
-带图片的Button：ViewDrawableButton <br/>
-带图片的RadioButton：ViewDrawableRadioBt <br/>
 
 #### 适配器Item间隔
 DecorationSpaceGridLinear

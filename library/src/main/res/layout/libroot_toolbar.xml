@@ -1,22 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.appbar.AppBarLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/librootToolbar"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@android:color/transparent"
-    android:theme="@style/LibRootTheme.AppBar">
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/librootToolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?android:attr/actionBarSize"
-        app:popupTheme="@style/LibRootTheme.PopupOverlay" >
-        <TextView
-            android:id="@+id/librootToolbarTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:layout_gravity="center"
-            android:background="@android:color/transparent"/>
-    </androidx.appcompat.widget.Toolbar>
-</com.google.android.material.appbar.AppBarLayout>
+    android:layout_height="?android:attr/actionBarSize"
+    android:theme="@style/LibRootTheme.AppBar"
+    app:popupTheme="@style/LibRootTheme.PopupOverlay">
+    <TextView
+        android:id="@+id/librootToolbarTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@android:color/transparent"
+        android:textSize="16sp" />
+</androidx.appcompat.widget.Toolbar>
