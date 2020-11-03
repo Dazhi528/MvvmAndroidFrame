@@ -13,12 +13,6 @@ android {
         versionName VERSION_NAME
         // 分包
         multiDexEnabled true
-        // ARouter
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments = [AROUTER_MODULE_NAME: project.getName()]
-            }
-        }
     }
     buildTypes {
         release {
@@ -27,8 +21,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility 1.8
-        targetCompatibility 1.8
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
@@ -56,6 +50,7 @@ dependencies {
     // ARouter
     api 'com.alibaba:arouter-api:1.5.0'
 //    annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'
+//    kapt 'com.alibaba:arouter-compiler:1.2.2'
 
     // Android Permissions Dispatcher
     api "org.permissionsdispatcher:permissionsdispatcher:4.6.0"
