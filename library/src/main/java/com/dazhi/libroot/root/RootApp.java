@@ -9,30 +9,24 @@ import androidx.multidex.MultiDexApplication;
 
 /**
  * 功能：分包超类App
- * 描述：
+ * 描述：不继承此App时，需调用一次RtCmn.initApp(this, false);
  * 作者：WangZezhi
  * 邮箱：wangzezhi528@163.com
  * 创建日期：2018/3/1 14:31
  * 修改日期：2018/3/1 14:31
  */
 public abstract class RootApp extends MultiDexApplication {
-    // 用于配置打开日志等操作
-    protected void initConfig(){}
+
+    // 默认非调试模式，如果需要调试可子类重写此方法
+    protected void initConfig(){
+        RtCmn.initApp(this, false);
+    }
 
     @Override
     public void onCreate() {
         super.onCreate();
-        RtCmn.initApp(this);
         initConfig();
-        // ARouter
-        if (RtLog.booDebug()) { // 这两行必须写在init之前，否则这些配置在init过程中将无效
-            ARouter.openLog();  // 打印日志
-            ARouter.openDebug(); // 开启调试模式(如果在InstantRun模式下运行，必须开启调试模式！线上版本需要关闭,否则有安全风险)
-        }
-        ARouter.init(this); // 尽可能早，推荐在Application中初始化
     }
-
-
 
     @Override
     public Resources getResources() {
