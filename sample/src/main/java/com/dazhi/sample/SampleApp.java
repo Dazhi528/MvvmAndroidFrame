@@ -1,6 +1,7 @@
 package com.dazhi.sample;
 
 import com.dazhi.libroot.root.RootApp;
+import com.dazhi.libroot.util.RtLog;
 import com.dazhi.sample.db.AppDatabase;
 import com.dazhi.sample.db.FactoryDaoPerson;
 
@@ -17,6 +18,8 @@ public class SampleApp extends RootApp {
     @Override
     public void onCreate() {
         super.onCreate();
+        // 打开调试，发布时候注销此句
+        RtLog.setOpen();
         //
         // 友盟统计(没有推送，最后一个值填null即可)
         // UMConfigure.init(Context context, String appkey, String channel, int deviceType, String pushSecret);

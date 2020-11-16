@@ -12,6 +12,7 @@
 api "org.jetbrains.kotlinx:kotlinx-coroutines-android:xxx"
 // Android兼容库
 api 'androidx.multidex:multidex:xxx'
+api "androidx.startup:startup-runtime:xxx"
 api 'androidx.appcompat:appcompat:xxx'
 api 'androidx.constraintlayout:constraintlayout:xxx'
 api 'androidx.recyclerview:recyclerview:xxx'

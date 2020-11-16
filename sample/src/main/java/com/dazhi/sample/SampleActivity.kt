@@ -5,7 +5,10 @@ import android.view.View
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.alibaba.android.arouter.launcher.ARouter
 import com.dazhi.libroot.root.RootVmActivity
+import com.dazhi.libroot.util.RtCmn
+import com.dazhi.libroot.util.RtLog
 import com.dazhi.libroot.util.viewClick
 import com.dazhi.sample.db.DbPerson
 import kotlinx.android.synthetic.main.activity_sample.*
@@ -28,7 +31,11 @@ class SampleActivity : RootVmActivity<VmMain>() {
     override fun initViewAndDataAndEvent() {
         super.initViewAndDataAndEvent()
         // UI
-        viewClick(btMainInsertData) { vm!!.insertLsBnPerson() }
+        viewClick(btMainInsertData) {
+            RtCmn.toastShort("测试插入")
+            RtLog.e("测试插入：${ARouter.debuggable()}")
+            vm!!.insertLsBnPerson()
+        }
 
         viewClick(btMainDeleteData) {
             val str = tvMainShowDbData.text.toString()

@@ -9,24 +9,13 @@ import androidx.multidex.MultiDexApplication;
 
 /**
  * 功能：分包超类App
- * 描述：不继承此App时，需调用一次RtCmn.initApp(this, false);
+ * 描述：可根据需要继承此类
  * 作者：WangZezhi
  * 邮箱：wangzezhi528@163.com
  * 创建日期：2018/3/1 14:31
  * 修改日期：2018/3/1 14:31
  */
 public abstract class RootApp extends MultiDexApplication {
-
-    // 默认非调试模式，如果需要调试可子类重写此方法
-    protected void initConfig(){
-        RtCmn.initApp(this, false);
-    }
-
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        initConfig();
-    }
 
     @Override
     public Resources getResources() {
