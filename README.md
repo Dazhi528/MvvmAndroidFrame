@@ -8,26 +8,32 @@
 
 *如下是内部集成的库*
 ```
-// 协程
+// 协程(它的Flow用来替换Rxjava，轻量而又强大；协程替换线程，清爽了许多)
 api "org.jetbrains.kotlinx:kotlinx-coroutines-android:xxx"
+
 // Android兼容库
-api 'androidx.multidex:multidex:xxx'
-api "androidx.startup:startup-runtime:xxx"
-api 'androidx.appcompat:appcompat:xxx'
-api 'androidx.constraintlayout:constraintlayout:xxx'
-api 'androidx.recyclerview:recyclerview:xxx'
-api 'androidx.cardview:cardview:xxx'
-// jetpack 生命周期管理及数据库
-api 'androidx.lifecycle:lifecycle-extensions:xxx'
-api 'androidx.room:room-runtime:xxx' 
+api 'androidx.multidex:multidex:xxx' // 解决最大方法数问题
+api "androidx.startup:startup-runtime:xxx" // 负责App启动需做的初始化工作，方便使用者扩展无需继承RootApp
+api 'androidx.appcompat:appcompat:xxx' // 官方兼容库，原生的已基本没人用，所以这里当然要引入了
+api 'androidx.constraintlayout:constraintlayout:xxx' // 约束布局，考虑到官方极力推荐，AS相关布局都做了很多努力，也引入吧
+api 'androidx.recyclerview:recyclerview:xxx' // 官方推荐的大多数的ListView和GridView的使用场景替代方案
+api 'androidx.cardview:cardview:xxx' // 圆角矩形卡片UI，现在挺常见的场景，一并引入吧
+
 // ARouter 路由解耦(Dagger需要时自己引用)
-api 'com.alibaba:arouter-api:xxx'
+api 'com.alibaba:arouter-api:xxx' // 极力推荐要会用的一个库，直接强引进来，好处多大，不会的同学快去了解下
+
 // 下拉刷新，上拉加载
 api 'com.scwang.smartrefresh:SmartRefreshLayout:xxx'
+
 // recycler adapter 快速搭建
 api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:xxx'
+
 // Android动态权限
 api "org.permissionsdispatcher:permissionsdispatcher:xxx"
+
+// 为了解耦已注销，按需自己引入：jetpack生命周期管理及数据库
+# api 'androidx.lifecycle:lifecycle-extensions:xxx'
+# api 'androidx.room:room-runtime:xxx'
 ```
 
 **扩展库**<br/>
@@ -49,11 +55,11 @@ URL：https://jitpack.io/#Dazhi528/PictureSelector
 URL：https://jitpack.io/#Dazhi528/RootView
 导入：implementation 'com.github.Dazhi528:RootView:Tag'
 作用：常用的自定义view
-带删除内容的EditText: ViewClearEditText<br/>
-带图片的TextView：ViewDrawableText <br/>
-带图片的EditText：ViewDrawableEdit <br/>
-带图片的Button：ViewDrawableButton <br/>
-带图片的RadioButton：ViewDrawableRadioBt <br/>
+* 带删除内容的EditText: ViewClearEditText<br/>
+* 带图片的TextView：ViewDrawableText <br/>
+* 带图片的EditText：ViewDrawableEdit <br/>
+* 带图片的Button：ViewDrawableButton <br/>
+* 带图片的RadioButton：ViewDrawableRadioBt <br/>
 
 *由RxJava实现的事件总线库*
 URL：https://jitpack.io/#Dazhi528/RootRxbus
