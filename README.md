@@ -75,8 +75,6 @@ URL：https://jitpack.io/#Dazhi528/RootRxbus <br/>
 [![Release](https://img.shields.io/github/release/Dazhi528/MvvmAndroidLib?style=flat)](https://jitpack.io/#Dazhi528/MvvmAndroidLib)
 [![API](https://img.shields.io/badge/API-16%2B-green.svg?style=flat)](https://android-arsenal.com/api?level=16)
 
-
-### 引用本库
 **Gradle** <br/>
 Step 1. Add the JitPack repository to your build file
 
@@ -96,6 +94,9 @@ dependencies {
     implementation 'com.github.Dazhi528:MvvmAndroidLib:Tag'
 }
 ```
+
+
+### 本库功能描述
 
 ####  目录util下存放了常用工具类
 ***考虑到挺火的第三方库blankj:utilcode不能部分引入，冗余太多，这里封装了几个常用工具类*** <br/>
@@ -118,7 +119,7 @@ Rtview：封装点击防抖动方法
 我们开发就根据美工给的这个原型图像素除以2就可以了，尺寸都 <br/>
 放到values/dimens.xml下，开发完成copy项目的main目录下的 <br/>
 screenMatchDP.jar文件到你项目的对应位置，然后在终端执行 <br/>
-（第一个必须是360，即标准的720*1280，后面的是插件没生成，自己需要的）<br/>
+第一个必须是360，即标准的720 X 1280，后面的是插件没生成，自己需要的<br/>
 如下命令：<br/>
 ***java -jar screenMatchDP.jar 360 120 160 240 320***
 <br/>
