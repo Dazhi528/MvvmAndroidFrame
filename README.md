@@ -37,34 +37,38 @@ api "org.permissionsdispatcher:permissionsdispatcher:xxx"
 ```
 
 **扩展库**<br/>
-TODO 待加入，网络请求之前是用Rxjava实现，现在有了协程，所以准备放弃rxjava，以后用协程，现在正在构思，当然网络部分依然是okhttp+Retrofit <br/>
-*网络请求库需引入扩展库，或自己写*
+TODO 待加入，网络请求之前是用Rxjava实现，现在有了协程，所以准备放弃rxjava，以后用协程， <br/>
+现在正在构思，当然网络部分依然是okhttp+Retrofit <br/>
+*网络请求库需引入扩展库，或自己写* <br/>
 URL：
 
-*一维码二维码扫描*
-URL：https://jitpack.io/#Dazhi528/ZxingScan
-导入：implementation 'com.github.Dazhi528:ZxingScan:Tag'
-作用：扫描识别一维码或二维码
+*一维码二维码扫描* <br/>
+URL：https://jitpack.io/#Dazhi528/ZxingScan <br/>
+导入：implementation 'com.github.Dazhi528:ZxingScan:Tag' <br/>
+作用：扫描识别一维码或二维码 <br/>
 
-*图片选择库*
-URL：https://jitpack.io/#Dazhi528/PictureSelector
-导入：implementation 'com.github.Dazhi528:PictureSelector:Tag'
-作用：从相册选择图片或拍照选择图片，用于上传
+*图片选择库* <br/>
+URL：https://jitpack.io/#Dazhi528/PictureSelector  <br/>
+导入：implementation 'com.github.Dazhi528:PictureSelector:Tag' <br/>
+作用：从相册选择图片或拍照选择图片，用于上传 <br/>
 
-*常用视图库*
-URL：https://jitpack.io/#Dazhi528/RootView
-导入：implementation 'com.github.Dazhi528:RootView:Tag'
-作用：常用的自定义view
+*常用视图库* <br/>
+URL：https://jitpack.io/#Dazhi528/RootView <br/>
+导入：implementation 'com.github.Dazhi528:RootView:Tag' <br/>
+作用：常用的自定义view <br/>
 * 带删除内容的EditText: ViewClearEditText<br/>
 * 带图片的TextView：ViewDrawableText <br/>
 * 带图片的EditText：ViewDrawableEdit <br/>
 * 带图片的Button：ViewDrawableButton <br/>
 * 带图片的RadioButton：ViewDrawableRadioBt <br/>
 
-*由RxJava实现的事件总线库*
-URL：https://jitpack.io/#Dazhi528/RootRxbus
-导入：implementation 'com.github.Dazhi528:RootRxbus:1.0.1'
-作用：替代一些广播接收器或消息接收处理场景，同EventBus功能，比其轻量，不过前提是你打算引入Rxjava库，此库作者之前用rxjava封装网络请求时，用的比较多，由于作者现在更推协程，网络请求正在打算用协程构思，因此，此库用的比较少了，正在寻找协程的替代方案
+*由RxJava实现的事件总线库* <br/>
+URL：https://jitpack.io/#Dazhi528/RootRxbus <br/>
+导入：implementation 'com.github.Dazhi528:RootRxbus:1.0.1' <br/>
+作用： <br/>
+替代一些广播接收器或消息接收处理场景，同EventBus功能，比其轻量，不过前提是你打算引入Rxjava库，<br/>
+此库作者之前用rxjava封装网络请求时，用的比较多，由于作者现在更推协程，网络请求正在打算用协程构思，<br/>
+因此，此库用的比较少了，正在寻找协程的替代方案 <br/>
 
 
 ### 引入方式 
@@ -95,8 +99,9 @@ dependencies {
 
 ####  目录util下存放了常用工具类
 ***考虑到挺火的第三方库blankj:utilcode不能部分引入，冗余太多，这里封装了几个常用工具类*** <br/>
-RtCmn：常用方法类<br/>
-RtSp：偏好存储类<br/>（copy第三方工具库：blankj:utilcode）
+```
+RtCmn：常用方法类
+RtSp：偏好存储类（copy第三方工具库：blankj:utilcode）
 RtLog：统一管理日志
 RtFile: 文件相关工具类（copy第三方工具库：blankj:utilcode）
 RtStack：管理Acitvity堆栈
@@ -106,27 +111,28 @@ RtCode：常用加密及编码工具方法
 RtCatch：全局捕获异常，防止崩溃，可处理重启等操作
 RtThread：线程池封装，替换某些new Thread场景
 Rtview：封装点击防抖动方法
-
+```
 
 #### 屏幕适配
 美工喜欢用720*1280开发安卓，在这个分辨率下，2px=1dp <br/>
-我们开发就根据美工给的这个原型图像素除以2就可以了，尺寸都
-放到values/dimens.xml下，开发完成copy项目的main目录下的
-screenMatchDP.jar文件到你项目的对应位置，然后在终端执行
-（第一个必须是360，即标准的720*1280，后面的是插件没生成，自己需要的）
-<br/>
+我们开发就根据美工给的这个原型图像素除以2就可以了，尺寸都 <br/>
+放到values/dimens.xml下，开发完成copy项目的main目录下的 <br/>
+screenMatchDP.jar文件到你项目的对应位置，然后在终端执行 <br/>
+（第一个必须是360，即标准的720*1280，后面的是插件没生成，自己需要的）<br/>
 如下命令：<br/>
 ***java -jar screenMatchDP.jar 360 120 160 240 320***
 <br/>
 美工开发IOS用iPhone6为标准； 屏幕宽度为375px，共有750个物理像素
 
 #### 安卓动态权限管理
-二次封装的第三方permissionsdispatcher库，使用此库的框架，已集成动态权限，需要申请什么权限直接调用permissionXXX()方法，例：permissionDhCcXj()，详情跳入源码看已有权限
+二次封装的第三方permissionsdispatcher库，使用此库的框架，已集成动态权限，<br/>
+需要申请什么权限直接调用permissionXXX()方法，例：permissionDhCcXj()，<br/>
+详情跳入源码看已有权限
 
-#### 友盟统计等需要在BaseActivity生命周期方法中添加内容的引擎加载方式
-类似友盟统计等的一些库，需要写入BaseAcitvity生命周期方法中时，我们提供了
-InteRootEngineLifecycle引擎加载接口，只有实现此接口，然后App类里调用
-UtConfig.self().initEngineLifecycle(你的引擎)即可，实例中有加载实例
+#### 友盟统计等需要在BaseActivity生命周期方法中添加内容的引擎加载方式 <br/>
+类似友盟统计等的一些库，需要写入BaseAcitvity生命周期方法中时，我们提供了 <br/>
+InteRootEngineLifecycle引擎加载接口，只有实现此接口，然后App类里调用 <br/>
+UtConfig.self().initEngineLifecycle(你的引擎)即可，实例中有加载实例 <br/>
 
 #### 上拉刷新、下拉加载
 二次封装的第三方SmartRefreshLayout库
