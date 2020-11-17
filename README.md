@@ -31,21 +31,24 @@ api "org.permissionsdispatcher:permissionsdispatcher:xxx"
 ```
 
 **扩展库**<br/>
-TODO 待加入 <br/>
+TODO 待加入，网络请求之前是用Rxjava实现，现在有了协程，所以准备放弃rxjava，以后用协程，现在正在构思，当然网络部分依然是okhttp+Retrofit <br/>
 *网络请求库需引入扩展库，或自己写*
 URL：
 
 *一维码二维码扫描*
-URL：
+URL：https://jitpack.io/#Dazhi528/ZxingScan
+导入：implementation 'com.github.Dazhi528:ZxingScan:Tag'
+作用：扫描识别一维码或二维码
 
 *图片选择库*
 URL：https://jitpack.io/#Dazhi528/PictureSelector
-导入：implementation 'com.github.Dazhi528:PictureSelector:1.0.1'
+导入：implementation 'com.github.Dazhi528:PictureSelector:Tag'
+作用：从相册选择图片或拍照选择图片，用于上传
 
 *常用视图库*
 URL：https://jitpack.io/#Dazhi528/RootView
-导入：implementation 'com.github.Dazhi528:RootView:1.0.1'
-#### 自定义view
+导入：implementation 'com.github.Dazhi528:RootView:Tag'
+作用：常用的自定义view
 带删除内容的EditText: ViewClearEditText<br/>
 带图片的TextView：ViewDrawableText <br/>
 带图片的EditText：ViewDrawableEdit <br/>
@@ -55,6 +58,8 @@ URL：https://jitpack.io/#Dazhi528/RootView
 *由RxJava实现的事件总线库*
 URL：https://jitpack.io/#Dazhi528/RootRxbus
 导入：implementation 'com.github.Dazhi528:RootRxbus:1.0.1'
+作用：替代一些广播接收器或消息接收处理场景，同EventBus功能，比其轻量，不过前提是你打算引入Rxjava库，此库作者之前用rxjava封装网络请求时，用的比较多，由于作者现在更推协程，网络请求正在打算用协程构思，因此，此库用的比较少了，正在寻找协程的替代方案
+
 
 ### 引入方式 
 [![Release](https://img.shields.io/github/release/Dazhi528/MvvmAndroidLib?style=flat)](https://jitpack.io/#Dazhi528/MvvmAndroidLib)
@@ -110,12 +115,12 @@ screenMatchDP.jar文件到你项目的对应位置，然后在终端执行
 美工开发IOS用iPhone6为标准； 屏幕宽度为375px，共有750个物理像素
 
 #### 安卓动态权限管理
-二次封装的第三方permissionsdispatcher库
+二次封装的第三方permissionsdispatcher库，使用此库的框架，已集成动态权限，需要申请什么权限直接调用permissionXXX()方法，例：permissionDhCcXj()，详情跳入源码看已有权限
 
 #### 友盟统计等需要在BaseActivity生命周期方法中添加内容的引擎加载方式
 类似友盟统计等的一些库，需要写入BaseAcitvity生命周期方法中时，我们提供了
 InteRootEngineLifecycle引擎加载接口，只有实现此接口，然后App类里调用
-UtConfig.self().initEngineLifecycle(你的引擎)即可
+UtConfig.self().initEngineLifecycle(你的引擎)即可，实例中有加载实例
 
 #### 上拉刷新、下拉加载
 二次封装的第三方SmartRefreshLayout库
