@@ -31,7 +31,14 @@ class SampleActivity : RootVmActivity<VmMain>() {
     override fun initViewAndDataAndEvent() {
         super.initViewAndDataAndEvent()
         // UI
+        var lastTime=System.currentTimeMillis()
         viewClick(btMainInsertData) {
+            // 测试防抖动
+            val temp = System.currentTimeMillis()
+            RtLog.d("间隔：${temp-lastTime}")
+            lastTime = temp
+            return@viewClick
+            //
             RtCmn.toastShort("测试插入")
             RtLog.e("测试插入：${ARouter.debuggable()}")
             vm!!.insertLsBnPerson()

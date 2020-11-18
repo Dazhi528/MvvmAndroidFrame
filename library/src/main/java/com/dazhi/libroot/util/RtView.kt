@@ -27,8 +27,10 @@ private class ThrottleOnClickListener(private val mDuration: Long, private val m
     }
 
     override fun onClick(mView: View?) {
-        available=false
-        mView?.postDelayed(mRunnable, mDuration)
-        mClick()
+        if(available) {
+            available=false
+            mClick()
+            mView?.postDelayed(mRunnable, mDuration)
+        }
     }
 }

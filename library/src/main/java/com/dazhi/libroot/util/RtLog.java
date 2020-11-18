@@ -1,7 +1,6 @@
 package com.dazhi.libroot.util;
 
 import android.util.Log;
-
 import com.alibaba.android.arouter.launcher.ARouter;
 
 /**
@@ -12,7 +11,7 @@ import com.alibaba.android.arouter.launcher.ARouter;
  * 创建日期：2018/5/2 10:41
  * 修改日期：2018/5/2 10:41
  */
-@SuppressWarnings("WeakerAccess")
+@SuppressWarnings({"unused", "RedundantSuppression"})
 public class RtLog {
     private static boolean booDebug = false; //默认关闭
 
@@ -38,7 +37,7 @@ public class RtLog {
      * =======================================
      */
     public static void d(String strMsg) {
-        d("UtLogD", strMsg);
+        d("RtLogD", strMsg);
     }
 
     public static void d(String strTag, String strMsg) {
@@ -53,7 +52,7 @@ public class RtLog {
     }
 
     public static void i(String strMsg) {
-        i("UtLogI", strMsg);
+        i("RtLogI", strMsg);
     }
 
     public static void i(String strTag, String strMsg) {
@@ -68,7 +67,7 @@ public class RtLog {
     }
 
     public static void e(String strMsg) {
-        e("UtLogE", strMsg);
+        e("RtLogE", strMsg);
     }
 
     public static void e(String strTag, String strMsg) {
