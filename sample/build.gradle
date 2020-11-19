@@ -43,4 +43,7 @@ dependencies {
     // 友盟统计
 //    implementation  'com.umeng.umsdk:common:2.1.8'
 //    implementation  'com.umeng.umsdk:analytics:8.1.4'
+
+    // 检查内存泄露
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.5'
 }

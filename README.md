@@ -37,10 +37,10 @@ api "org.permissionsdispatcher:permissionsdispatcher:xxx"
 ```
 
 **扩展库**<br/>
-TODO 待加入，网络请求之前是用Rxjava实现，现在有了协程，所以准备放弃rxjava，以后用协程， <br/>
-现在正在构思，当然网络部分依然是okhttp+Retrofit <br/>
-*网络请求库需引入扩展库，或自己写* <br/>
-URL：
+*网络请求* <br/>
+URL：https://jitpack.io/#Dazhi528/RootHttp <br/>
+导入：implementation 'com.github.Dazhi528:RootHttp:Tag' <br/>
+作用：基于kotlin协程和流(coroutines+flow+okhttp+Retrofit)封装的替代之前的RxJava网络请求方案<br/>
 
 *一维码二维码扫描* <br/>
 URL：https://jitpack.io/#Dazhi528/ZxingScan <br/>
