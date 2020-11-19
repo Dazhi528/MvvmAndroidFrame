@@ -1,4 +1,4 @@
-# MvvmAndroidLib
+# MvvmAndroidFrame
 
 **用途**<br/>
 快速搭建Mvvm架构的安卓(Android)项目<br/>
@@ -72,7 +72,7 @@ URL：https://jitpack.io/#Dazhi528/RootRxbus <br/>
 
 
 ### 引入方式 
-[![Release](https://img.shields.io/github/release/Dazhi528/MvvmAndroidLib?style=flat)](https://jitpack.io/#Dazhi528/MvvmAndroidLib)
+[![Release](https://img.shields.io/github/release/Dazhi528/MvvmAndroidFrame?style=flat)](https://jitpack.io/#Dazhi528/MvvmAndroidFrame)
 [![API](https://img.shields.io/badge/API-16%2B-green.svg?style=flat)](https://android-arsenal.com/api?level=16)
 
 **Gradle** <br/>
@@ -91,7 +91,7 @@ Step 2. Add the dependency
 
 ```
 dependencies {
-    implementation 'com.github.Dazhi528:MvvmAndroidLib:Tag'
+    implementation 'com.github.Dazhi528:MvvmAndroidFrame:Tag'
 }
 ```
 
