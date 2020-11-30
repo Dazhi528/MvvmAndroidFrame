@@ -1,5 +1,7 @@
 package com.dazhi.libroot.root
 
+import android.widget.TextView
+import androidx.viewbinding.ViewBinding
 import com.dazhi.libroot.inte.IRootView
 
 /**
@@ -10,15 +12,14 @@ import com.dazhi.libroot.inte.IRootView
  * 创建日期：2018/4/19 14:16
  * 修改日期：2018/4/19 14:16
  */
-abstract class RootVmActivity<T : RootViewModel<IRootView>> : RootActivity() {
-    protected var vm: T? = null
+abstract class RootVmActivity<T: RootViewModel<IRootView>, E:ViewBinding>: RootActivity<E>() {
+    protected lateinit var vm: T
+    protected abstract fun initVm(): T
+
+    override fun initConfig(tvToolTitle: TextView?) {
+        vm = initVm()
+    }
     override fun initViewAndDataAndEvent() {
-        if (vm == null) {
-            throw RuntimeException("Failure to instantiate VM!")
-        }
-        if (vm!!.checkCoroutineScope()) {
-            throw RuntimeException("Failure to instantiate CoroutineScope!")
-        }
-        vm!!.attachUiView(this)
+        vm.attachUiView(this)
     }
 }

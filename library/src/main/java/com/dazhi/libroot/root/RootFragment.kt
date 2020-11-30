@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
+import androidx.viewbinding.ViewBinding
 import com.dazhi.libroot.R
 import com.dazhi.libroot.inte.IRootView
 import com.dazhi.libroot.ui.dialog.DialogLoad
@@ -21,9 +22,13 @@ import com.dazhi.libroot.util.RtCmn
  * 创建日期：2019/2/27 14:19
  * 修改日期：2019/2/27 14:19
  */
-abstract class RootFragment : Fragment(), IRootView {
-    protected var activity: RootActivity? = null
-    protected var mview: View?=null
+@Suppress("MemberVisibilityCanBePrivate")
+abstract class RootFragment<T : ViewBinding> : Fragment(), IRootView {
+    @Suppress("LeakingThis")
+    private var _binding: T? = null
+    protected val binding get() = _binding!!
+
+    protected var activity: RootActivity<*>? = null
 
     //
     private var dialogLoading //进度对话框
@@ -32,7 +37,7 @@ abstract class RootFragment : Fragment(), IRootView {
             : AlertDialog? = null
 
     /*==============抽象方法============*/ /*获得布局id*/
-    protected abstract val layoutId: Int
+    protected abstract fun initBinding(container: ViewGroup?): T
 
     /*初始化配置*/
     protected abstract fun initConfig()
@@ -41,12 +46,20 @@ abstract class RootFragment : Fragment(), IRootView {
     protected abstract fun initViewAndDataAndEvent()
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        activity = context as RootActivity
+        activity = context as? RootActivity<*>?
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        mview = inflater.inflate(layoutId, container, false)
-        return view
+//        mview = inflater.inflate(layoutId, container, false)
+// 子类： _binding = ResultProfileBinding.inflate(inflater, container, false)
+        _binding = initBinding(container)
+        return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+        activity = null
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -108,7 +121,7 @@ abstract class RootFragment : Fragment(), IRootView {
                 // 取消按钮配置
                 .setNegativeButton(strEsc,
                         if (onClickListenerEsc == null && !strEsc.isNullOrEmpty()) DialogInterface
-                                .OnClickListener { p0, p1 -> dialogMsgBox!!.dismiss() }
+                                .OnClickListener { _, _ -> dialogMsgBox!!.dismiss() }
                         else onClickListenerEsc)
                 // 确定按钮配置
                 .setPositiveButton(strEnt

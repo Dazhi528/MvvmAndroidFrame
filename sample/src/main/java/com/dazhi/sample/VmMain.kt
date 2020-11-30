@@ -5,10 +5,9 @@ import com.dazhi.libroot.inte.IRootView
 import com.dazhi.libroot.root.RootViewModel
 import com.dazhi.sample.db.DbPerson
 import com.dazhi.sample.db.FactoryDaoPerson
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
-import kotlinx.coroutines.withContext
 import java.util.*
 
 /**
@@ -35,7 +34,7 @@ class VmMain : RootViewModel<IRootView>() {
             lsBnPerson.add(DbPerson("name0$i"))
         }
         // 数据库操作
-        scopeLaunch {
+        MainScope().launch {
             // 切换到IO线程
             withContext(Dispatchers.IO) {
                 // 插入测试数据
@@ -47,7 +46,7 @@ class VmMain : RootViewModel<IRootView>() {
     }
 
     fun deleteLsBnPerson(lsBnPerson: List<DbPerson?>?) {
-        scopeLaunch {
+        MainScope().launch {
             withContext(Dispatchers.IO) {
                 FactoryDaoPerson.self().daoPerson.dbDeleteLsBnPerson(lsBnPerson)
                 // 更新测试数据

@@ -146,3 +146,18 @@ DecorationSpaceGridLinear
 
 #### 通用适配器
 RootAdapter
+
+
+### 修改说明
+* V 1.0.5
+* 20-11-30 官方viewBinding方案替换过时的kotlin-android-extensions方案
+```
+// 注释掉：apply plugin: 'kotlin-android-extensions'
+// 添加如下：
+android {
+   ...
+   viewBinding {
+       enabled = true
+   }
+}
+```

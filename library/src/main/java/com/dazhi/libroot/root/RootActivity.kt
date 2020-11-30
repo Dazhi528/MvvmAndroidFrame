@@ -10,17 +10,17 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
 import android.view.MenuItem
-import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
+import androidx.viewbinding.ViewBinding
 import com.dazhi.libroot.R
 import com.dazhi.libroot.inte.IRootView
 import com.dazhi.libroot.ui.dialog.DialogLoad
-import com.dazhi.libroot.util.RtConfig
 import com.dazhi.libroot.util.RtCmn
+import com.dazhi.libroot.util.RtConfig
 import com.dazhi.libroot.util.RtStack
 import com.dazhi.libroot.util.RtStatusBar
 import permissions.dispatcher.*
@@ -33,8 +33,9 @@ import permissions.dispatcher.*
  * 创建日期：2019/2/26 17:28
  * 修改日期：2019/2/26 17:28
  */
+@Suppress("unused")
 @RuntimePermissions //标记需要运行时判断的类(用于动态生成代理类)
-abstract class RootActivity : AppCompatActivity(), IRootView {
+abstract class RootActivity<T : ViewBinding> : AppCompatActivity(), IRootView {
     private var dialogLoading //进度对话框
             : DialogLoad? = null
     private var dialogMsgBox //警告对话框
@@ -47,9 +48,8 @@ abstract class RootActivity : AppCompatActivity(), IRootView {
     protected fun initAtSetContentViewBefore() {}
 
     /*获得布局id*/
-    protected abstract val layoutId: Int
-    protected val layoutView: View?
-        get() = null
+    protected lateinit var binding: T
+    protected abstract fun initBinding(): T
 
     /*初始化配置等，如标题*/
     protected abstract fun initConfig(tvToolTitle: TextView?)
@@ -70,14 +70,10 @@ abstract class RootActivity : AppCompatActivity(), IRootView {
         }
         //
         initAtSetContentViewBefore()
-        val layoutId = layoutId
         // 当要设置view，而不是资源ID时，需实现getLayoutId回0，
         // 并覆盖getLayoutView方法，回实际的view
-        if (layoutId == 0) {
-            setContentView(layoutView)
-        } else {
-            setContentView(layoutId)
-        }
+        binding = initBinding()
+        setContentView(binding.root)
         //
         val tvContent = findViewById<TextView>(R.id.librootToolbarTitle)
         tvContent?.setTextColor(RtStatusBar.getToolbarCtColor())
@@ -215,7 +211,7 @@ abstract class RootActivity : AppCompatActivity(), IRootView {
                 // 取消按钮配置
                 .setNegativeButton(strEsc,
                         if (onClickListenerEsc == null && !strEsc.isNullOrEmpty()) DialogInterface
-                                .OnClickListener { p0, p1 -> dialogMsgBox!!.dismiss() }
+                                .OnClickListener { _, _ -> dialogMsgBox!!.dismiss() }
                         else onClickListenerEsc)
                 // 确定按钮配置
                 .setPositiveButton(strEnt
@@ -475,7 +471,7 @@ abstract class RootActivity : AppCompatActivity(), IRootView {
         msgBoxShow(getString(R.string.permission_title),
                 getString(R.string.permission_esc),
                 getString(R.string.permission_ent)
-        ) { dialog, which ->
+        ) { _, _ ->
             val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
             //根据包名打开对应的设置界面
             intent.data = Uri.parse("package:" + RtCmn.getPackName())
