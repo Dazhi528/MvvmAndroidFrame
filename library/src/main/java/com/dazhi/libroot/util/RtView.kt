@@ -18,6 +18,7 @@ import android.view.View
 fun viewClick(view: View, mDuration: Long=1000, mClick: ()->Unit) {
    view.setOnClickListener(ThrottleOnClickListener(mDuration, mClick))
 }
+
 // 防抖监听实现
 private class ThrottleOnClickListener(private val mDuration: Long, private val mClick: ()->Unit): View.OnClickListener {
     private var available=true // 点击是否有效
