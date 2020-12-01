@@ -12,18 +12,18 @@ import java.util.concurrent.*
  */
 object RtThread {
     // 如果不调用初始化,默认是newCachedThreadPool配置
-    private var corePoolSize = 0
-    private var maximumPoolSize = Int.MAX_VALUE
+    private var corePoolSize: Int = 0
+    private var maximumPoolSize: Int = Int.MAX_VALUE
     private var keepAliveTime: Long = 60000 // 默认保活1分钟
     private var blockingQueue: BlockingQueue<Runnable> = SynchronousQueue()
     private var THREAD_POOL_EXECUTOR: ExecutorService? = null
 
     @JvmStatic
     @Synchronized
-    fun init(corePoolSize: Int, maximumPoolSize: Int,
-             keepAliveTime: Long,
-             blockingQueue: BlockingQueue<Runnable>) {
-        require(corePoolSize>=0 && maximumPoolSize>0 && keepAliveTime>=0) {
+    fun init(corePoolSize: Int = 0, maximumPoolSize: Int = Int.MAX_VALUE,
+             keepAliveTime: Long = 60000,
+             blockingQueue: BlockingQueue<Runnable> = SynchronousQueue()) {
+        require(corePoolSize >= 0 && maximumPoolSize > 0 && keepAliveTime >= 0) {
             "Parameter setting error"
         }
         //
