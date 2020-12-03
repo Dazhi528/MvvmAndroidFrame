@@ -156,8 +156,8 @@ RootAdapter
 // 添加如下：
 android {
    ...
-   viewBinding {
-       enabled = true
+   buildFeatures {
+       viewBinding = true
    }
 }
 ```

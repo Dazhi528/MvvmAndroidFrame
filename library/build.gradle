@@ -20,8 +20,8 @@ android {
         }
     }
     //apply plugin: 'kotlin-android-extensions' 如下是此过时方案的替代方案
-    viewBinding {
-        enabled = true
+    buildFeatures {
+        viewBinding = true
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8

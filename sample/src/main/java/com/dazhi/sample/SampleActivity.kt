@@ -42,19 +42,19 @@ class SampleActivity : RootVmActivity<VmMain, ActivitySampleBinding>() {
             //
             RtCmn.toastShort("测试插入")
             RtLog.e("测试插入：${ARouter.debuggable()}")
-            vm!!.insertLsBnPerson()
+            vm.insertLsBnPerson()
         }
 
         viewClick(binding.btMainDeleteData) {
-            val str = binding.tvMainShowDbData.text.toString()
+            binding.tvMainShowDbData.text.toString()
             val lsBnPerson: MutableList<DbPerson> = ArrayList()
             for (i in 1..10) {
                 lsBnPerson.add(DbPerson("name0$i"))
             }
-            vm!!.deleteLsBnPerson(lsBnPerson);
+            vm.deleteLsBnPerson(lsBnPerson);
         }
         // 数据变动监听
-        vm!!.dbLsBnPerson.observe(this) { mList ->
+        vm.dbLsBnPerson.observe(this) { mList ->
             binding.tvMainShowDbData.setText(mList.map {
                 "名称：${it.strName}"
             }.toString());
