@@ -39,7 +39,6 @@ dependencies {
     implementation project(':library')
     // room数据库
     // jetpack
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     implementation 'androidx.room:room-runtime:2.2.5'
     kapt "android.arch.persistence.room:compiler:2.2.5"
     // 友盟统计

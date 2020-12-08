@@ -44,7 +44,8 @@ abstract class RootActivity<T : ViewBinding> : AppCompatActivity(), IRootView {
     // 依赖注入：生命周期引擎
     private var iRootEngineLifecycle = RtConfig.self().engineLifecycle
 
-    /*==============抽象方法============*/ /**/
+    /*==============抽象方法============*/
+    @Suppress("MemberVisibilityCanBePrivate")
     protected fun initAtSetContentViewBefore() {}
 
     /*获得布局id*/
@@ -162,12 +163,13 @@ abstract class RootActivity<T : ViewBinding> : AppCompatActivity(), IRootView {
     override fun getResources(): Resources {
         // 字体不随系统字体改变
         val res = super.getResources()
-        val configuration = res.configuration
-        if (configuration.fontScale != 1.0f) {
-            configuration.fontScale = 1.0f
-            res.updateConfiguration(configuration, res.displayMetrics)
+        val config = res.configuration
+        return if (config.fontScale != 1f) {
+            config.fontScale = 1f
+            this.createConfigurationContext(config).resources
+        } else {
+            res
         }
-        return res
     }
 
     /**=======================================
