@@ -73,7 +73,7 @@ URL：https://jitpack.io/#Dazhi528/RootRxbus <br/>
 
 ### 引入方式 
 [![Release](https://img.shields.io/github/release/Dazhi528/MvvmAndroidFrame?style=flat)](https://jitpack.io/#Dazhi528/MvvmAndroidFrame)
-[![API](https://img.shields.io/badge/API-16%2B-green.svg?style=flat)](https://android-arsenal.com/api?level=19)
+[![API](https://img.shields.io/badge/API-19%2B-green.svg?style=flat)](https://android-arsenal.com/api?level=19)
 
 **Gradle** <br/>
 Step 1. Add the JitPack repository to your build file
