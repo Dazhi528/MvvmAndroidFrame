@@ -32,7 +32,7 @@ api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:xxx'
 api "org.permissionsdispatcher:permissionsdispatcher:xxx"
 
 // 为了解耦已注销，按需自己引入：jetpack生命周期管理及数据库
-# api 'androidx.lifecycle:lifecycle-extensions:xxx'
+# api 'androidx.lifecycle:lifecycle-extensions:xxx' 注意：此种扩展方式官方已过时，需要的自己查官方文档
 # api 'androidx.room:room-runtime:xxx'
 ```
 
@@ -41,19 +41,19 @@ api "org.permissionsdispatcher:permissionsdispatcher:xxx"
 URL：https://jitpack.io/#Dazhi528/RootHttp <br/>
 源码：https://github.com/Dazhi528/RootHttp <br/>
 导入：implementation 'com.github.Dazhi528:RootHttp:Tag' <br/>
-作用：基于kotlin协程和流(coroutines+flow+okhttp+Retrofit)封装的替代之前的RxJava网络请求方案<br/>
+作用：基于kotlin协程和流(coroutines+flow+okhttp+Retrofit)封装的替代之前的RxJava网络请求方案 <br/>
 
-*EventBus*
+*EventBus* <br/>
 URL：https://jitpack.io/#Dazhi528/RootBus <br/>
 源码：https://github.com/Dazhi528/RootBus <br/>
 导入：implementation 'com.github.Dazhi528:RootBus:Tag' <br/>
-作用：LiveData实现的轻量级事件总线，支持粘性事件
+作用：LiveData实现的轻量级事件总线，支持粘性事件 <br/>
 
 *一维码二维码扫描* <br/>
 URL：https://jitpack.io/#Dazhi528/ZxingScan <br/>
 源码：https://github.com/Dazhi528/ZxingScan <bt/>
-导入：implementation 'com.github.Dazhi528:ZxingScan:Tag' <br/>
-作用：扫描识别一维码或二维码 <br/>
+导入：implementation 'com.github.Dazhi528:ZxingScan:Tag'  <br/>
+作用：扫描识别一维码或二维码  <br/>
 
 *图片选择库* <br/>
 URL：https://jitpack.io/#Dazhi528/PictureSelector  <br/>
