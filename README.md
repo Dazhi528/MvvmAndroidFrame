@@ -39,21 +39,31 @@ api "org.permissionsdispatcher:permissionsdispatcher:xxx"
 **扩展库**<br/>
 *网络请求* <br/>
 URL：https://jitpack.io/#Dazhi528/RootHttp <br/>
+源码：https://github.com/Dazhi528/RootHttp <br/>
 导入：implementation 'com.github.Dazhi528:RootHttp:Tag' <br/>
 作用：基于kotlin协程和流(coroutines+flow+okhttp+Retrofit)封装的替代之前的RxJava网络请求方案<br/>
 
+*EventBus*
+URL：https://jitpack.io/#Dazhi528/RootBus <br/>
+源码：https://github.com/Dazhi528/RootBus <br/>
+导入：implementation 'com.github.Dazhi528:RootBus:Tag' <br/>
+作用：LiveData实现的轻量级事件总线，支持粘性事件
+
 *一维码二维码扫描* <br/>
 URL：https://jitpack.io/#Dazhi528/ZxingScan <br/>
+源码：https://github.com/Dazhi528/ZxingScan <bt/>
 导入：implementation 'com.github.Dazhi528:ZxingScan:Tag' <br/>
 作用：扫描识别一维码或二维码 <br/>
 
 *图片选择库* <br/>
 URL：https://jitpack.io/#Dazhi528/PictureSelector  <br/>
+源码：https://github.com/Dazhi528/PictureSelector <br/>
 导入：implementation 'com.github.Dazhi528:PictureSelector:Tag' <br/>
 作用：从相册选择图片或拍照选择图片，用于上传 <br/>
 
 *常用视图库* <br/>
 URL：https://jitpack.io/#Dazhi528/RootView <br/>
+源码：https://github.com/Dazhi528/RootView <br/>
 导入：implementation 'com.github.Dazhi528:RootView:Tag' <br/>
 作用：常用的自定义view <br/>
 * 带删除内容的EditText: ViewClearEditText<br/>
@@ -61,14 +71,6 @@ URL：https://jitpack.io/#Dazhi528/RootView <br/>
 * 带图片的EditText：ViewDrawableEdit <br/>
 * 带图片的Button：ViewDrawableButton <br/>
 * 带图片的RadioButton：ViewDrawableRadioBt <br/>
-
-*由RxJava实现的事件总线库* <br/>
-URL：https://jitpack.io/#Dazhi528/RootRxbus <br/>
-导入：implementation 'com.github.Dazhi528:RootRxbus:1.0.1' <br/>
-作用： <br/>
-替代一些广播接收器或消息接收处理场景，同EventBus功能，比其轻量，不过前提是你打算引入Rxjava库，<br/>
-此库作者之前用rxjava封装网络请求时，用的比较多，由于作者现在更推协程，网络请求正在打算用协程构思，<br/>
-因此，此库用的比较少了，正在寻找协程的替代方案 <br/>
 
 
 ### 引入方式 
