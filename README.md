@@ -51,7 +51,7 @@ URL：https://jitpack.io/#Dazhi528/RootBus <br/>
 
 *一维码二维码扫描* <br/>
 URL：https://jitpack.io/#Dazhi528/ZxingScan <br/>
-源码：https://github.com/Dazhi528/ZxingScan <bt/>
+源码：https://github.com/Dazhi528/ZxingScan <br/>
 导入：implementation 'com.github.Dazhi528:ZxingScan:Tag'  <br/>
 作用：扫描识别一维码或二维码  <br/>
 
