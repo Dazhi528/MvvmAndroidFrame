@@ -36,7 +36,7 @@ api "org.permissionsdispatcher:permissionsdispatcher:xxx"
 # api 'androidx.room:room-runtime:xxx'
 ```
 
-**扩展库**<br/>
+**扩展库(按需导入)**<br/>
 *网络请求* <br/>
 URL：https://jitpack.io/#Dazhi528/RootHttp <br/>
 源码：https://github.com/Dazhi528/RootHttp <br/>
