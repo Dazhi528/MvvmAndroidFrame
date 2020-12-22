@@ -10,5 +10,5 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="我是通过路由跳转进来的"/>
+        android:text="我基础了RootSimpActivity"/>
 </RelativeLayout>

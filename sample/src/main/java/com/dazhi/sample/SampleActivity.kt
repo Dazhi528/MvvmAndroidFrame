@@ -1,12 +1,11 @@
 package com.dazhi.sample
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
-import com.alibaba.android.arouter.launcher.ARouter
 import com.dazhi.libroot.root.RootVmActivity
 import com.dazhi.libroot.util.RtCmn
-import com.dazhi.libroot.util.RtLog
 import com.dazhi.libroot.util.viewClick
 import com.dazhi.sample.databinding.ActivitySampleBinding
 import com.dazhi.sample.db.DbPerson
@@ -41,7 +40,6 @@ class SampleActivity : RootVmActivity<VmMain, ActivitySampleBinding>() {
 //            return@viewClick
             //
             RtCmn.toastShort("测试插入")
-            RtLog.e("测试插入：${ARouter.debuggable()}")
             vm.insertLsBnPerson()
         }
 
@@ -60,9 +58,9 @@ class SampleActivity : RootVmActivity<VmMain, ActivitySampleBinding>() {
             }.toString());
         }
 
-        // 路由跳转实例
+        // 跳转实例
         viewClick(binding.btMainGotoNewPage) {
-            ARouter.getInstance().build("/test/ARouterActivity").navigation()
+            startActivity(Intent(this, SimpleActivity::class.java))
         }
     }
 

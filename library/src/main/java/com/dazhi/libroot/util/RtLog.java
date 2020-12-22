@@ -1,8 +1,6 @@
 package com.dazhi.libroot.util;
 
 import android.util.Log;
-import com.alibaba.android.arouter.launcher.ARouter;
-import com.dazhi.libroot.BuildConfig;
 
 /**
  * 功能：日志工具
@@ -15,10 +13,13 @@ import com.dazhi.libroot.BuildConfig;
 @SuppressWarnings({"unused", "RedundantSuppression"})
 public class RtLog {
     // 默认关闭
-    private static final boolean booDebug = BuildConfig.DEBUG;
+    private static boolean booDebug = false;
 
-    public static boolean booDebug() {
+    public static boolean isDebug() {
         return booDebug;
+    }
+    public static void setOpen() {
+        booDebug = true;
     }
 
     /**

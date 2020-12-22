@@ -1,9 +1,6 @@
 package com.dazhi.libroot.util;
 
 import android.app.Activity;
-
-import com.alibaba.android.arouter.launcher.ARouter;
-
 import java.util.LinkedList;
 
 /**
@@ -84,7 +81,6 @@ public class RtStack {
      */
     public void exitApp() {
         try {
-            ARouter.getInstance().destroy();
             // 关闭工具的线程池
             RtThread.shutdownNow();
             // 关闭数据库

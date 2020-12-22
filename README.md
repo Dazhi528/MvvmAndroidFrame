@@ -19,9 +19,6 @@ api 'androidx.constraintlayout:constraintlayout:xxx' // 约束布局，考虑到
 api 'androidx.recyclerview:recyclerview:xxx' // 官方推荐的大多数的ListView和GridView的使用场景替代方案
 api 'androidx.cardview:cardview:xxx' // 圆角矩形卡片UI，现在挺常见的场景，一并引入吧
 
-// ARouter 路由解耦(Dagger需要时自己引用)
-api 'com.alibaba:arouter-api:xxx' // 极力推荐要会用的一个库，直接强引进来，好处多大，不会的同学快去了解下
-
 // 下拉刷新，上拉加载
 api 'com.scwang.smartrefresh:SmartRefreshLayout:xxx'
 
@@ -31,9 +28,17 @@ api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:xxx'
 // Android动态权限
 api "org.permissionsdispatcher:permissionsdispatcher:xxx"
 
+
+// ======如下是由原来的强引入改为按需自己引入方式
+
 // 为了解耦已注销，按需自己引入：jetpack生命周期管理及数据库
 # api 'androidx.lifecycle:lifecycle-extensions:xxx' 注意：此种扩展方式官方已过时，需要的自己查官方文档
 # api 'androidx.room:room-runtime:xxx'
+
+// ARouter路由解耦 和 Dagger 按需引用
+// 说明：为了解耦，此库已注销引入，按需自己引入
+# api 'com.alibaba:arouter-api:xxx' // 极力推荐要会用的一个库，不会的同学快去了解下
+
 ```
 
 **扩展库(按需导入)**<br/>
