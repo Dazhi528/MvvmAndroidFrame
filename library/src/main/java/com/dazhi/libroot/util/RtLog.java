@@ -2,6 +2,7 @@ package com.dazhi.libroot.util;
 
 import android.util.Log;
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.dazhi.libroot.BuildConfig;
 
 /**
  * 功能：日志工具
@@ -13,20 +14,11 @@ import com.alibaba.android.arouter.launcher.ARouter;
  */
 @SuppressWarnings({"unused", "RedundantSuppression"})
 public class RtLog {
-    private static boolean booDebug = false; //默认关闭
+    // 默认关闭
+    private static final boolean booDebug = BuildConfig.DEBUG;
 
     public static boolean booDebug() {
         return booDebug;
-    }
-
-    public static void setOpen() {
-        booDebug = true;
-        ARouter.openLog();  // 打印日志
-        ARouter.openDebug(); // 开启调试模式(如果在InstantRun模式下运行，必须开启调试模式！线上版本需要关闭,否则有安全风险)
-    }
-
-    public static void setClose() {
-        booDebug = false;
     }
 
     /**

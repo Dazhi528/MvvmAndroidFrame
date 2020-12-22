@@ -38,10 +38,9 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.dazhi.libroot.BuildConfig;
 import com.dazhi.libroot.R;
-
 import java.lang.reflect.Method;
 import java.math.BigDecimal;
 import java.text.ParseException;
@@ -49,7 +48,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
-
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.res.ResourcesCompat;
 
@@ -62,6 +60,11 @@ public class RtCmn {
     public static void initApp(Context context) {
         if(RtCmn.context!=null) { return; }
         RtCmn.context = context;
+        // ARouter
+        if(BuildConfig.DEBUG) {
+            ARouter.openLog();  // 打印日志
+            ARouter.openDebug(); // 开启调试模式(如果在InstantRun模式下运行，必须开启调试模式！线上版本需要关闭,否则有安全风险)
+        }
         ARouter.init((Application) context); // 尽可能早，推荐在Application中初始化
     }
 
