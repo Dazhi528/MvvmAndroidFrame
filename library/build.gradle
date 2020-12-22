@@ -58,9 +58,9 @@ dependencies {
 //    annotationProcessor 'androidx.room:room-compiler:2.2.5'
 
     // ARouter
-    api 'com.alibaba:arouter-api:1.5.0'
-//    annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'
-//    kapt 'com.alibaba:arouter-compiler:1.2.2'
+    api 'com.alibaba:arouter-api:1.5.1'
+//    annotationProcessor 'com.alibaba:arouter-compiler:1.5.1'
+//    kapt 'com.alibaba:arouter-compiler:1.5.1'
 
     // Android Permissions Dispatcher
     api "org.permissionsdispatcher:permissionsdispatcher:4.6.0"

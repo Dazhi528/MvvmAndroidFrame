@@ -59,6 +59,11 @@ class SampleActivity : RootVmActivity<VmMain, ActivitySampleBinding>() {
                 "名称：${it.strName}"
             }.toString());
         }
+
+        // 路由跳转实例
+        viewClick(binding.btMainGotoNewPage) {
+            ARouter.getInstance().build("/test/ARouterActivity").navigation()
+        }
     }
 
 }

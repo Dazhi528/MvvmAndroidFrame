@@ -28,6 +28,13 @@
         android:layout_marginBottom="10dp"
         android:text="删除数据"/>
 
+    <Button
+        android:id="@+id/btMainGotoNewPage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="路由跳转"/>
+
     <com.scwang.smartrefresh.layout.SmartRefreshLayout
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/refreshLayout"
