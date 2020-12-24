@@ -17,34 +17,41 @@ import java.util.Set;
  * 创建日期：2018/11/1 16:18
  * 修改日期：2018/11/1 16:18
  */
+@SuppressWarnings({"unused", "RedundantSuppression"})
 public final class RtSp {
     private static final SimpleArrayMap<String, RtSp> SP_MAP = new SimpleArrayMap<>();
-    private SharedPreferences sp;
+    private final SharedPreferences sp;
     
     private RtSp(final String spName, final int mode) {
         sp = RtCmn.getAppContext().getSharedPreferences(spName, mode);
     }
+    private RtSp(SharedPreferences sp) {
+        this.sp = sp;
+    }
 
-    /**=======================================
-     * 作者：WangZezhi  (2018/11/1  16:39)
-     * 功能：获得sp实例
-     * 描述：
-     *=======================================*/
     public static RtSp self() {
-        return self("", Context.MODE_PRIVATE);
+        return self("", Context.MODE_PRIVATE, null);
     }
     public static RtSp self(String spName) {
-        return self(spName, Context.MODE_PRIVATE);
+        return self(spName, Context.MODE_PRIVATE, null);
     }
-    public static RtSp self(final int mode) {
-        return self("", mode);
+    public static RtSp self(String spName, SharedPreferences sp) {
+        return self(spName, -1, sp);
     }
-    public static RtSp self(String spName, final int mode) {
+    public static RtSp self(String spName, final int mode, SharedPreferences sp) {
         if (isSpace(spName)) spName = "app_sp";
         RtSp spUtils = SP_MAP.get(spName);
         if (spUtils == null) {
-            spUtils = new RtSp(spName, mode);
-            SP_MAP.put(spName, spUtils);
+            synchronized (RtSp.class) {
+                if (spUtils == null) {
+                    if(sp==null) {
+                        spUtils = new RtSp(spName, mode);
+                    }else {
+                        spUtils = new RtSp(sp);
+                    }
+                    SP_MAP.put(spName, spUtils);
+                }
+            }
         }
         return spUtils;
     }
@@ -336,7 +343,7 @@ public final class RtSp {
      * or {@code Collections.<String>emptySet()} otherwise
      */
     public Set<String> getStringSet(@NonNull final String key) {
-        return getStringSet(key, Collections.<String>emptySet());
+        return getStringSet(key, Collections.emptySet());
     }
 
     /**
@@ -416,6 +423,5 @@ public final class RtSp {
             sp.edit().clear().apply();
         }
     }
-
 
 }

@@ -8,7 +8,7 @@ import java.util.LinkedList;
  * 功能：Activity堆栈
  * 详情：用于管理所有的Acitivity
  */
-@SuppressWarnings("unused")
+@SuppressWarnings({"unused", "RedundantSuppression"})
 public class RtStack {
     //存activity的list，方便管理activity
     private final LinkedList<Activity> lkActivity;

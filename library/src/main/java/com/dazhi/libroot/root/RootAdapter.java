@@ -19,16 +19,17 @@ import java.util.List;
  * 修改日期：2018/3/8 11:51
  * 用法：
  * myAdadpter = new MyAdapter<Hero>(mData,R.layout.item_spin_hero) {
- *      @Override
+ * /    @Override
  *      public void bindView(ViewHolder holder, Hero obj) {
  *          holder.setImageResource(R.id.img_icon,obj.gethIcon());
  *          holder.setText(R.id.txt_name, obj.gethName());
  *      }
  * };
  */
+@SuppressWarnings({"unused", "RedundantSuppression"})
 public abstract class RootAdapter<T> extends BaseAdapter {
-    private int intLayout; //布局id
-    private List<T> lsData; //引入数据集合
+    private final int intLayout; //布局id
+    private final List<T> lsData; //引入数据集合
 
     public RootAdapter(int intLayout, List<T> lsData) {
         this.intLayout = intLayout;
@@ -69,16 +70,17 @@ public abstract class RootAdapter<T> extends BaseAdapter {
      * 功能：视图持有器
      * 描述：
      *=======================================*/
+    @SuppressWarnings({"unused", "RedundantSuppression"})
     public static class ViewHolder {
-        private Context context;          //Context上下文
-        private SparseArray<View> saView;   //存储ListView 的 item中的View
+        private final SparseArray<View> saView;   //存储ListView 的 item中的View
         private View convertView;           //存放convertView
         private int position;               //游标
 
         //构造方法，完成相关初始化
         //private ViewHolder(Context context, ViewGroup parent, int layoutRes) {
         private ViewHolder(ViewGroup parent, int layoutRes) {
-            this.context = parent.getContext();
+            //Context上下文
+            Context context = parent.getContext();
             saView = new SparseArray<>();
             View convertView = LayoutInflater.from(context).inflate(layoutRes, parent, false);
             convertView.setTag(this);
@@ -99,19 +101,13 @@ public abstract class RootAdapter<T> extends BaseAdapter {
         }
 
         /**
-         * 获取context
-         */
-        private Context getContext() {
-            return context;
-        }
-
-        /**
          * 获取view
          */
+        @SuppressWarnings("unchecked")
         public <T extends View> T getView(int id) {
             T t = (T)saView.get(id);
             if (t == null) {
-                t = (T) convertView.findViewById(id);
+                t = convertView.findViewById(id);
                 saView.put(id, t);
             }
             return t;

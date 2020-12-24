@@ -12,12 +12,6 @@ android {
         versionName VERSION_NAME
         // 分包
         multiDexEnabled true
-        // ARouter
-        kapt {
-            arguments {
-                arg("AROUTER_MODULE_NAME", project.getName())
-            }
-        }
     }
     buildTypes {
         release {

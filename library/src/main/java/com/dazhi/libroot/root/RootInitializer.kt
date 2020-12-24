@@ -3,7 +3,6 @@ package com.dazhi.libroot.root
 import android.content.Context
 import androidx.startup.Initializer
 import com.dazhi.libroot.util.RtCmn
-import java.util.*
 
 /**
  * 功能：用于应用启动初始化

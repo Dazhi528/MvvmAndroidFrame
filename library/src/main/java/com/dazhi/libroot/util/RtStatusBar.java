@@ -8,11 +8,9 @@ import androidx.annotation.ColorInt;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.core.graphics.ColorUtils;
-
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-
 import com.dazhi.libroot.R;
 
 /**
@@ -22,6 +20,7 @@ import com.dazhi.libroot.R;
  * 创建日期：17-6-21 下午5:11
  * 修改日期：17-6-21 下午5:11
  */
+@SuppressWarnings({"unused", "RedundantSuppression"})
 public class RtStatusBar {
     //按钮背景色、内容色
     @DrawableRes
@@ -109,9 +108,9 @@ public class RtStatusBar {
     // 设置状态条为沉浸式； android:fitsSystemWindows="false"
     public static void setStatusBarImmersive(@NonNull Activity activity) {
         // api小于19处理部分
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
-            return;
-        }
+//        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
+//            return;
+//        }
         // 设置状态条颜色
         Window window = activity.getWindow();
         if (window == null) {
@@ -142,9 +141,9 @@ public class RtStatusBar {
     // 设置状态条为非沉浸式(即默认的正常状态条)； android:fitsSystemWindows="true"
     public static void setStatusBarColor(@NonNull Activity activity, @ColorInt int color) {
         // api小于19处理部分
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
-            return;
-        }
+//        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
+//            return;
+//        }
         // 设置状态条颜色
         Window window = activity.getWindow();
         if (window == null) {

@@ -7,7 +7,6 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import androidx.annotation.DrawableRes;
 import androidx.core.content.ContextCompat;
-
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.ByteArrayOutputStream;
@@ -37,6 +36,7 @@ import java.util.Locale;
  * 创建日期：2018/11/2 09:12
  * 修改日期：2018/11/2 09:12
  */
+@SuppressWarnings({"unused", "RedundantSuppression", "Convert2Lambda", "Anonymous2MethodRef"})
 public final class RtFile {
 
     private RtFile() {
@@ -1204,7 +1204,7 @@ public final class RtFile {
     // other utils methods
     ///////////////////////////////////////////////////////////////////////////
 
-    private static final char HEX_DIGITS[] =
+    private static final char[] HEX_DIGITS =
             {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
 
     private static String bytes2HexString(final byte[] bytes) {
@@ -1248,7 +1248,7 @@ public final class RtFile {
         OutputStream os = null;
         try {
             os = new BufferedOutputStream(new FileOutputStream(file));
-            byte data[] = new byte[8192];
+            byte[] data = new byte[8192];
             int len;
             while ((len = is.read(data, 0, 8192)) != -1) {
                 os.write(data, 0, len);

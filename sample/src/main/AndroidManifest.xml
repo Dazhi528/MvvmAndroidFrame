@@ -12,7 +12,7 @@
         android:label="基础库"
         android:theme="@style/LibRootTheme"
         android:appComponentFactory="1"
-        tools:replace="android:allowBackup, android:appComponentFactory"
+        tools:replace="android:appComponentFactory"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning,UnusedAttribute">
         <activity android:name=".SampleActivity">
             <intent-filter>

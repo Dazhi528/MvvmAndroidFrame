@@ -1,11 +1,9 @@
 package com.dazhi.libroot.util;
 
 import android.util.Base64;
-
 import java.security.MessageDigest;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
-
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
@@ -18,13 +16,18 @@ import javax.crypto.spec.SecretKeySpec;
  * 创建日期：17-11-22 上午11:15
  * 修改日期：17-11-22 上午11:15
  */
-@SuppressWarnings("unused")
+@SuppressWarnings({"unused", "RedundantSuppression"})
 public class RtCode {
     //秘钥
-    private static final String SECRET_KEY = "&*u!^%$#";
-    //初始化向量，随意填充,单只能是8个字节
+    private static String SECRET_KEY = "&*u!^%$#";
+    //初始化向量，随意填充,但只能是8个字节
     private static byte[] iv = {'a', 'n', 'j', 'd', 'p', 13, 22, '*'};
 
+    // 如需修改，建议在Application里调用
+    public static void init(String secretKey, byte[] iv) {
+        SECRET_KEY = secretKey;
+        RtCode.iv = iv;
+    }
 
     /**
      * =======================================
@@ -272,7 +275,7 @@ public class RtCode {
             sb.append(String.format("%02x", btArr[offset + i]));
             sb.append(separator);
         }
-        return sb.toString().toUpperCase();
+        return sb.toString().toUpperCase(Locale.getDefault());
     }
 
     public static byte[] hexToDec(String hexStr) {

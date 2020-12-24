@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<network-security-config>
+<network-security-config xmlns:tools="http://schemas.android.com/tools">
     <!--安卓9开始如果http通信是明文则不被允许，设置true允许http明文通信-->
-    <base-config cleartextTrafficPermitted="true" />
+    <base-config cleartextTrafficPermitted = "true"
+        tools:ignore="InsecureBaseConfiguration" />
 </network-security-config>
