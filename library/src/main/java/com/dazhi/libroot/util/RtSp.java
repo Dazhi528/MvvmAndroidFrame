@@ -17,7 +17,7 @@ import java.util.Set;
  * 创建日期：2018/11/1 16:18
  * 修改日期：2018/11/1 16:18
  */
-@SuppressWarnings({"unused", "RedundantSuppression"})
+@SuppressWarnings({"unused", "RedundantSuppression", "UnusedReturnValue"})
 public final class RtSp {
     private static final SimpleArrayMap<String, RtSp> SP_MAP = new SimpleArrayMap<>();
     private final SharedPreferences sp;
@@ -84,12 +84,12 @@ public final class RtSp {
      * @param isCommit True to use {@link SharedPreferences.Editor#commit()},
      *                 false to use {@link SharedPreferences.Editor#apply()}
      */
-    @SuppressLint("ApplySharedPref")
-    public void put(@NonNull final String key, final String value, final boolean isCommit) {
+    public boolean put(@NonNull final String key, final String value, final boolean isCommit) {
         if (isCommit) {
-            sp.edit().putString(key, value).commit();
+            return sp.edit().putString(key, value).commit();
         } else {
             sp.edit().putString(key, value).apply();
+            return true;
         }
     }
 
@@ -133,11 +133,12 @@ public final class RtSp {
      *                 false to use {@link SharedPreferences.Editor#apply()}
      */
     @SuppressLint("ApplySharedPref")
-    public void put(@NonNull final String key, final int value, final boolean isCommit) {
+    public boolean put(@NonNull final String key, final int value, final boolean isCommit) {
         if (isCommit) {
-            sp.edit().putInt(key, value).commit();
+            return sp.edit().putInt(key, value).commit();
         } else {
             sp.edit().putInt(key, value).apply();
+            return true;
         }
     }
 
@@ -181,11 +182,12 @@ public final class RtSp {
      *                 false to use {@link SharedPreferences.Editor#apply()}
      */
     @SuppressLint("ApplySharedPref")
-    public void put(@NonNull final String key, final long value, final boolean isCommit) {
+    public boolean put(@NonNull final String key, final long value, final boolean isCommit) {
         if (isCommit) {
-            sp.edit().putLong(key, value).commit();
+            return sp.edit().putLong(key, value).commit();
         } else {
             sp.edit().putLong(key, value).apply();
+            return true;
         }
     }
 
@@ -229,11 +231,12 @@ public final class RtSp {
      *                 false to use {@link SharedPreferences.Editor#apply()}
      */
     @SuppressLint("ApplySharedPref")
-    public void put(@NonNull final String key, final float value, final boolean isCommit) {
+    public boolean put(@NonNull final String key, final float value, final boolean isCommit) {
         if (isCommit) {
-            sp.edit().putFloat(key, value).commit();
+            return sp.edit().putFloat(key, value).commit();
         } else {
             sp.edit().putFloat(key, value).apply();
+            return true;
         }
     }
 
@@ -277,11 +280,12 @@ public final class RtSp {
      *                 false to use {@link SharedPreferences.Editor#apply()}
      */
     @SuppressLint("ApplySharedPref")
-    public void put(@NonNull final String key, final boolean value, final boolean isCommit) {
+    public boolean put(@NonNull final String key, final boolean value, final boolean isCommit) {
         if (isCommit) {
-            sp.edit().putBoolean(key, value).commit();
+            return sp.edit().putBoolean(key, value).commit();
         } else {
             sp.edit().putBoolean(key, value).apply();
+            return true;
         }
     }
 
@@ -325,13 +329,14 @@ public final class RtSp {
      *                 false to use {@link SharedPreferences.Editor#apply()}
      */
     @SuppressLint("ApplySharedPref")
-    public void put(@NonNull final String key,
+    public boolean put(@NonNull final String key,
                     final Set<String> value,
                     final boolean isCommit) {
         if (isCommit) {
-            sp.edit().putStringSet(key, value).commit();
+            return sp.edit().putStringSet(key, value).commit();
         } else {
             sp.edit().putStringSet(key, value).apply();
+            return true;
         }
     }
 
@@ -394,11 +399,12 @@ public final class RtSp {
      *                 false to use {@link SharedPreferences.Editor#apply()}
      */
     @SuppressLint("ApplySharedPref")
-    public void remove(@NonNull final String key, final boolean isCommit) {
+    public boolean remove(@NonNull final String key, final boolean isCommit) {
         if (isCommit) {
-            sp.edit().remove(key).commit();
+            return sp.edit().remove(key).commit();
         } else {
             sp.edit().remove(key).apply();
+            return true;
         }
     }
 
@@ -416,11 +422,12 @@ public final class RtSp {
      *                 false to use {@link SharedPreferences.Editor#apply()}
      */
     @SuppressLint("ApplySharedPref")
-    public void clear(final boolean isCommit) {
+    public boolean clear(final boolean isCommit) {
         if (isCommit) {
-            sp.edit().clear().commit();
+            return sp.edit().clear().commit();
         } else {
             sp.edit().clear().apply();
+            return true;
         }
     }
 
