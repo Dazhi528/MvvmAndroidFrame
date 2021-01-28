@@ -172,6 +172,4 @@ android {
 * V 1.1.3  日期：21-01-28
 * 1）删除工具类 RtThread：防止小白线程池滥用，按需自定义
 * 2) 去除协程包引入，按需引入(有门槛，很多人都不会用到)
-*   # implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.7"
-* 3）引入LinkedMap(链表哈希)数据结构
-*    应用场景：按插入顺序排序，支持键值索引、移除和顺序迭代
+* 3）引入LinkedMap(链表哈希)数据结构；场景：按插入顺序排序，支持键值索引、移除和顺序迭代
