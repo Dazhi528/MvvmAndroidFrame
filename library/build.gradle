@@ -47,7 +47,7 @@ dependencies {
     // Snackbar及FloatingActionButton
 //    api 'com.google.android.material:material:1.2.1'
 
-    // jetpack
+    // jetpack 注意：如下库内部引入了协程库
 //    api "androidx.lifecycle:lifecycle-runtime-ktx:$versions.lifecycle" 有如下，无需引入
     api "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.lifecycle"
     api "androidx.lifecycle:lifecycle-livedata-ktx:$versions.lifecycle"

@@ -8,8 +8,9 @@
 
 *如下是内部集成的库*
 ```
-// 协程(它的Flow用来替换Rxjava，轻量而又强大；协程替换线程，清爽了许多)
-api "org.jetbrains.kotlinx:kotlinx-coroutines-android:xxx"
+// 考虑到使用门槛，已注销，此库按需自己引入，
+// 协程(它的Flow用来替换Rxjava，轻量而又强大)
+# api "org.jetbrains.kotlinx:kotlinx-coroutines-android:xxx"
 
 // Android兼容库
 api 'androidx.multidex:multidex:xxx' // 解决最大方法数问题

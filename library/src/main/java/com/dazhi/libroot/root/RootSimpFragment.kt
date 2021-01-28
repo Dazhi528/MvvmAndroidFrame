@@ -1,9 +1,6 @@
 package com.dazhi.libroot.root
 
 import androidx.viewbinding.ViewBinding
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.cancel
-import kotlinx.coroutines.launch
 
 /**
  * 功能：fragment基类
