@@ -8,8 +8,6 @@ import com.dazhi.libroot.root.RootVmActivity
 import com.dazhi.libroot.util.RtCmn
 import com.dazhi.libroot.util.viewClick
 import com.dazhi.sample.databinding.ActivitySampleBinding
-import com.dazhi.sample.db.DbPerson
-import java.util.*
 
 class SampleActivity : RootVmActivity<VmMain, ActivitySampleBinding>() {
 
@@ -44,19 +42,19 @@ class SampleActivity : RootVmActivity<VmMain, ActivitySampleBinding>() {
         }
 
         viewClick(binding.btMainDeleteData) {
-            binding.tvMainShowDbData.text.toString()
-            val lsBnPerson: MutableList<DbPerson> = ArrayList()
-            for (i in 1..10) {
-                lsBnPerson.add(DbPerson("name0$i"))
-            }
-            vm.deleteLsBnPerson(lsBnPerson);
+//            binding.tvMainShowDbData.text.toString()
+//            val lsBnPerson: MutableList<DbPerson> = ArrayList()
+//            for (i in 1..10) {
+//                lsBnPerson.add(DbPerson("name0$i"))
+//            }
+//            vm.deleteLsBnPerson(lsBnPerson);
         }
         // 数据变动监听
-        vm.dbLsBnPerson.observe(this) { mList ->
-            binding.tvMainShowDbData.setText(mList.map {
-                "名称：${it.strName}"
-            }.toString());
-        }
+//        vm.dbLsBnPerson.observe(this) { mList ->
+//            binding.tvMainShowDbData.setText(mList.map {
+//                "名称：${it.strName}"
+//            }.toString());
+//        }
 
         // 跳转实例
         viewClick(binding.btMainGotoNewPage) {

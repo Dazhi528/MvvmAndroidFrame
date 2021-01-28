@@ -81,8 +81,6 @@ public class RtStack {
      */
     public void exitApp() {
         try {
-            // 关闭工具的线程池
-            RtThread.shutdownNow();
             // 关闭数据库
             //DbHelper.self().closeDbForce();
             // 关闭所有Activity

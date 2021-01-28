@@ -1,10 +1,6 @@
 package com.dazhi.libroot.root
 
-import android.widget.TextView
 import androidx.viewbinding.ViewBinding
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.cancel
-import kotlinx.coroutines.launch
 
 /**
  * 功能：简单的Activity超类

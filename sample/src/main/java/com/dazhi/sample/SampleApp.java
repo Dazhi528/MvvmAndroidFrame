@@ -2,8 +2,6 @@ package com.dazhi.sample;
 
 import com.dazhi.libroot.root.RootApp;
 import com.dazhi.libroot.util.RtLog;
-import com.dazhi.sample.db.AppDatabase;
-import com.dazhi.sample.db.FactoryDaoPerson;
 
 /**
  * 功能：
@@ -33,7 +31,7 @@ public class SampleApp extends RootApp {
 //        MobclickAgent.setCatchUncaughtExceptions(true);
 //        UtConfig.self().initEngineLifecycle(new EngineLifecycleApp());
         //
-        FactoryDaoPerson.self().init(AppDatabase.self(this).getDaoPerson());
+//        FactoryDaoPerson.self().init(AppDatabase.self(this).getDaoPerson());
     }
 
 

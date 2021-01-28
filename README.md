@@ -117,8 +117,8 @@ RtStatusBar：状态条控制类（沉浸式、状态条颜色修改等）
 RtConfig:生命周期扩展引擎加载配置类
 RtCode：常用加密及编码工具方法
 RtCatch：全局捕获异常，防止崩溃，可处理重启等操作
-RtThread：线程池封装，替换某些new Thread场景
 RtView：封装点击防抖动方法(全局方法，可直接使用，见实例)
+LinkedMap：按插入顺序排序，支持键值索引、移除和顺序迭代
 ```
 
 #### 屏幕适配
@@ -156,8 +156,8 @@ RootAdapter
 
 
 ### 修改说明
-* V 1.0.5
-* 20-11-30 官方viewBinding方案替换过时的kotlin-android-extensions方案
+* V 1.0.5  日期：20-11-30
+* 官方viewBinding方案替换过时的kotlin-android-extensions方案
 ```
 // 注释掉：apply plugin: 'kotlin-android-extensions'
 // 添加如下：
@@ -168,3 +168,10 @@ android {
    }
 }
 ```
+
+* V 1.1.3  日期：21-01-28
+* 1）删除工具类 RtThread：防止小白线程池滥用，按需自定义
+* 2) 去除协程包引入，按需引入(有门槛，很多人都不会用到)
+*   # implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.7"
+* 3）引入LinkedMap(链表哈希)数据结构
+*    应用场景：按插入顺序排序，支持键值索引、移除和顺序迭代

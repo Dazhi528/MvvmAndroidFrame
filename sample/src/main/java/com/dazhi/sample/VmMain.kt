@@ -1,14 +1,11 @@
 package com.dazhi.sample
 
-import androidx.lifecycle.MutableLiveData
 import com.dazhi.libroot.inte.IRootView
 import com.dazhi.libroot.root.RootViewModel
-import com.dazhi.sample.db.DbPerson
-import com.dazhi.sample.db.FactoryDaoPerson
-import kotlinx.coroutines.*
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.flowOn
-import java.util.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 /**
  * 功能：Room框架数据库操作实例
@@ -20,7 +17,7 @@ import java.util.*
  */
 class VmMain : RootViewModel<IRootView>() {
     // 用于观察数据库所有消息变动
-    val dbLsBnPerson = MutableLiveData<List<DbPerson>>()
+//    val dbLsBnPerson = MutableLiveData<List<DbPerson>>()
 
     /**=======================================
      * 作者：WangZezhi  (2018/12/8  16:02)
@@ -29,29 +26,29 @@ class VmMain : RootViewModel<IRootView>() {
      * ======================================= */
     fun insertLsBnPerson() {
         // 测试数据
-        val lsBnPerson: MutableList<DbPerson> = ArrayList()
-        for (i in 1..10) {
-            lsBnPerson.add(DbPerson("name0$i"))
-        }
+//        val lsBnPerson: MutableList<DbPerson> = ArrayList()
+//        for (i in 1..10) {
+////            lsBnPerson.add(DbPerson("name0$i"))
+//        }
         // 数据库操作
         MainScope().launch {
             // 切换到IO线程
             withContext(Dispatchers.IO) {
                 // 插入测试数据
-                FactoryDaoPerson.self().daoPerson.dbInsertLsBnPerson(lsBnPerson)
-                // 更新测试数据
-                dbLsBnPerson.postValue(FactoryDaoPerson.self().daoPerson.dbGetAllBnPerson())
+//                FactoryDaoPerson.self().daoPerson.dbInsertLsBnPerson(lsBnPerson)
+//                // 更新测试数据
+//                dbLsBnPerson.postValue(FactoryDaoPerson.self().daoPerson.dbGetAllBnPerson())
             }
         }
     }
 
-    fun deleteLsBnPerson(lsBnPerson: List<DbPerson?>?) {
-        MainScope().launch {
-            withContext(Dispatchers.IO) {
-                FactoryDaoPerson.self().daoPerson.dbDeleteLsBnPerson(lsBnPerson)
-                // 更新测试数据
-                dbLsBnPerson.postValue(FactoryDaoPerson.self().daoPerson.dbGetAllBnPerson())
-            }
-        }
-    }
+//    fun deleteLsBnPerson(lsBnPerson: List<DbPerson?>?) {
+//        MainScope().launch {
+//            withContext(Dispatchers.IO) {
+//                FactoryDaoPerson.self().daoPerson.dbDeleteLsBnPerson(lsBnPerson)
+//                // 更新测试数据
+//                dbLsBnPerson.postValue(FactoryDaoPerson.self().daoPerson.dbGetAllBnPerson())
+//            }
+//        }
+//    }
 }

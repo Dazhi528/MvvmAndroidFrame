@@ -1,39 +1,39 @@
-package com.dazhi.sample.db;
-
-import android.content.Context;
-
-import androidx.room.Database;
-import androidx.room.Room;
-import androidx.room.RoomDatabase;
-
-/**
- * 功能：room 框架 数据库构建类
- * 描述：
- * 作者：WangZezhi
- * 邮箱：wangzezhi528@163.com
- * 创建日期：2018/12/8 15:29
- * 修改日期：2018/12/8 15:29
- */
-@Database(entities = {DbPerson.class}, version = 1, exportSchema = false)
-public abstract class AppDatabase extends RoomDatabase {
-    public abstract DaoPerson getDaoPerson();
-
-    /**=======================================
-     * 作者：WangZezhi  (2018/12/8  15:44)
-     * 功能：单列获得实例方法
-     * 描述：
-     *=======================================*/
-    private static AppDatabase instance = null;
-    public static synchronized AppDatabase self(Context context) {
-        if (instance == null) {
-            instance = buildDatabase(context);
-        }
-        return instance;
-    }
-    private static AppDatabase buildDatabase(Context context) {
-        return Room.databaseBuilder(context, AppDatabase.class, "intelink_app.db")
-                .build();
-    }
-
-
-}
+//package com.dazhi.sample.db;
+//
+//import android.content.Context;
+//
+//import androidx.room.Database;
+//import androidx.room.Room;
+//import androidx.room.RoomDatabase;
+//
+///**
+// * 功能：room 框架 数据库构建类
+// * 描述：
+// * 作者：WangZezhi
+// * 邮箱：wangzezhi528@163.com
+// * 创建日期：2018/12/8 15:29
+// * 修改日期：2018/12/8 15:29
+// */
+//@Database(entities = {DbPerson.class}, version = 1, exportSchema = false)
+//public abstract class AppDatabase extends RoomDatabase {
+//    public abstract DaoPerson getDaoPerson();
+//
+//    /**=======================================
+//     * 作者：WangZezhi  (2018/12/8  15:44)
+//     * 功能：单列获得实例方法
+//     * 描述：
+//     *=======================================*/
+//    private static AppDatabase instance = null;
+//    public static synchronized AppDatabase self(Context context) {
+//        if (instance == null) {
+//            instance = buildDatabase(context);
+//        }
+//        return instance;
+//    }
+//    private static AppDatabase buildDatabase(Context context) {
+//        return Room.databaseBuilder(context, AppDatabase.class, "intelink_app.db")
+//                .build();
+//    }
+//
+//
+//}

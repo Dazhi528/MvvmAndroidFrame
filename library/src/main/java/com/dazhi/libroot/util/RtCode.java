@@ -258,6 +258,9 @@ public class RtCode {
      * 功能：10进制与16进制互转
      * 描述：
      *=======================================*/
+    public static String decToHex(byte[] btArr) {
+        return decToHex(btArr, "");
+    }
     public static String decToHex(byte[] btArr, String separator) {
         if (btArr == null || btArr.length == 0) {
             return null;
@@ -279,10 +282,13 @@ public class RtCode {
     }
 
     public static byte[] hexToDec(String hexStr) {
+        return hexToDec(hexStr, " ");
+    }
+    public static byte[] hexToDec(String hexStr, String separator) {
         if (hexStr == null || hexStr.isEmpty()) {
             return null;
         }
-        hexStr = hexStr.replace(" ", "").replace(",", "");
+        hexStr = hexStr.replace(separator, "");
         if (hexStr.isEmpty()) {
             return null;
         }
