@@ -227,23 +227,23 @@ public class RtCmn {
      * 功能：四舍五入保留intScale位小数
      * 描述：在实际应用中发现返回值是double时，应用可能会变形，因此统一返回String
      *=======================================*/
-    public static String roundHalfUp(float floNumber, int intScale){
+    public static BigDecimal roundHalfUp(float floNumber, int intScale){
         BigDecimal bigDecimal=new BigDecimal(floNumber);
         return roundHalfUp(bigDecimal, intScale);
     }
-    public static String roundHalfUp(double douNumber, int intScale){
+    public static BigDecimal roundHalfUp(double douNumber, int intScale){
         BigDecimal bigDecimal=new BigDecimal(douNumber);
         return roundHalfUp(bigDecimal, intScale);
     }
-    public static String roundHalfUp(String strNumber, int intScale){
+    public static BigDecimal roundHalfUp(String strNumber, int intScale){
         BigDecimal bigDecimal=new BigDecimal(strNumber);
         return roundHalfUp(bigDecimal, intScale);
     }
-    public static String roundHalfUp(BigDecimal bigDecimal, int intScale){
+    public static BigDecimal roundHalfUp(BigDecimal bigDecimal, int intScale){
         if(bigDecimal==null || intScale<0) {
-            return "0";
+            throw new NullPointerException("bigDecimal == null || intScale < 0");
         }
-        return bigDecimal.setScale(intScale, BigDecimal.ROUND_HALF_UP).toString();
+        return bigDecimal.setScale(intScale, BigDecimal.ROUND_HALF_UP);
     }
 
     /**
